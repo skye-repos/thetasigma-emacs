@@ -92,7 +92,7 @@
                       :background thetasigma--background)
 
   (set-face-attribute 'thetasigma-face-overlay nil
-                      :foreground thetasigma--bold
+                      :foreground thetasigma--background
                       :background thetasigma--overlay)
 
   (set-face-attribute 'thetasigma-face-subtle nil

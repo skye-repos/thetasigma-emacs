@@ -33,8 +33,9 @@
                       :width 'unspecified :slant 'unspecified
                       :weight 'unspecified :height 'unspecified
                       :foreground 'unspecified :background 'unspecified
-                      :underline 'unspecified :box 'unspecified
-                      :inherit styles)
+                      :underline 'unspecified :box 'unspecified)
+  (set-face-attribute face nil
+                      (regexp-opt attr 'words) :inherit styles)
   )
 
 (defun set-inverse-face (face &optional attr color-face-style &rest styles)
@@ -47,8 +48,10 @@ Please ensure that styles have no opinion on colors for fg and bg to avoid confl
                         :width 'unspecified :slant 'unspecified
                         :weight 'unspecified :height 'unspecified
                         :foreground new-fg :background new-bg
-                        :underline 'unspecified :box 'unspecified
-                        :inherit styles)
+                        :underline 'unspecified :box 'unspecified)
+    (set-face-attribute face nil
+                        (regexp-opt attr) :inherit styles)
+
     )
   )
 
@@ -74,13 +77,51 @@ Please ensure that styles have no opinion on colors for fg and bg to avoid confl
             'thetasigma-face-font-emphasize)
   (set-face 'region '(:extend t)
             'thetasigma-face-overlay)
-  (set-inverse-face 'highlight nil
+  (set-face 'highlight '(:foreground thetasigma--background)
                     'thetasigma-face-subtle
                     nil)
+
   (set-face 'cursor nil
             'region)
+
+  (set-face 'shadow '(:foreground thetasigma--bold)
+            'thetasigma-face-font-emphasize)
+  (set-face 'success nil
+            'thetasigma-face-font-emphasize)
+  (set-face 'error '(:foreground thetasigma--standout)
+            'thetasigma-face-font-emphasize)
+  (set-face 'match nil
+            'thetasigma-face-font-bold)
+
+  (set-face 'font-lock-comment-face '(:foreground thetasigma--neutral-0)
+            'thetasigma-face-font-light)
+  (set-face 'font-lock-doc-face '(:foreground thetasigma--neutral-2)
+            'thetasigma-face-font-bold)
+
   )
 
-(thetasigma-theme--minimal)
+(defun thetasigma-theme--vertico ()
+  "Bare minimum vertico faces"
+
+  (set-face 'vertico-current nil
+            'highlight)
+
+  (set-face 'vertico-multiline nil
+            'shadow)
+
+  (set-face 'vertico-group-title nil
+            'shadow
+            'thetasigma-face-font-emphasize)
+
+  (set-face 'vertico-group-separator '(:strike-through t)
+            'shadow)
+  )
+
+(defun thetasigma-theme ()
+  "Call the fns that set the faces for the modes"
+  (thetasigma-theme--minimal)
+  (thetasigma-theme--vertico)
+  )
 
 (provide-theme 'thetasigma)
+(provide 'thetasigma-theme)

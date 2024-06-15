@@ -34,8 +34,11 @@
 
 ;; Programming niceties
 (require 'thetasigma-basic-prog)
+(require 'thetasigma-niceties)
 
-(add-to-list 'custom-theme-load-path ".")
-(load-theme 'thetasigma t nil)
+(require 'thetasigma-theme)
+(setq thetasigma-font-family "Fira Code")
+(setq thetasigma-font-size 140)
+(thetasigma-theme)
 
 (provide 'thetasigma)
