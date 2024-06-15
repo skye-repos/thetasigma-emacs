@@ -1,0 +1,23 @@
+* Θ Σ Emacs
+I've been using nano-emacs for some time now as bones for my own config. When delving into it, I realised that most of my interaction with emacs comes from packages not considered in nano.
+
+This is my attempt to create the default-user experience I would expect in emacs. Hence, Emacs for (Me)macs.
+
+This is a work-in-progress.
+
+* Installation
+
+For the time being, just git clone into the =user-emacs-directory=
+#+begin_src sh
+  git clone https://github.com/Harith163/thetasigma-emacs
+#+end_src 
+
+Then load it in through the user =init.el=.
+
+#+begin_src elisp
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (add-to-list 'load-path (concat user-emacs-directory "thetasigma-emacs/"))
+  (package-initialize)
+  (require 'thetasigma)
+#+end_src

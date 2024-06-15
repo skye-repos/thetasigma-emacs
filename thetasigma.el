@@ -37,6 +37,8 @@
 (require 'thetasigma-niceties)
 (require 'thetasigma-functions)
 
+(require 'thetasigma-writing)
+
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "thetasigma-emacs"))
 (load-theme 'thetasigma t)
 

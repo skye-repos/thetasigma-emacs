@@ -65,6 +65,8 @@
 
    `(mode-line-active ((,class :background ,overlay :foreground ,background :weight normal)))
    `(mode-line-inactive ((,class :background ,subtle :foreground ,background :weight light)))
+
+   `(org-block ((,class :foreground ,bold :weight semi-bold)))
    )
   )
   
