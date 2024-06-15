@@ -18,7 +18,7 @@
 ;; ---------------------------------------------------------------------
 
 ;; Initial frame
-(setq default-frame-alist
+(setq initial-frame-alist
       (append (list
                '(height     . 1.0)
                '(width      . 0.5)
@@ -30,6 +30,9 @@
                '(right-fringe   . 1)
                '(tool-bar-lines . 0)
                '(menu-bar-lines . 0))))
+
+(add-to-list 'default-frame-alist
+             '(font . "FiraCode-14"))
 
 ;; No frame title
 (setq frame-title-format nil)

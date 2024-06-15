@@ -21,6 +21,9 @@
 (put 'scroll-left 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+;; Use-package
+(setq use-package-always-ensure t)
+
 ;; No confirmation for visiting non-existent files
 (setq confirm-nonexistent-file-or-buffer nil)
 
@@ -30,7 +33,7 @@
 
 ;; Put customized variables in a separate file
 (setq custom-file (concat user-emacs-directory "custom.el"))
-(load-file custom-file)
+(load custom-file t)
 
 ;; Text Editing Changes
 ;(cua-mode t)

@@ -136,14 +136,14 @@
   (cond ((string= "emacs-lisp"
                   (intern (car (split-string (symbol-name (cdr (assoc 'major-mode (buffer-local-variables (current-buffer))))) "-mode")))
                   )
-         (intern "elisp")
+         (intern-soft "elisp")
          )
         ((string= (or "sh" "zsh" "fish" "PWSH")
                   (intern (car (split-string (symbol-name (cdr (assoc 'major-mode (buffer-local-variables (current-buffer))))) "-mode")))
                   )
-         (intern "bash")
+         (intern-soft "bash")
          )
-        (intern (car (split-string (symbol-name (cdr (assoc 'major-mode (buffer-local-variables (current-buffer))))) "-mode"))))
+        (intern-soft (car (split-string (symbol-name (cdr (assoc 'major-mode (buffer-local-variables (current-buffer))))) "-mode"))))
   )
 
 ;; Change region selection based on treesitter's semantic units

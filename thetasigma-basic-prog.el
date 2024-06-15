@@ -47,4 +47,21 @@
   (electric-pair-mode 1)
   )
 
+(use-package flymake
+  :ensure nil
+  :commands flymake-mode
+  :config
+  (setq flymake-fringe-indicator-position 'left-fringe)
+  (setq flymake-suppress-zero-counters t)
+  (setq flymake-start-on-flymake-mode t)
+  (setq flymake-no-changes-timeout nil)
+  (setq flymake-start-on-save-buffer t)
+  (setq flymake-proc-compilation-prevents-syntax-check t)
+  (setq flymake-wrap-around nil))
+
+(use-package package-lint-flymake
+  :after flymake
+  :config
+  (package-lint-flymake-setup))
+
 (provide 'thetasigma-basic-prog)

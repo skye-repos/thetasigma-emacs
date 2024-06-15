@@ -19,109 +19,57 @@
 (deftheme thetasigma
   "The theme used for Θ Σ emacs - Emacs for Memacs. It is built out of the principles from the TransSide theme and uses a similar color palate.")
 
-(require 'thetasigma-faces)
+(let ((class '((class color) (min-colors 89)))
+      (foreground "#FFE7FE") ;; WCAG 14
+      (background "#1C141C") ;;
+      (bold "#F9FFF9") ;; WCAG 16
+      (subtle "#93C0A9") ;; WCAG 8 
+      (standout "#FFEEB0") ;; WCAG 14 
+      (overlay "#B0A0EA") ;; WCAG 7
+      (interact-0 "#FEB1FE") ;; WCAG 10
+      (interact-1 "#FFC0FF") ;; WCAG 11
+      (interact-2 "#FFD0EF") ;; WCAG 12
+      (static-0 "#84D5FF") ;; WCAG 10 
+      (static-1 "#98DEFF") ;; WCAG 11 
+      (static-2 "#8AECFF") ;; WCAG 12 
+      (neutral-0 "#D9C0FF") ;; WCAG 10
+      (neutral-1 "#D8B1FE") ;; WCAG 9
+      (neutral-2 "#D7A0FE") ;; WCAG 8
+      )
 
-(setq-default thetasigma-font-family "Fira Code")
-(setq-default thetasigma-font-size 140)
+  (custom-theme-set-faces
+   'thetasigma
+   `(default ((,class :background ,background :foreground ,foreground)))
+   `(bold ((,class :foreground ,bold :weight bold)))
+   `(italic ((,class :slant oblique)))
+   `(bold-italic ((,class :weight bold :slant oblique)))
+   
+   `(cursor ((,class :background ,overlay)))
 
-(thetasigma--faces)
+   `(shadow ((,class :foreground ,subtle :weight light)))
+   `(success ((,class :weight semi-bold :slant oblique)))
+   `(error ((,class :foreground ,standout :weight bold)))
 
-(defun set-face (face &optional attr &rest styles)
-  "Cleanup whatever face attributes were present before and build up by inheriting the right styles and optionally specifying other attributes"
-  (set-face-attribute face nil
-                      :family 'unspecified :foundry 'unspecified
-                      :width 'unspecified :slant 'unspecified
-                      :weight 'unspecified :height 'unspecified
-                      :foreground 'unspecified :background 'unspecified
-                      :underline 'unspecified :box 'unspecified)
-  (set-face-attribute face nil
-                      (regexp-opt attr 'words) :inherit styles)
+   `(region ((,class :background ,overlay :foreground ,background)))
+   `(highlight ((,class :background ,neutral-2 :foreground ,background)))
+
+   `(font-lock-builtin-face ((,class :foreground ,neutral-0)))
+   `(font-lock-doc-face ((,class :foreground ,neutral-1 :weight medium)))
+   `(font-lock-comment-face ((,class :foreground ,neutral-2 :weight light)))
+   `(font-lock-string-face ((,class :foreground ,interact-1 :weight medium)))
+   `(font-lock-keyword-face ((,class :foreground ,static-0)))
+   `(font-lock-function-name-face ((,class :foreground ,bold :weight extra-bold)))
+   `(font-lock-constant-face ((,class :foreground ,static-2)))
+   `(font-lock-type-face ((,class :foreground ,static-1 :weight semi-bold)))
+   `(font-lock-warning-face ((,class :foreground ,standout :weight bold)))
+
+   `(mode-line-active ((,class :background ,overlay :foreground ,background :weight normal)))
+   `(mode-line-inactive ((,class :background ,subtle :foreground ,background :weight light)))
+   )
   )
-
-(defun set-inverse-face (face &optional attr color-face-style &rest styles)
-  "Cleanup whatever face attributes were present before and build up by inheriting the right styles and optionally specifying other attributes.
-Please ensure that styles have no opinion on colors for fg and bg to avoid conflict."
-  (let* ((new-fg (face-background color-face-style))
-         (new-bg (face-foreground color-face-style)))
-    (set-face-attribute face nil
-                        :family 'unspecified :foundry 'unspecified
-                        :width 'unspecified :slant 'unspecified
-                        :weight 'unspecified :height 'unspecified
-                        :foreground new-fg :background new-bg
-                        :underline 'unspecified :box 'unspecified)
-    (set-face-attribute face nil
-                        (regexp-opt attr) :inherit styles)
-
-    )
-  )
-
-(defun thetasigma-theme--minimal ()
-  "Bare minimum to see something happen"
-  (setq frame-background-mode thetasigma-theme-variant)
-
-  (set-foreground-color (face-foreground 'thetasigma-face-default))
-  (set-background-color (face-background 'thetasigma-face-default))
   
-  (set-face 'default nil
-            'thetasigma-face-default
-            'thetasigma-face-font-default)
-  (set-face 'bold nil
-            'thetasigma-face-font-default
-            'thetasigma-face-font-bold)
-  (set-face 'italic nil
-            'thetasigma-face-font-default
-            'thetasigma-face-font-emphasize)
-  (set-face 'bold-italic nil
-            'thetasigma-face-font-default
-            'thetasigma-face-font-bold
-            'thetasigma-face-font-emphasize)
-  (set-face 'region '(:extend t)
-            'thetasigma-face-overlay)
-  (set-face 'highlight '(:foreground thetasigma--background)
-                    'thetasigma-face-subtle
-                    nil)
-
-  (set-face 'cursor nil
-            'region)
-
-  (set-face 'shadow '(:foreground thetasigma--bold)
-            'thetasigma-face-font-emphasize)
-  (set-face 'success nil
-            'thetasigma-face-font-emphasize)
-  (set-face 'error '(:foreground thetasigma--standout)
-            'thetasigma-face-font-emphasize)
-  (set-face 'match nil
-            'thetasigma-face-font-bold)
-
-  (set-face 'font-lock-comment-face '(:foreground thetasigma--neutral-0)
-            'thetasigma-face-font-light)
-  (set-face 'font-lock-doc-face '(:foreground thetasigma--neutral-2)
-            'thetasigma-face-font-bold)
-
-  )
-
-(defun thetasigma-theme--vertico ()
-  "Bare minimum vertico faces"
-
-  (set-face 'vertico-current nil
-            'highlight)
-
-  (set-face 'vertico-multiline nil
-            'shadow)
-
-  (set-face 'vertico-group-title nil
-            'shadow
-            'thetasigma-face-font-emphasize)
-
-  (set-face 'vertico-group-separator '(:strike-through t)
-            'shadow)
-  )
-
-(defun thetasigma-theme ()
-  "Call the fns that set the faces for the modes"
-  (thetasigma-theme--minimal)
-  (thetasigma-theme--vertico)
-  )
 
 (provide-theme 'thetasigma)
 (provide 'thetasigma-theme)
+  
+

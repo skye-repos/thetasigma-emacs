@@ -35,10 +35,9 @@
 ;; Programming niceties
 (require 'thetasigma-basic-prog)
 (require 'thetasigma-niceties)
+(require 'thetasigma-functions)
 
-(require 'thetasigma-theme)
-(setq thetasigma-font-family "Fira Code")
-(setq thetasigma-font-size 140)
-(thetasigma-theme)
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "thetasigma-emacs"))
+(load-theme 'thetasigma t)
 
 (provide 'thetasigma)
