@@ -69,6 +69,8 @@
   (setq corfu-quit-no-match t)
   :init
   (global-corfu-mode)
+  (corfu-history-mode)
+  (corfu-popupinfo-mode)
   )
 
 ;; Dired

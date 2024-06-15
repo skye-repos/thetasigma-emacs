@@ -17,73 +17,49 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
+(require 'thetasigma-functions)
+
 (use-package window
   :ensure nil
   :init
   (setq display-buffer-alist
         '(;; Right
-          ("\\*Messages.*"
-           (display-buffer-pop-up-window)
-           (window-height . 0.25)
-           (window-width . 0.25)
-           (side . right)
-           (slot . 1))
-          ("\\*\\(Backtrace\\|Warnings\\|Compile-Log\\)\\*"
-           (display-buffer-in-side-window)
-           (window-height . 0.25)
-           (side . top)
-           (slot . 2))
-          ;; bottom window
-          ("^\\(\\*e?shell\\|vterm\\).*" ;; You don't use eshell. get rid of it
-           (display-buffer-in-side-window)
-           (window-width . 0.40)
-           (side . bottom)
-           (slot . 1))
-          ;; left side window
-          ("\\*Help.*"
-           (display-buffer-in-side-window)
-           (window-width . 0.35)       ; See the :hook
-           (side . left)
-           (slot . 0))
-          ;; right window
-          ("\\*Faces\\*"
-           (display-buffer-in-side-window)
-           (window-width . 0.35)
-           (side . right)
-           (slot . 0)
-           (window-parameters . ((mode-line-format . (" " mode-line-buffer-identification)))))
-          ("\\*Custom.*"
-           (display-buffer-in-side-window)
-           (window-width . 0.35)
-           (side . right)
-           (slot . 1))
-          ))
-
-  (setq window-combination-resize t)
-  (setq even-window-sizes 'height-only)
-  (setq window-sides-vertical nil)
-  
-  :hook ((help-mode . visual-line-mode)
-         (custom-mode . visual-line-mode))
+          ("*Messages*"
+           (display-buffer-in-child-frame)
+            `((child-frame-parameters . thetasigma--spawn-notification))
+            )
+            )
+          )
   )
 
-(display-buffer-pop-up-frame "*scratch*" thetasigma--child-frame-params-alist)
-
-(setq thetasigma--child-frame-params-alist
-  '((visibility . t)
-    (auto-raise . t)
-    (icon-type . nil)
-    (wait-for-wm . nil)
-    (inhibit-double-buffering . t)
-    (skip-taskbar . t)
-    (no-focus-on-map . t)
-    (no-accept-focus . t)
-    (undecorated . t)
-    (ns-transparent-titlebar . t)
-    (child-frame-border-width . 10)
-    (top-edge . 0.3)
-    (right-edge . 0.1)
-    (height . 0.1)
-    (width . 0.3)
-    )
-  )
+(provide 'thetasigma-window)
+          ;; ("\\*\\(Backtrace\\|Warnings\\|Compile-Log\\)\\*"
+          ;;  (display-buffer-in-side-window)
+          ;;  (window-height . 0.25)
+          ;;  (side . top)
+          ;;  (slot . 2))
+          ;; ;; bottom window
+          ;; ("^\\(\\*e?shell\\|vterm\\).*" ;; You don't use eshell. get rid of it
+          ;;  (display-buffer-in-side-window)
+          ;;  (window-width . 0.40)
+          ;;  (side . bottom)
+          ;;  (slot . 1))
+          ;; ;; left side window
+          ;; ("\\*Help.*"
+          ;;  (display-buffer-in-side-window)
+          ;;  (window-width . 0.35)       ; See the :hook
+          ;;  (side . left)
+          ;;  (slot . 0))
+          ;; ;; right window
+          ;; ("\\*Faces\\*"
+          ;;  (display-buffer-in-side-window)
+          ;;  (window-width . 0.35)
+          ;;  (side . right)
+          ;;  (slot . 0)
+          ;;  (window-parameters . ((mode-line-format . (" " mode-line-buffer-identification)))))
+          ;; ("\\*Custom.*"
+          ;;  (display-buffer-in-side-window)
+          ;;  (window-width . 0.35)
+          ;;  (side . right)
+          ;;  (slot . 1))
+          ;; )

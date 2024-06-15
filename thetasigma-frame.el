@@ -20,15 +20,6 @@
 ;; Initial frame
 (setq default-frame-alist
       (append (list
-               '(border . 0)
-               '(vertical-scroll-bars . nil)
-               '(horizontal-scroll-bars . nil)
-               '(left-fringe . nil)
-               '(right-fringe . nil)
-               )))
-
-(setq initial-frame-alist
-      (append (list
                '(height     . 1.0)
                '(width      . 0.5)
                '(top . 0)

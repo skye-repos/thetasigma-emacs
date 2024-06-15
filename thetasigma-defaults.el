@@ -19,7 +19,6 @@
 
 ;; Stuff
 (put 'scroll-left 'disabled nil)
-(put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
 ;; No confirmation for visiting non-existent files

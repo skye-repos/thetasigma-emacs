@@ -34,7 +34,8 @@
         command-history
 	    query-replace-history     
 	    minibuffer-history        
-	    file-name-history)
+	    file-name-history
+        corfu-history)
       )
 (setq history-length 150)
 (setq kill-ring-max 50)

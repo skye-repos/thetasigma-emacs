@@ -1,4 +1,3 @@
-
 ;; -*- lexical-binding: t -*-
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / Θ Σ - Emacs for Memacs
@@ -18,24 +17,5 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
-(require 'thetasigma-startup)
-(require 'thetasigma-frame)
-(require 'thetasigma-window)
-
-;; Load Settings and Binding
-(require 'thetasigma-defaults)
-(require 'thetasigma-bindings)
-
-;; Load Backups and History
-(require 'thetasigma-session)
-
-;; Load Basic Convenience Packages
-(require 'thetasigma-basic-packages)
-
-;; Programming niceties
-(require 'thetasigma-basic-prog)
-
-(add-to-list 'custom-theme-load-path ".")
-(load-theme 'thetasigma t nil)
-
-(provide 'thetasigma)
+(use-package rainbow-mode)
+(provide 'thetasigma-niceties)

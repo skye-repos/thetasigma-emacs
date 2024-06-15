@@ -39,6 +39,42 @@
   (interactive)
   (condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
 
+(defvar thetasigma--spawn-notification
+  `((background-mode . 'dark)
+    (foreground-color . "#FFFFFF")
+    (background-color . "#000000")
+    (border-color . "#FF00FF")
+    (minibuffer . t)
+    (cursor-type . nil)
+    (visibility . t)
+    (wait-for-wm . nil)
+    (inhibit-double-buffering . t)
+    (no-focus-on-map . t)
+    (no-accept-focus . t)
+    (undecorated . t)
+    (minibuffer . nil)
+    (unsplittable . t)
+    (border-width . 0)
+    (internal-border-width . 0)
+    (child-frame-border-width . 24)
+    (vertical-scroll-bars . nil)
+    (horizontal-scroll-bars . nil)
+    (left-fringe . 0)
+    (right-fringe . 0)
+    (menu-bar-lines . 0)
+    (tool-bar-lines . 0)
+    (tab-bar-lines . 0)
+    (line-spacing . 2)
+    (no-special-glyphs . t)
+    (height . 0)
+    (width . 20)
+    (top . 0.1)
+    (left . 1.0)
+    (alpha . 85)
+    )
+  "Alist for Spawn a child frame of the current frame for buffer then hide it"
+  )
+
 ;; A better way to use C-g that is a little more context sensitive
 (defun thetasigma--keyboard-quit-context+ ()
   "Quit current context.
@@ -49,23 +85,31 @@
 
    This function is courtesy of u/clemera from reddit"
   (interactive)
-    (cond
-     ;; Avoid adding the region to the window selection.
-     ((region-active-p) 
-      (setq saved-region-selection nil)
-      (let (select-active-regions) (deactivate-mark)))
-     ;; If the last command was =mode-exited= then return nil.
-     ((eq last-command 'mode-exited) nil)
-     ;; If you have accidenally added a bunch of C-u's, get rid of them. Here, current-prefix-arg returns a non-nil value (=> conditional)
-     (current-prefix-arg nil)
-     ;; Prevent quit-keyboard being used in a macro. Can be annoying. Here, defining-kbd-macro returns a non-nil value (=> conditional)
-     (defining-kbd-macro (message (substitute-command-keys
-                                   "Quit is ignored during macro defintion, use \\[kmacro-end-macro] if you want to stop macro definition"))
-                         (cancel-kbd-macro-events))
-     ;; Default case
-     (t (keyboard-quit))
-     )
+  (cond
+   ;; Avoid adding the region to the window selection.
+   ((region-active-p) 
+    (setq saved-region-selection nil)
+    (let (select-active-regions) (deactivate-mark)))
+   ;; If the last command was =mode-exited= then return nil.
+   ((eq last-command 'mode-exited) nil)
+   ;; If you have accidenally added a bunch of C-u's, get rid of them. Here, current-prefix-arg returns a non-nil value (=> conditional)
+   (current-prefix-arg nil)
+   ;; Prevent quit-keyboard being used in a macro. Can be annoying. Here, defining-kbd-macro returns a non-nil value (=> conditional)
+   (defining-kbd-macro (message (substitute-command-keys
+                                 "Quit is ignored during macro defintion, use \\[kmacro-end-macro] if you want to stop macro definition"))
+                       (cancel-kbd-macro-events))
+   ;; Kill all child-frames
+   ((frame-parent)
+    (delete-frame))
+   ((not (frame-parent))
+    (dolist (frame (frame-list))
+      (if (frame-parameter frame 'parent-frame)
+          (delete-frame frame t)))
     )
+   ;; Default case
+   (t (keyboard-quit))
+   )
+  )
 
 ;; A quit window useful for things like dired
 (defun thetasigma--quit-window ()
