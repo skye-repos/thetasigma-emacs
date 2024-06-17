@@ -1,7 +1,8 @@
-;; -*- lexical-binding: t -*-
+;;; thetasigma-basic-prog --- Basic packages that help with programming
+;;; Commentary:
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / Θ Σ - Emacs for Memacs
-;; Copyright (C) 2024 - Θ Σ developers 
+;; Copyright (C) 2024 - Θ Σ developers
 ;;
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,8 +18,7 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
-(require 'thetasigma-functions)
-
+;;; Code:
 (use-package treesit
   :ensure nil
   :config
@@ -48,7 +48,6 @@
   )
 
 (use-package flymake
-  :ensure nil
   :commands flymake-mode
   :config
   (setq flymake-fringe-indicator-position 'left-fringe)
@@ -57,11 +56,15 @@
   (setq flymake-no-changes-timeout nil)
   (setq flymake-start-on-save-buffer t)
   (setq flymake-proc-compilation-prevents-syntax-check t)
-  (setq flymake-wrap-around nil))
+  (setq flymake-wrap-around nil)
+  :hook
+  (prog-mode . flymake-mode))
 
 (use-package package-lint-flymake
   :after flymake
   :config
   (package-lint-flymake-setup))
 
+(use-package magit)
 (provide 'thetasigma-basic-prog)
+;;; thetasigma-basic-prog.el ends here

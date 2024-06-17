@@ -1,3 +1,5 @@
+;;; thetasigma-fucntions --- Provide miscellaneous support functions
+;;; Commentary:
 ;; -*- lexical-binding: t -*-
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / Θ Σ - Emacs for Memacs
@@ -19,6 +21,7 @@
 
 ;; Help message
 (defun thetasigma-quick-help ()
+  "Display Basic Help"
   (interactive)
   (let ((message-log-max nil))
     (message
@@ -34,46 +37,10 @@
 
 ;; Close frame if not the last, kill emacs else
 (defun thetasigma--delete-frame-or-kill-emacs ()
-  "Delete the selected frame, kill emacs if only one frame is present.
-   This function is courtesy of user Drew from Emacs StackExchange"
+  "Delete the selected frame, kill Emacs if only one frame is present.
+This function is courtesy of user Drew from Emacs StackExchange"
   (interactive)
   (condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
-
-(defvar thetasigma--spawn-notification
-  `((background-mode . 'dark)
-    (foreground-color . "#FFFFFF")
-    (background-color . "#000000")
-    (border-color . "#FF00FF")
-    (minibuffer . t)
-    (cursor-type . nil)
-    (visibility . t)
-    (wait-for-wm . nil)
-    (inhibit-double-buffering . t)
-    (no-focus-on-map . t)
-    (no-accept-focus . t)
-    (undecorated . t)
-    (minibuffer . nil)
-    (unsplittable . t)
-    (border-width . 0)
-    (internal-border-width . 0)
-    (child-frame-border-width . 24)
-    (vertical-scroll-bars . nil)
-    (horizontal-scroll-bars . nil)
-    (left-fringe . 0)
-    (right-fringe . 0)
-    (menu-bar-lines . 0)
-    (tool-bar-lines . 0)
-    (tab-bar-lines . 0)
-    (line-spacing . 2)
-    (no-special-glyphs . t)
-    (height . 0)
-    (width . 20)
-    (top . 0.1)
-    (left . 1.0)
-    (alpha . 85)
-    )
-  "Alist for Spawn a child frame of the current frame for buffer then hide it"
-  )
 
 ;; A better way to use C-g that is a little more context sensitive
 (defun thetasigma--keyboard-quit-context+ ()
@@ -113,25 +80,28 @@
 
 ;; A quit window useful for things like dired
 (defun thetasigma--quit-window ()
-  "If more than one window is open, close window on quit"
+  "If more than one window is open, close window on quit.
+If the current frame is a child frame, delete it"
   (interactive)
-  (if (> (length (window-list)) 1) (delete-window) (quit-window)))
-
-;; Unbind and bind keybinds
-(defun thetasigma--global-unbind-bind (keys fun)
-  "Takes in a key string and a function and unbinds all global bindings previously present and binds it to the provided funcion"
-  (keymap-global-unset keys)
-  (keymap-global-set keys fun)
+  (if (> (length (window-list)) 1) (delete-window) (quit-window))
+  (if (eq (frame-parameter nil 'parent-frame) t) (delete-frame))
   )
 
-(defun thetasigma--keymap-unbind-bind (map keys fun)
-  "Takes in a key string, a map, and a function name and unbinds all bindings in that keymap previously present and binds it to the provided funcion"
-  (keymap-unset map keys)
-  (keymap-set map keys fun)
+;; Unbind and bind keybinds
+(defun thetasigma--global-unbind-bind (key fun)
+  "Takes in KEY (a string representing a key sequence) and a function FUN and unbinds all global bindings previously present and binds it to the provided funcion."
+  (keymap-global-unset key)
+  (keymap-global-set key fun)
+  )
+
+(defun thetasigma--keymap-unbind-bind (map key fun)
+  "Takes in a KEY (a string representing a key sequence), MAP (representing a keymap), and FUN (a function name) and unbinds all bindings in that keymap previously present and binds it to the provided funcion."
+  (keymap-unset map key)
+  (keymap-set map key fun)
   )
 
 (defun thetasigma--treesit-get-lang ()
-  "Get prog lang of buffer from file name"
+  "Get prog lang of buffer from file name."
   (interactive)
   (cond ((string= "emacs-lisp"
                   (intern (car (split-string (symbol-name (cdr (assoc 'major-mode (buffer-local-variables (current-buffer))))) "-mode")))
@@ -148,8 +118,8 @@
 
 ;; Change region selection based on treesitter's semantic units
 (defun thetasigma--treesit-mark-bigger-node ()
-  "Expand region based on semantic units
-   Inspired by @skrytebane on Github, modified to use built-in treesit"
+  "Expand region based on semantic units.
+Inspired by @skrytebane on Github, modified to use built-in treesit"
   
   (interactive)
 
