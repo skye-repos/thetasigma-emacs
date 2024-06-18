@@ -60,10 +60,11 @@
   :hook
   (prog-mode . flymake-mode))
 
-(use-package package-lint-flymake
+(use-package package-lint
   :after flymake
   :config
-  (package-lint-flymake-setup))
+  :hook
+  (elisp-mode . package-lint-flymake-setup))
 
 (use-package magit)
 (provide 'thetasigma-basic-prog)

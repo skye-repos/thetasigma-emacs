@@ -17,30 +17,29 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
-;; Local Variables:
-;; eval: (rainbow-mode)
-;; End:
+;;; Code:
 
 (deftheme thetasigma
   "The theme used for Θ Σ Emacs - Emacs for Memacs.  It is built out of the principles from the TransSide theme and uses a similar color palate.")
 
 (let ((class '((class color) (min-colors 89)))
-      (foreground "#FFE7FE") ;; WCAG 14
-      (background "#1C141C") ;;
-      (bold "#F9FFF9") ;; WCAG 16
-      (bold-distant "#040004") ;; WCAG 9
-      (subtle "#93C0A9") ;; WCAG 8
-      (standout "#FFEEB0") ;; WCAG 14
-      (overlay "#B0A0EA") ;; WCAG 7
-      (interact-0 "#FEB1FE") ;; WCAG 10
-      (interact-1 "#FFC0FF") ;; WCAG 11
-      (interact-2 "#FFD0EF") ;; WCAG 12
-      (static-0 "#84D5FF") ;; WCAG 10
-      (static-1 "#98DEFF") ;; WCAG 11
-      (static-2 "#8AECFF") ;; WCAG 12
-      (neutral-0 "#D9C0FF") ;; WCAG 10
-      (neutral-1 "#D8B1FE") ;; WCAG 9
-      (neutral-2 "#D7A0FE") ;; WCAG 8
+      (foreground "#FFE7FE")
+      (background "#04040C")
+      (background-weak "#1C041C")
+      (bold "#F9FFF9")
+      (bold-distant "#040004")
+      (subtle "#BA99CA")
+      (standout "#FFEEB0")
+      (overlay "#B0A0EA")
+      (interact-0 "#FEB1FE")
+      (interact-1 "#FFC0FF")
+      (interact-2 "#FFD0EF")
+      (static-0 "#84D5FF")
+      (static-1 "#98DEFF")
+      (static-2 "#8AECFF")
+      (neutral-0 "#D9C0FF")
+      (neutral-1 "#D8B1FE")
+      (neutral-2 "#D7A0FE")
       )
 
   (custom-theme-set-faces
@@ -56,17 +55,47 @@
    `(success ((,class :weight semi-bold :distant-foreground ,bold-distant :slant oblique)))
    `(error ((,class :foreground ,standout :distant-foreground ,bold-distant :weight bold)))
 
-   `(region ((,class :background ,overlay :foreground ,background :extend t)))
+   `(region ((,class :background ,overlay :foreground ,background :weight bold :extend t)))
    `(highlight ((,class :background ,neutral-2 :foreground ,background :inverse-video nil)))
 
    `(font-lock-builtin-face ((,class :foreground ,neutral-0 :distant-foreground ,bold-distant)))
    `(font-lock-doc-face ((,class :foreground ,neutral-1 :distant-foreground ,bold-distant :weight medium)))
-   `(font-lock-comment-face ((,class :foreground ,neutral-2 :distant-foreground ,bold-distant :weight light)))
+   `(font-lock-comment-face ((,class :foreground ,neutral-2 :distant-foreground ,bold-distant :weight extra-light)))
    `(font-lock-string-face ((,class :foreground ,interact-1 :distant-foreground ,bold-distant :weight medium)))
    `(font-lock-keyword-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant)))
    `(font-lock-constant-face ((,class :foreground ,static-2 :distant-foreground ,bold-distant)))
+   `(font-lock-function-name-face ((,class :foreground ,static-2 :distant-foreground ,bold-distant)))
+   `(font-lock-variable-name-face ((,class :foreground ,interact-1 :distant-foreground ,bold-distant)))
    `(font-lock-type-face ((,class :foreground ,static-1 :distant-foreground ,bold-distant :weight semi-bold)))
    `(font-lock-warning-face ((,class :foreground ,standout :distant-foreground ,bold-distant :weight bold)))
+
+   `(outline-1 ((,class :foreground ,static-2 :weight heavy :height 1.2)))
+   `(outline-2 ((,class :foreground ,static-2 :weight bold :height 1.15)))
+   `(outline-3 ((,class :foreground ,static-2 :weight bold :height 1.1)))
+   `(outline-4 ((,class :foreground ,static-2 :weight semi-bold :height 1.05)))
+   `(outline-5 ((,class :foreground ,static-2 :weight semi-bold :height 1.05)))
+   `(outline-6 ((,class :foreground ,static-2 :weight medium :height 1.05)))
+   `(outline-7 ((,class :foreground ,static-2 :weight medium :height 1.05)))
+   `(outline-8 ((,class :foreground ,static-2 :weight medium :height 1.05)))
+   
+   `(font-latex-doctex-documentation-face ((,class :background ,background-weak)))
+   `(font-latex-bold-face ((,class :inherit 'bold)))
+   `(font-latex-italic-face ((,class :inherit 'italic)))
+   `(font-latex-underline-face ((,class :underline t)))
+   `(font-latex-math-face ((,class :foreground ,interact-2 :weight semi-bold)))
+   `(font-latex-sedate-face ((,class :inherit 'font-lock-keyword-face)))
+   `(font-latex-string-face ((,class :inherit 'font-lock-string-face)))
+   `(font-latex-warning-face ((,class :inherit 'error)))
+   `(font-latex-verbatim-face ((,class :foreground ,subtle :width semi-expanded)))
+   `(font-latex-superscript-face ((,class :height 0.85)))
+   `(font-latex-subscript-face ((,class :height 0.85)))
+   `(font-latex-script-char-face ((,class :foreground ,subtle :weight light)))
+   `(font-latex-sectioning-0-face ((,class :inherit 'outline-1)))
+   `(font-latex-sectioning-1-face ((,class :inherit 'outline-2)))
+   `(font-latex-sectioning-2-face ((,class :inherit 'outline-3)))
+   `(font-latex-sectioning-3-face ((,class :inherit 'outline-4)))
+   `(font-latex-sectioning-4-face ((,class :inherit 'outline-5)))
+   `(font-latex-sectioning-5-face ((,class :inherit 'outline-6)))
 
    `(mode-line-active ((,class :background ,overlay :foreground ,background :weight normal)))
    `(mode-line-inactive ((,class :background ,subtle :foreground ,background :weight light)))
@@ -78,4 +107,9 @@
 
 (provide-theme 'thetasigma)
 (provide 'thetasigma-theme)
+
+;; Local Variables:
+;; eval: (rainbow-mode)
+;; End:
+
 ;;; thetasigma-theme.el ends here

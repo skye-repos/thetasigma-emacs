@@ -1,7 +1,9 @@
+;;; thetasigma-frame.el --- modify the default and inital frame behaviours
+;;; Commentary:
 ;; -*- lexical-binding: t -*-
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / Θ Σ - Emacs for Memacs
-;; Copyright (C) 2024 - Θ Σ developers 
+;; Copyright (C) 2024 - Θ Σ developers
 ;;
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,6 +19,7 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
+;;; Code:
 ;; Initial frame
 (setq initial-frame-alist
       (append (list
@@ -29,10 +32,8 @@
                '(left-fringe    . 1)
                '(right-fringe   . 1)
                '(tool-bar-lines . 0)
-               '(menu-bar-lines . 0))))
-
-(add-to-list 'default-frame-alist
-             '(font . "FiraCode-14"))
+               '(menu-bar-lines . 0)
+               '(right-divider-width . 0))))
 
 ;; No frame title
 (setq frame-title-format nil)
@@ -52,11 +53,10 @@
   (menu-bar-mode -1))
 
 ;; Vertical window divider
-(setq window-divider-default-right-width 24)
-(setq window-divider-default-places 'right-only)
-(window-divider-mode 1)
+(window-divider-mode 0)
 
 ;; Minimum window height
 (setq window-min-height 1)
 
 (provide 'thetasigma-frame)
+;;; thetasigma-frame.el ends here.
