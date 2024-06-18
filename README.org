@@ -9,7 +9,7 @@ This is a work-in-progress.
 
 For the time being, just git clone into the =user-emacs-directory=
 #+begin_src sh
-  git clone https://github.com/Harith163/thetasigma-emacs
+  git clone https://github.com/skye-repos/thetasigma-emacs.git
 #+end_src 
 
 Then load it in through the user =init.el=.
