@@ -1,7 +1,9 @@
+;;; thetasigma-startup-screen.el --- a startup screen
+;;; Commentary:
 ;; -*- lexical-binding: t -*-
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / Θ Σ - Emacs for Memacs
-;; Copyright (C) 2024 - Θ Σ developers 
+;; Copyright (C) 2024 - Θ Σ developers
 ;;
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,20 +19,23 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
-;; No startup  screen
-(setq inhibit-startup-screen t)
+;;; Code:
+(use-package enlight
+  :custom
+  (enlight-content
+   (concat
+    (propertize "MENU" 'face 'highlight)
+    "\n"
+    (enlight-menu
+     '(("Org Mode"
+	("Org-Agenda (current day)" (org-agenda nil "a") "a"))
+       ("Downloads"
+	("Transmission" transmission "t")
+	("Downloads folder" (dired "~/Downloads") "a"))
+       ("Other"
+	    ("Projects" project-switch-project "p")))))))
 
-;; No startup message
-(setq inhibit-startup-message t)
-(setq inhibit-startup-echo-area-message t)
+(setopt initial-buffer-choice #'enlight)
 
-;; No message in scratch buffer
-(setq initial-scratch-message nil)
-
-;; Initial buffer
-(setq initial-buffer-choice "*scratch*")
-
-;; Default Initial and Major Mode
-(require 'thetasigma-startup-screen)
-
-(provide 'thetasigma-startup)
+(provide 'thetasigma-startup-screen)
+;;; thetasigma-startup-screen.el ends here.
