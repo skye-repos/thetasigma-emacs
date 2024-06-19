@@ -24,9 +24,9 @@
 (setq initial-frame-alist
       (append (list
                '(height     . 1.0)
-               '(width      . 0.5)
-               '(top . 0)
-               '(left . 0)
+               '(width      . 1.0)
+               '(top . -1)
+               '(left . -1)
                '(vertical-scroll-bars . nil)
                '(internal-border-width . 24)
                '(left-fringe    . 1)

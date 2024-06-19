@@ -1,3 +1,5 @@
+;;; thetasigma-basic-packages.el --- bare minimum for usability
+;;; Commentary:
 ;; -*- lexical-binding: t -*-
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / Θ Σ - Emacs for Memacs
@@ -17,6 +19,7 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
+;;; Code:
 (require 'thetasigma-functions)
 
 ;; Minibuffer and goodies
@@ -122,3 +125,4 @@
   )
 
 (provide 'thetasigma-basic-packages)
+;;; thetasigma-basic-packages.el ends here.

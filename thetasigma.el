@@ -1,4 +1,5 @@
-
+;;; thetasigma.el --- Emacs for Memacs
+;;; Commentary:
 ;; -*- lexical-binding: t -*-
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / Θ Σ - Emacs for Memacs
@@ -18,12 +19,16 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
-(require 'thetasigma-startup)
+(defvar thetasigma-user-dir
+  (concat user-emacs-directory "thetasigma-emacs/")
+  "Directory that Θ Σ - Emacs was cloned into")
+
+;;; Code:
+(require 'thetasigma-defaults)
 (require 'thetasigma-frame)
 (require 'thetasigma-window)
 
 ;; Load Settings and Binding
-(require 'thetasigma-defaults)
 (require 'thetasigma-bindings)
 
 ;; Load Backups and History
@@ -39,7 +44,10 @@
 
 (require 'thetasigma-writing)
 
-(add-to-list 'custom-theme-load-path (concat user-emacs-directory "thetasigma-emacs"))
+(add-to-list 'custom-theme-load-path thetasigma-user-dir)
 (load-theme 'thetasigma t)
 
+(require 'thetasigma-enlight)
+
 (provide 'thetasigma)
+;;; thetasigma.el ends here.
