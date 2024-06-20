@@ -1,23 +1,32 @@
-;;; thetasigma-writing --- Config for writers of technical and prose
-;;; Commentary:
-;; -*- lexical-binding: t -*-
-;; ---------------------------------------------------------------------
-;; GNU Emacs / Θ Σ - Emacs for Memacs
-;; Copyright (C) 2024 - Θ Σ developers 
-;;
-;; This program is free software; you can redistribute it and/or modify
+;;; thetasigma-writing.el --- Convenience for writing -*- lexical-binding: t -*-
+
+;; Author: Skye
+;; Version: 0.0.1
+;; Package-Requires: ((emacs "29.1"))
+;; URL: https://github.com/skye-repos/thetasigma-emacs
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
 ;; (at your option) any later version.
-;;
+
 ;; This program is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
-;;
+
 ;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-;; ---------------------------------------------------------------------
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Basic Config for packages including org, latex, and (soon) typst
+
+;; Local Variables:
+;; eval: (byte-compile-suppressed-warnings '(not-used))
+;; End:
 
 ;;; Code:
 (use-package cdlatex)
@@ -72,8 +81,7 @@
 
   (org-tags-column 80)
 
-  (org-return-follows-link t)
-  )
+  (org-return-follows-link t))
 
 (use-package org-modern
   :hook
@@ -84,44 +92,18 @@
 (use-package tempel
   :custom
   (tempel-trigger-prefix "<")
-  
-  :init
-  (defun tempel-setup-capf ()
+  :config
+  (defun thetasigma-writing--tempel-setup-capf ()
+    "Setup templ Capf endpoint."
     (setq-local completion-at-point-functions
-                (cons #'tempel-expand
+		(cons #'tempel-expand
                       completion-at-point-functions)))
-
   :hook
-  (conf-mode . tempel-setup-capf)
-  (prog-mode . tempel-setup-capf)
-  (text-mode . tempel-setup-capf)
-  )
+  (conf-mode . thetasigma-writing--tempel-setup-capf)
+  (prog-mode . thetasigma-writing--tempel-setup-capf)
+  (text-mode . thetasigma-writing--tempel-setup-capf))
 
-(use-package tempel-collection
-  :after tempel)
-
-;; (use-package tempo
-;;   :custom
-;;   (tempo-add-tag 'u user-full-name)
-;;   (tempo-add-tag 'e user-mail-address)
-;;   (tempo-define-template "default-org-header"
-;;                          '("#+latex_class: article"n
-;; 						   "#+latex_class_options: [a4paper, 10pt]"n
-;; 						   "#+latex_header: \\usepackage[margin=1in]{geometry} \\usepackage{setspace}"n
-;; 						   "#+latex_header_extra: \\doublespace"n
-;; 						   "#+latex_compiler: pdflatex"n
-;; 						   "#+options: author:t broken-links:nil c:nil creator:nil"n
-;; 						   "#+options: date:t e:nil email:t num:t"n
-;; 						   "#+options: timestamp:nil title:t toc:nil todo:nil |:t"n
-;; 						   "#+title:"p n
-;; 						   "#+date: \\today"n
-;; 						   "#+author: "u n
-;; 						   "#+email: "e)
-;; 						 "<P")
-;;   )
-
-;; (setq tempo-user-elements `((u . ,user-full-name)
-;; 							(e . ,user-mail-address)))
+(use-package tempel-collection)
 
 (provide 'thetasigma-writing)
-;;; thetasigma-writing.el ends here.
+;;; thetasigma-writing.el ends here

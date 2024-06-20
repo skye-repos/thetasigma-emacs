@@ -2,6 +2,7 @@
 
 ;; Author: Skye
 ;; Version: 0.0.1
+;; Package-Requires: ((enlight "0.3"))
 
 ;; This file is not part of GNU Emacs
 
@@ -24,9 +25,19 @@
 
 ;;; Code:
 
-(use-package grid
-  :vc (grid :url "https://github.com/ichernyshovv/grid.el"
-			:branch "main"))
+(cond ((package-installed-p 'grid)
+       (require 'grid))
+      ((not (package-installed-p 'grid))
+       (package-vc-install "https://github.com/ichernyshovvv/grid.el")
+       (require 'grid)))
+
+(cond ((package-installed-p 'enlight)
+       (require 'enlight)
+       (require 'enlight-menu))
+      ((not (package-installed-p 'enlight))
+       (package-vc-install 'enlight)
+       (require 'enlight)
+       (require 'enlight-menu)))
 
 (defface ts-enlight-logo-face
   '((t (:inherit 'bold :height 2.5)))
@@ -42,7 +53,7 @@
      ("Open Directory" (dired thetasigma-dir) "t")
      ("Open Main File" (find-file (concat thetasigma-dir "thetasigma.el")) "c"))
     ("QUICK CONFIG"
-     ("Open Θ Σ Org mode conf" (find-file (concat thetasigma-user-dir "thetasigma-writing.el")) "o")
+     ("Open Θ Σ Org mode conf" (find-file (concat thetasigma-dir "thetasigma-writing.el")) "o")
      ("Open User init.el conf" (find-file user-init-file) "i"))
     )
   "Sub-menu for use in englight screen to access configs.")
@@ -59,36 +70,31 @@
      ("Set mark" nil "C-SPC")
      ("Rect mark" nil "C-x SPC"))
     ("Emergency"
-     ("Quit/Save Me" (call-interactively 'thetasigma--keyboard-quit-context+) "C-g")
-     ("Kill Frame" (call-interactively 'thetasigma--delete-frame-or-kill-emacs "C-x C-c"))
+     ("Quit/Save" (call-interactively 'thetasigma--keyboard-quit) "C-g")
+     ("Kill Frame" (call-interactively 'thetasigma-frame-delete-frame-or-kill-emacs "C-x C-c"))
      ("Help for help" (call-interactively 'help-for-help) "C-h h")
      ("Θ Σ Emacs keybinds" (call-interactively 'describe-personal-keybindings) "C-h P")
      )
     )
   "Sub-menu for use in englight screen to show common functions.")
 
-(use-package enlight
-  :custom
-  (enlight-content
-   (grid-get-column `(,(grid-get-box `( :content ,ts-enlight--logo
-										:align 'center
-										:width ,(/ (frame-width) 3)
-										:padding 4))
-					  ,(grid-get-row `(,(grid-get-box `( :content ,(enlight-menu ts-enlight--conf-menu)
-														 :align 'center
-														 :width ,(round (/ (frame-width) 1.5))
-														 :padding 4))
-									   ,(grid-get-box `( :content ,(enlight-menu ts-enlight--help)
-														 :align 'center
-														 :width ,(round (/ (frame-width) 1.5))
-														 :padding 4))))
-					  ( :content
-						,(propertize "\n\nΘ Σ Emacs - https://github.com/skye-repos/thetasigma-emacs\n"
-									 'face 'shadow :height 0.8)
-						:align 'center
-						:width ,(frame-width)))
-					))
-  )
+(customize-set-value
+ 'enlight-content
+ (grid-get-column `(,(grid-get-box `( :content ,ts-enlight--logo
+				      :align 'center
+				      :width 80
+				      :padding 4))
+		    ,(grid-get-row `(,(grid-get-box `( :content ,(enlight-menu ts-enlight--conf-menu)
+						       :align 'center
+						       :width 80))
+				     ,(grid-get-box `( :content ,(enlight-menu ts-enlight--help)
+						       :align 'left
+						       :width 80))))
+		    ( :content
+		      ,(propertize "\n\nΘ Σ Emacs - https://github.com/skye-repos/thetasigma-emacs\n"
+				   'face 'shadow :height 0.8)
+		      :align 'left
+		      :width 160))))
 
 
 (setopt initial-buffer-choice #'enlight)

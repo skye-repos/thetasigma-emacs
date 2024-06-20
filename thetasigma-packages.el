@@ -1,25 +1,3 @@
-;;; thetasigma-basic-packages.el --- bare minimum for usability
-;;; Commentary:
-;; -*- lexical-binding: t -*-
-;; ---------------------------------------------------------------------
-;; GNU Emacs / Θ Σ - Emacs for Memacs
-;; Copyright (C) 2024 - Θ Σ developers 
-;;
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-;; ---------------------------------------------------------------------
-
-
 ;; Minibuffer and goodies
 (use-package vertico
   :custom
@@ -63,8 +41,8 @@
 (use-package corfu
   :custom
   (corfu-auto t)
-  (corfu-auto-delay nil)
-  (corfu-auto-prefix nil)
+  (corfu-auto-delay 0)
+  (corfu-auto-prefix 2)
   (corfu-quit-no-match t)
   (global-corfu-mode t)
   (corfu-history-mode t)
@@ -74,12 +52,12 @@
 ;; Dired
 (use-package dired
   :ensure nil
-  :config
-  (setq dired-recursive-copies 'always)
-  (setq dired-recursive-deletes 'always)
-  (setq delete-by-moving-to-trash t)
-  (setq dired-listing-switches "-al --group-directories-first --time-style=iso")
-  (setq dired-dwim-target t)
+  :custom
+  (dired-recursive-copies 'always)
+  (dired-recursive-deletes 'always)
+  (delete-by-moving-to-trash t)
+  (dired-listing-switches "-al --group-directories-first --time-style=iso")
+  (dired-dwim-target t)
   :hook
   (dired-mode . dired-hide-details-mode))
 
@@ -116,5 +94,5 @@
 ;; Raibow-mode
 (use-package rainbow-mode)
 
-(provide 'thetasigma-basic-packages)
-;;; thetasigma-basic-packages.el ends here.
+(provide 'thetasigma-packages)
+;;; thetasigma-packages.el ends here.

@@ -20,13 +20,18 @@
 ;; ---------------------------------------------------------------------
 
 ;;; Code:
-(defvar thetasigma-dir
-  (concat user-emacs-directory "thetasigma-emacs/")
+(defvar thetasigma-dir "~/thetasigma-emacs/"
   "Directory that Θ Σ - Emacs was cloned into.")
 
 ;; Theme
 (add-to-list 'custom-theme-load-path thetasigma-dir)
 (load-theme 'thetasigma t)
+
+;; Startup Stuff
+(customize-set-value 'inhibit-startup-message t)
+(customize-set-value 'inhibit-startup-screen t)
+(customize-set-value 'inhibit-startup-buffer-menu t)
+(customize-set-value 'inhibit-startup-echo-area-message t)
 
 ;; Custom Prefix used in keybinds
 (define-prefix-command 'ctl-z-map)
@@ -36,17 +41,12 @@
 
 (require 'thetasigma-frame)
 
-
-;; Load Settings and Binding
-;(require 'thetasigma-bindings)
-
 ;; Load Backups and History
 (require 'thetasigma-session)
 
 ;; Load Basic Convenience Packages
-(require 'thetasigma-basic-packages)
-
-(require 'thetasigma-basic-prog)
+(require 'thetasigma-packages)
+(require 'thetasigma-prog)
 
 (use-package thetasigma-er
   :load-path thetasigma-dir

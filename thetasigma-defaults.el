@@ -29,34 +29,36 @@
    `keyboard-escape-quit' with some parts omitted and some custom
    behavior added.
 
-   This function is courtesy of u/clemera from reddit"
+   Courtesy of u/clemera from reddit"
   (interactive)
-  (cond
-   ;; Avoid adding the region to the window selection.
-   ((region-active-p) 
-    (setq saved-region-selection nil)
-    (let (select-active-regions) (deactivate-mark)))
-   ;; If the last command was =mode-exited= then return nil.
-   ((eq last-command 'mode-exited) nil)
-   ;; If you have accidenally added a bunch of C-u's, get rid of them. Here, current-prefix-arg returns a non-nil value (=> conditional)
-   (current-prefix-arg nil)
-   ;; Prevent quit-keyboard being used in a macro. Can be annoying. Here, defining-kbd-macro returns a non-nil value (=> conditional)
-   (defining-kbd-macro (message (substitute-command-keys
-                                 "Quit is ignored during macro defintion, use \\[kmacro-end-macro] if you want to stop macro definition"))
-                       (cancel-kbd-macro-events))
-   ;; Kill all child-frames
-   ((frame-parent)
-    (delete-frame))
-   ((not (frame-parent))
-    (dolist (frame (frame-list))
-      (if (frame-parameter frame 'parent-frame)
-          (delete-frame frame t)))
-    )
-   ;; Default case
-   (t (keyboard-quit))
-   )
-  )
+  (progn (cond
+		  ;; Avoid adding the region to the window selection.
+		  ((region-active-p)
+		   (setq saved-region-selection nil)
+		   (let (select-active-regions) (deactivate-mark)))
+		  ;; If the last command was =mode-exited= then return nil.
+		  ((eq last-command 'mode-exited) nil)
+		  ;; If you have accidenally added a bunch of C-u's, get rid of them. Here, current-prefix-arg returns a non-nil value (=> conditional)
+		  (current-prefix-arg nil)
+		  ;; Prevent quit-keyboard being used in a macro. Can be annoying. Here, defining-kbd-macro returns a non-nil value (=> conditional)
+		  (defining-kbd-macro (message (substitute-command-keys
+										"Quit is ignored during macro defintion, use \\[kmacro-end-macro] if you want to stop macro definition"))
+							  (cancel-kbd-macro-events))
+		  ;; Default case
+		  (t (keyboard-quit)))
 
+		 ;; Kill all child-frames
+		 (cond
+		  ((frame-parent)
+		   (delete-frame))
+		  ((not (frame-parent))
+		   (dolist (frame (frame-list))
+			 (if (frame-parameter frame 'parent-frame)
+				 (delete-frame frame t))))
+		  ;; Default case
+		  (t (keyboard-quit)))))
+
+;; Basic Utility Keybinds
 (use-package simple
   :ensure nil
   :bind
@@ -66,9 +68,38 @@
 	:map ctl-z-map
 	("C-<SPC>" . fixup-whitespace)))
 
-;; Put customized variables in a separate file
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(load custom-file t)
+(use-package files
+  :ensure nil
+  :bind
+  ("<f5>" . revert-buffer))
+
+;; Rebind help functions sensibly
+(use-package help-fns
+  :ensure nil
+  :bind
+  ( :map help-map
+    ("F" . describe-face)
+    ("s" . describe-symbol)
+    ("S" . describe-syntax)
+    ("p" . describe-package)
+    ("P" . describe-personal-keybinds)))
+
+(use-package info
+  :ensure nil
+  :bind
+  ( :map help-map
+    ("C-f" . Info-goto-emacs-command-node)
+    ("C-k" . Info-goto-emacs-key-command-node)
+    ("C-m" . info-display-manual)
+    ("C-r" . info-emacs-manual)
+    ("C-b" . info-emacs-bug)))
+
+(use-package info-look
+  :ensure nil
+  :bind
+  ( :map help-map
+    ("C-S-f" . info-lookup-file)
+    ("C-S-s" . info-lookup-symbol)))
 
 ;; Text Editing Changes
 ;(cua-mode t)
@@ -80,10 +111,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Tabs
-(setq tab-always-indent 'complete)
-
-;; Tab.space equivalence
-(setq-default tab-width 4)
+(customize-set-value 'tab-always-indent 'complete)
+(customize-set-value 'tab-width 4)
 
 ;; Buffer encoding
 (prefer-coding-system       'utf-8)

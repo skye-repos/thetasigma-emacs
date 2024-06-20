@@ -32,11 +32,15 @@ This function is courtesy of user Drew from Emacs StackExchange"
 ;; A quit window useful for things like dired
 (defun thetasigma-frame-quit-window ()
   "If more than one window is open, close window on quit.
+If only one window is open and buffer is read only, kill buffer.
 If the current frame is a child frame, delete it"
   (interactive)
-  (if (> (length (window-list)) 1) (delete-window) (quit-window))
-  (if (eq (frame-parameter nil 'parent-frame) t) (delete-frame))
-  )
+  (cond ((> (length (window-list)) 1)
+	 (quit-window t (get-buffer-window (buffer-name))))
+	((eq (length (window-list)) 1)
+	 (quit-window t))
+	((eq (frame-parameter nil 'parent-frame) t)
+	 (delete-frame))))
 
 (use-package frame
   :ensure nil
@@ -45,17 +49,15 @@ If the current frame is a child frame, delete it"
 
   :custom
   (default-frame-alist (append (list
-								'(height     . 1.0)
-								'(width      . 1.0)
-								'(top . -1)
-								'(left . -1)
-								'(vertical-scroll-bars . nil)
-								'(internal-border-width . 24)
-								'(left-fringe    . 1)
-								'(right-fringe   . 1)
-								'(tool-bar-lines . 0)
-								'(menu-bar-lines . 0)
-								'(right-divider-width . 0) )))
+				'(height     . 1.0)
+				'(width      . 0.5)
+				'(vertical-scroll-bars . nil)
+				'(internal-border-width . 24)
+				'(left-fringe    . 1)
+				'(right-fringe   . 1)
+				'(tool-bar-lines . 0)
+				'(menu-bar-lines . 0)
+				'(right-divider-width . 0))))
   (frame-title-format nil)
   (fill-column 80)
 

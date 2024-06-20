@@ -1,23 +1,3 @@
-;;; thetasigma-basic-prog --- Basic packages that help with programming
-;;; Commentary:
-;; ---------------------------------------------------------------------
-;; GNU Emacs / Θ Σ - Emacs for Memacs
-;; Copyright (C) 2024 - Θ Σ developers
-;;
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-;; ---------------------------------------------------------------------
-
 ;;; Code:
 (use-package treesit
   :ensure nil
@@ -63,14 +43,14 @@
 
 (use-package flymake
   :commands flymake-mode
-  :config
-  (setq flymake-fringe-indicator-position 'left-fringe)
-  (setq flymake-suppress-zero-counters t)
-  (setq flymake-start-on-flymake-mode t)
-  (setq flymake-no-changes-timeout nil)
-  (setq flymake-start-on-save-buffer t)
-  (setq flymake-proc-compilation-prevents-syntax-check t)
-  (setq flymake-wrap-around nil)
+  :custom
+  (flymake-fringe-indicator-position 'left-fringe)
+  (flymake-suppress-zero-counters t)
+  (flymake-start-on-flymake-mode t)
+  (flymake-no-changes-timeout nil)
+  (flymake-start-on-save-buffer t)
+  (flymake-proc-compilation-prevents-syntax-check t)
+  (flymake-wrap-around nil)
   :hook
   (prog-mode . flymake-mode))
 
@@ -80,7 +60,8 @@
   :hook
   (elisp-mode . package-lint-flymake-setup))
 
-(use-package magit)
+(use-package magit
+  :defines magit-view-git-manual-method)
 
-(provide 'thetasigma-basic-prog)
-;;; thetasigma-basic-prog.el ends here
+(provide 'thetasigma-prog)
+;;; thetasigma-prog.el ends here
