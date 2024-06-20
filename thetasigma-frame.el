@@ -1,62 +1,82 @@
-;;; thetasigma-frame.el --- modify the default and inital frame behaviours
-;;; Commentary:
-;; -*- lexical-binding: t -*-
-;; ---------------------------------------------------------------------
-;; GNU Emacs / Θ Σ - Emacs for Memacs
-;; Copyright (C) 2024 - Θ Σ developers
-;;
-;; This program is free software; you can redistribute it and/or modify
+;;; thetasigma-frame.el --- frame & window utils -*- lexical-binding: t -*-
+
+;; Author: Skye
+;; Version: 0.0.1
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
 ;; (at your option) any later version.
-;;
+
 ;; This program is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
-;;
+
 ;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-;; ---------------------------------------------------------------------
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Set some default behaviors for frames and windows and provide utility functions
 
 ;;; Code:
-;; Initial frame
-(setq initial-frame-alist
-      (append (list
-               '(height     . 1.0)
-               '(width      . 1.0)
-               '(top . -1)
-               '(left . -1)
-               '(vertical-scroll-bars . nil)
-               '(internal-border-width . 24)
-               '(left-fringe    . 1)
-               '(right-fringe   . 1)
-               '(tool-bar-lines . 0)
-               '(menu-bar-lines . 0)
-               '(right-divider-width . 0))))
+(defun thetasigma-frame-delete-frame-or-kill-emacs ()
+  "Delete the selected frame, kill Emacs if only one frame is present.
+This function is courtesy of user Drew from Emacs StackExchange"
+  (interactive)
+  (condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
 
-;; No frame title
-(setq frame-title-format nil)
+;; A quit window useful for things like dired
+(defun thetasigma-frame-quit-window ()
+  "If more than one window is open, close window on quit.
+If the current frame is a child frame, delete it"
+  (interactive)
+  (if (> (length (window-list)) 1) (delete-window) (quit-window))
+  (if (eq (frame-parameter nil 'parent-frame) t) (delete-frame))
+  )
 
-;; Fill column at 80
-(setq fill-column 80)
+(use-package frame
+  :ensure nil
+  :bind
+  ([remap save-buffers-kill-terminal] . thetasigma-frame-delete-frame-or-kill-emacs)
 
-;; No scroll bars
-(if (fboundp 'scroll-bar-mode) (set-scroll-bar-mode nil))
+  :custom
+  (default-frame-alist (append (list
+								'(height     . 1.0)
+								'(width      . 1.0)
+								'(top . -1)
+								'(left . -1)
+								'(vertical-scroll-bars . nil)
+								'(internal-border-width . 24)
+								'(left-fringe    . 1)
+								'(right-fringe   . 1)
+								'(tool-bar-lines . 0)
+								'(menu-bar-lines . 0)
+								'(right-divider-width . 0) )))
+  (frame-title-format nil)
+  (fill-column 80)
 
-;; No toolbar
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+  (window-divider-mode nil)
+  :config
+  (if (fboundp 'scroll-bar-mode) (set-scroll-bar-mode nil))
 
-;; No menu bar
-(if (display-graphic-p)
-    (menu-bar-mode t) ;; When nil, focus problem on OSX
-  (menu-bar-mode -1))
+  ;; No toolbar
+  (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
-;; Vertical window divider
-(window-divider-mode 0)
+  ;; No menu bar
+  (if (display-graphic-p) (menu-bar-mode t) (menu-bar-mode -1))
+  )
 
-;; Minimum window height
-(setq window-min-height 1)
+(use-package window
+  :ensure nil
+  :bind
+  ([remap quit-window] . thetasigma-frame-quit-window)
+  :custom
+  (window-min-height 1)
+  )
 
 (provide 'thetasigma-frame)
-;;; thetasigma-frame.el ends here.
+;;; thetasigma-frame.el ends here

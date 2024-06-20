@@ -1,4 +1,5 @@
-
+;;; thetasigma-writing --- Config for writers of technical and prose
+;;; Commentary:
 ;; -*- lexical-binding: t -*-
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / Θ Σ - Emacs for Memacs
@@ -18,74 +19,109 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
+;;; Code:
 (use-package cdlatex)
 
 (use-package latex
   :ensure auctex)
 
 (use-package org
+  :ensure nil
   :hook
   (org-mode . org-cdlatex-mode)
   (org-mode . org-indent-mode)
-
-  :init
-  (setq org-highlight-latex-and-related '(native latex script))
-  (setq org-export-backends '(latex odt org))
 
   :bind
   (:map org-mode-map
         ("M-<return>" . org-insert-item)
         :prefix-map ctl-z-map
         :prefix "C-z"
-        ("C-z C-e" . thetasigma--org-mark-and-archive)
-        ("C-z <up>" . org-cycle-list-bullet))
+        ("C-z a" . org-archive-all-done)
+        ("C-z <TAB>" . org-cycle-list-bullet))
 
-  :config
-  (require 'org-tempo)
+  :custom
+  (org-directory "~/Documents/Org/")
+  (let ((work (concat org-directory "work.org"))
+		(personal (concat org-directory "personal.org"))
+		(archive (concat org-directory "archive.org")))
+	(org-store-new-agenda-file-list (list work personal))
+	(org-archive-location (concat archive "::* From %s")))
+  
+  (org-highlight-latex-and-related '(native latex script))
+  (org-export-backends '(latex odt org))
 
-  (setq org-directory "~/Documents/Org")
+  (org-ellipsis " ▼")
+  (org-pretty-entities t)
+  (org-hide-emphasis-markers t)
 
-  (defun thetasigma--org-get-path (stringname)
-    "Use concat to generate full path."
-    (concat (file-name-as-directory org-directory) stringname))
+  (org-fontify-todo-headline t)
+  (org-fontify-done-headline t)
 
-  (setq tasks (thetasigma--org-get-path "Task List.org"))
-  (setq archive (thetasigma--org-get-path "archive.org"))
+  (org-src-fontify-natively t)
+  (org-src-tab-acts-natively t)
+  (org-src-window-setup 'split-window-below)
 
-  (setq org-agenda-files (list tasks))
-  (setq org-archive-location (concat archive "::* From %s"))
+  (org-todo-keywords '((sequence "TODO(t!)" "|" "IN-PROGRESS(i!)")
+					   (sequence "WAITING(w)" "|" "POSTPONED(p)")
+					   (sequence "DONE(d!)" "|" "FAILED(f!)")))
+  
+  (org-enforce-todo-dependencies t)
+  (org-enforce-todo-checkbox-dependencies t)
 
-  (setq org-ellipsis " ▼")
-  (setq org-src-fontify-natively t)
-  (setq org-src-tab-acts-natively t)
+  (org-preview-latex-default-process 'dvisvgm)
 
-  (setq org-todo-keywords '((sequence "TODO(t!)" "|" "DOING(i!)" "|" "WAITING(w!)") (sequence "|" "CANCELLED(c)" "|" "DONE(d)")))
+  (org-tags-column 80)
 
-  (setq org-enforce-todo-dependencies t)
-  (setq org-enforce-todo-checkbox-dependencies t)
-
-  (setq skye/bullets-list '("◉" "●" "○" "⊙"))
-
-  (setq org-src-window-setup 'current-window)
-
-  (defun thetasigma--org-mark-and-archive ()
-    "Mark the state of the current subtree as either DONE or CANCELLED and export to my archive.org file"
-    (interactive)
-    (org-todo (completing-read "Choose a final TODO state" '("DONE" "CANCELLED")))
-    (org-archive-subtree))
-
-
-  (setq org-pretty-entities nil)
-  (setq org-preview-latex-default-process 'dvisvgm)
-
-  (setq org-fontify-todo-headline nil)
-  (setq org-fontify-done-headline nil)
-
-  (setq org-tags-column 70)
+  (org-return-follows-link t)
   )
 
 (use-package org-modern
-  :config
-  (global-org-modern-mode))
+  :hook
+  (org-mode . org-modern-mode)
+  (org-agenda-finalize . org-modern-agenda))
+
+;; Configure Tempel
+(use-package tempel
+  :custom
+  (tempel-trigger-prefix "<")
+  
+  :init
+  (defun tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions)))
+
+  :hook
+  (conf-mode . tempel-setup-capf)
+  (prog-mode . tempel-setup-capf)
+  (text-mode . tempel-setup-capf)
+  )
+
+(use-package tempel-collection
+  :after tempel)
+
+;; (use-package tempo
+;;   :custom
+;;   (tempo-add-tag 'u user-full-name)
+;;   (tempo-add-tag 'e user-mail-address)
+;;   (tempo-define-template "default-org-header"
+;;                          '("#+latex_class: article"n
+;; 						   "#+latex_class_options: [a4paper, 10pt]"n
+;; 						   "#+latex_header: \\usepackage[margin=1in]{geometry} \\usepackage{setspace}"n
+;; 						   "#+latex_header_extra: \\doublespace"n
+;; 						   "#+latex_compiler: pdflatex"n
+;; 						   "#+options: author:t broken-links:nil c:nil creator:nil"n
+;; 						   "#+options: date:t e:nil email:t num:t"n
+;; 						   "#+options: timestamp:nil title:t toc:nil todo:nil |:t"n
+;; 						   "#+title:"p n
+;; 						   "#+date: \\today"n
+;; 						   "#+author: "u n
+;; 						   "#+email: "e)
+;; 						 "<P")
+;;   )
+
+;; (setq tempo-user-elements `((u . ,user-full-name)
+;; 							(e . ,user-mail-address)))
 
 (provide 'thetasigma-writing)
+;;; thetasigma-writing.el ends here.

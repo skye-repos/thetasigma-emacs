@@ -19,17 +19,26 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
-(defvar thetasigma-user-dir
-  (concat user-emacs-directory "thetasigma-emacs/")
-  "Directory that Θ Σ - Emacs was cloned into")
-
 ;;; Code:
+(defvar thetasigma-dir
+  (concat user-emacs-directory "thetasigma-emacs/")
+  "Directory that Θ Σ - Emacs was cloned into.")
+
+;; Theme
+(add-to-list 'custom-theme-load-path thetasigma-dir)
+(load-theme 'thetasigma t)
+
+;; Custom Prefix used in keybinds
+(define-prefix-command 'ctl-z-map)
+(keymap-global-set "C-z" ctl-z-map)
+
 (require 'thetasigma-defaults)
+
 (require 'thetasigma-frame)
-(require 'thetasigma-window)
+
 
 ;; Load Settings and Binding
-(require 'thetasigma-bindings)
+;(require 'thetasigma-bindings)
 
 ;; Load Backups and History
 (require 'thetasigma-session)
@@ -37,16 +46,15 @@
 ;; Load Basic Convenience Packages
 (require 'thetasigma-basic-packages)
 
-;; Programming niceties
 (require 'thetasigma-basic-prog)
-(require 'thetasigma-niceties)
-(require 'thetasigma-functions)
+
+(use-package thetasigma-er
+  :load-path thetasigma-dir
+  :bind
+  (:map global-map
+		("C-=" . thetasigma-er--treesit-mark-bigger-node)))
 
 (require 'thetasigma-writing)
-
-(add-to-list 'custom-theme-load-path thetasigma-user-dir)
-(load-theme 'thetasigma t)
-
 (require 'thetasigma-enlight)
 
 (provide 'thetasigma)

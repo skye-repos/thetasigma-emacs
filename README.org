@@ -8,16 +8,16 @@ This is a work-in-progress.
 * Installation
 
 For the time being, just git clone into the =user-emacs-directory=
-#+begin_src sh
+#+begin_src shell
   git clone https://github.com/skye-repos/thetasigma-emacs.git
-#+end_src 
+#+end_src
 
 Then load it in through the user =init.el=.
-
-#+begin_src elisp
+#+begin_src emacs-lisp
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'load-path (concat user-emacs-directory "thetasigma-emacs/"))
   (package-initialize)
+  (package-refresh-contents)
   (require 'thetasigma)
 #+end_src

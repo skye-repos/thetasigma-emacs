@@ -19,29 +19,25 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 
-;;; Code:
-(require 'thetasigma-functions)
 
 ;; Minibuffer and goodies
 (use-package vertico
-  :bind
-  (:map vertico-map
-        ([remap keyboard-quit] . thetasigma--keyboard-quit-context+))
   :custom
   (vertico-count 8)
   (vertico-resize t)
   (vertico-cycle nil)
-  :init
-  (vertico-mode)
+  (vertico-mode t)
   )
 
 (use-package marginalia
   :custom
   (marginalia-max-relative-age 0)
   (marginalia-align 'right)
-  :init
-  (marginalia-mode)
+  (marginalia-mode t)
   )
+
+(use-package vertico-posframe
+  :custom (vertico-posframe-mode t))
 
 ;; Search and search matching
 (use-package consult
@@ -65,15 +61,14 @@
 
 ;; Inline completions
 (use-package corfu
-  :config
-  (setq corfu-auto t)
-  (setq corfu-auto-delay 0)
-  (setq corfu-auto-prefix 0)
-  (setq corfu-quit-no-match t)
-  :init
-  (global-corfu-mode)
-  (corfu-history-mode)
-  (corfu-popupinfo-mode)
+  :custom
+  (corfu-auto t)
+  (corfu-auto-delay nil)
+  (corfu-auto-prefix nil)
+  (corfu-quit-no-match t)
+  (global-corfu-mode t)
+  (corfu-history-mode t)
+  (corfu-popupinfo-mode t)
   )
 
 ;; Dired
@@ -86,27 +81,21 @@
   (setq dired-listing-switches "-al --group-directories-first --time-style=iso")
   (setq dired-dwim-target t)
   :hook
-  (dired-mode . dired-hide-details-mode)
-  :bind
-  (:map dired-mode-map
-        ("q" . thetasigma--quit-window))
-  )
+  (dired-mode . dired-hide-details-mode))
 
 ;; Which Key
 (use-package which-key
-  :config (which-key-mode)
-  )
+  :custom (which-key-mode t))
 
 ;; Icons
 (use-package nerd-icons
-  :config
+  :init
   (cond ((member system-type '(gnu gnu/linux gnu/kfreebsd))
          (unless (file-exists-p "~/.local/share/fonts/NFM.ttf")
            (nerd-icons-install-fonts)))
         ((eq system-type 'darwin)
          (unless (file-exists-p "~/Library/Fonts/NFM.ttf")
-           (nerd-icons-install-fonts)))
-        )
+           (nerd-icons-install-fonts))))
   )
 
 (use-package nerd-icons-dired
@@ -123,6 +112,9 @@
   :config
   (nerd-icons-completion-mode)
   )
+
+;; Raibow-mode
+(use-package rainbow-mode)
 
 (provide 'thetasigma-basic-packages)
 ;;; thetasigma-basic-packages.el ends here.
