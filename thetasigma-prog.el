@@ -1,18 +1,4 @@
 ;;; Code:
-(use-package treesit
-  :ensure nil
-  :config
-  (add-to-list 'treesit-language-source-alist '(elisp "https://github.com/Wilfred/tree-sitter-elisp"))
-  (add-to-list 'treesit-language-source-alist '(c "https://github.com/tree-sitter/tree-sitter-c"))
-  (add-to-list 'treesit-language-source-alist '(bash "https://github.com/tree-sitter/tree-sitter-bash"))
-  (unless (treesit-language-available-p 'elisp)
-    (treesit-install-language-grammar 'elisp))
-  (unless (treesit-language-available-p 'c)
-    (treesit-install-language-grammar 'c))
-  (unless (treesit-language-available-p 'bash)
-    (treesit-install-language-grammar 'bash))
-  )
-
 (use-package elisp-mode
   :ensure nil
   :bind
@@ -38,8 +24,13 @@
   (org-mode . (lambda ()
                 (setq-local electric-pair-pairs (append electric-pair-pairs '((?$ . ?$))))))
   :config
-  (electric-pair-mode 1)
+  (electric-pair-mode t)
   )
+
+(use-package electric
+  :ensure nil
+  :config
+  (electric-indent-mode t))
 
 (use-package flymake
   :commands flymake-mode
@@ -61,7 +52,13 @@
   (elisp-mode . package-lint-flymake-setup))
 
 (use-package magit
-  :defines magit-view-git-manual-method)
+  :init
+  (defvar magit-view-git-manual-method "magit-view-git-manual-method"))
+
+(use-package expreg
+  :bind
+  ("C-=" . expreg-expand)
+  ("C--" . expreg-contract))
 
 (provide 'thetasigma-prog)
 ;;; thetasigma-prog.el ends here

@@ -38,24 +38,14 @@
 (keymap-global-set "C-z" ctl-z-map)
 
 (require 'thetasigma-defaults)
-
 (require 'thetasigma-frame)
-
-;; Load Backups and History
 (require 'thetasigma-session)
 
 ;; Load Basic Convenience Packages
 (require 'thetasigma-packages)
 (require 'thetasigma-prog)
 
-(use-package thetasigma-er
-  :load-path thetasigma-dir
-  :bind
-  (:map global-map
-		("C-=" . thetasigma-er--treesit-mark-bigger-node)))
-
 (require 'thetasigma-writing)
-(require 'thetasigma-enlight)
 
 (provide 'thetasigma)
 ;;; thetasigma.el ends here.
