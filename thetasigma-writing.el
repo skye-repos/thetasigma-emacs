@@ -5,15 +5,12 @@
          ("s-$" . jinx-correct-all)
 	 ("C-s-$" . jinx-languages)))
 
-(use-package cdlatex)
-
 (use-package latex
   :ensure auctex)
 
 (use-package org
   :ensure nil
   :hook
-  (org-mode . org-cdlatex-mode)
   (org-mode . org-indent-mode)
 
   :bind
@@ -79,8 +76,7 @@
   (prog-mode . thetasigma-writing--tempel-setup-capf)
   (text-mode . thetasigma-writing--tempel-setup-capf))
 
-(eval-after-load 'tempel
-  (use-package tempel-collection))
+(use-package tempel-collection)
 
 
 (provide 'thetasigma-writing)

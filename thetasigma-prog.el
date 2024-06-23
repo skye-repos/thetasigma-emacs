@@ -49,12 +49,12 @@
   :hook
   (elisp-mode . package-lint-flymake-setup))
 
-(use-package magit)
-
 (use-package expreg
   :bind
   ("C-=" . expreg-expand)
   ("C--" . expreg-contract))
+
+(use-package magit)
 
 (provide 'thetasigma-prog)
 ;;; thetasigma-prog.el ends here

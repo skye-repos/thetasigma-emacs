@@ -1,7 +1,10 @@
 * Θ Σ Emacs
-I've been using nano-emacs for some time now as bones for my own config. When delving into it, I realised that most of my interaction with emacs comes from packages not considered in nano.
+I've been using nano-emacs for some time now as bones for my own config. When
+delving into it, I realised that most of my interaction with emacs comes from
+packages not considered in nano.
 
-This is my attempt to create the default-user experience I would expect in emacs. Hence, Emacs for (Me)macs.
+This is my attempt to create the default-user experience I would expect in
+emacs. Hence, Emacs for (Me)macs.
 
 This is a work-in-progress.
 
@@ -9,33 +12,32 @@ This is a work-in-progress.
 
 For the time being, just git clone into the =user-emacs-directory=
 #+begin_src shell
-  git clone https://github.com/skye-repos/thetasigma-emacs.git
+  git clone https://github.com/skye-repos/thetasigma-emacs.git ~/.emacs.d/thetasigma-emacs
 #+end_src
 
 Then load it in through the user =init.el=.
 #+begin_src emacs-lisp
   (require 'package)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  (add-to-list 'load-path (concat user-emacs-directory "thetasigma-emacs/"))
-  (package-initialize)
-  (package-refresh-contents)
-  (require 'thetasigma)
-#+end_src
+  (add-to-list 'package-archives
+               '("melpa" . "https://melpa.org/packages/") t)
 
-#+begin_src emacs-lip
-  (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-quickstart-refresh)
+  (setq custom-file (concat user-emacs-directory "custom.el"))
+  (unless(file-exists-p custom-file)
+    (write-file custom-file) (load-file custom-file))
+  (load-file custom-file)
 
-;; Use-package basics
-(setopt use-package-always-ensure t)
-(unless (string> emacs-version "30")
-  (unless (package-installed-p 'vc-use-package)
-    (package-vc-install "https://github.com/slotThe/vc-use-package")))
+  ;; Use-package basics
+  (setopt use-package-always-ensure t)
+  (unless (and (string> emacs-version "30")
+               (package-installed-p 'vc-use-package))
+    (package-vc-install "https://github.com/slotThe/vc-use-package"))
 
-(use-package thetasigma
-  :load-path "~/.emacs.d/thetasigma-emacs/")
+  (use-package thetasigma
+    :load-path "~/.emacs.d/thetasigma-emacs/")
 
-;; Not necessary but recommended
-(set-face-attribute 'default nil :family "Fira Code" :height 140)
+  ;; Not necessary but recommended
+  (set-face-attribute 'default nil
+                      :family "Fira Code"
+                      :height 140)
+
 #+end_src
