@@ -1,26 +1,45 @@
-;;; thetasigma-theme --- A colourful contrast rich theme.
-;;; Commentary:
-;; ---------------------------------------------------------------------
-;; Copyright (C) 2024 - Kaushik S Harith
-;;
-;; This program is free software; you can redistribute it and/or modify
+;;; thetasigma-theme.el --- A colourful contrast rich theme
+;; -*- lexical-binding: t -*-
+
+;; Author: Skye
+;; Version: 0.1
+;; Package-Requires: ((emacs "29.1"))
+;; Homepage: https://github.com/skye-repos/
+;; Keywords: Emacs, color-theme, TransSide-theme
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
 ;; (at your option) any later version.
-;;
+
 ;; This program is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
-;;
+
 ;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-;; ---------------------------------------------------------------------
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; This theme is built from the bones of my old theme - TransSide, using
+;; similar principles.  I categorize faces in Emacs based on the
+;; kind/degree of interaction required from them.  Some elements like
+;; keywords are static, some elements are static in feature but
+;; interactive in behaviour - like selections, and of course elements
+;; that require active interaction like strings and such.
+
+;; I have tried to use as few colors as possible here.  I also try to
+;; enforce the WCAG contrast guidelines as much as possible.  The bulk of
+;; colors are > than a 10:1 ratio with the background, with some weaker
+;; colors for use in subtler contexts.
 
 ;;; Code:
-
-(deftheme thetasigma
-  "The theme used for Θ Σ Emacs - Emacs for Memacs.  It is built out of the principles from the TransSide theme and uses a similar color palate.")
+(deftheme thetasigma "The theme used for Θ Σ Emacs - Emacs for Memacs.
+It is built out of the principles from the TransSide theme and uses a similar
+color palate.")
 
 (let ((class '((class color) (min-colors 89)))
       (foreground "#FFE7FE")
@@ -107,9 +126,9 @@
 
 (provide-theme 'thetasigma)
 (provide 'thetasigma-theme)
+;;; thetasigma-theme.el ends here
 
 ;; Local Variables:
-;; eval: (rainbow-mode)
+;; eval: (rainbow-mode) (setq fill-column 70)
 ;; End:
 
-;;; thetasigma-theme.el ends here

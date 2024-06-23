@@ -95,7 +95,7 @@
   (nerd-icons-completion-mode)
   )
 
-;; Raibow-mode
+;; Rainbow-mode
 (use-package rainbow-mode)
 
 (provide 'thetasigma-packages)

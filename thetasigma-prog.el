@@ -1,4 +1,3 @@
-;;; Code:
 (use-package elisp-mode
   :ensure nil
   :bind
@@ -59,3 +58,8 @@
 
 (provide 'thetasigma-prog)
 ;;; thetasigma-prog.el ends here
+
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars)
+;; End:
+
