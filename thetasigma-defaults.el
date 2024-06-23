@@ -82,7 +82,8 @@
     ("s" . describe-symbol)
     ("S" . describe-syntax)
     ("p" . describe-package)
-    ("P" . describe-personal-keybinds)))
+    ("P" . describe-personal-keybinds)
+    ("g" . nil)))
 
 (use-package info
   :ensure nil
@@ -134,7 +135,7 @@
 (when (eq system-type 'darwin)
   (setq ns-use-native-fullscreen t
         mac-command-modifier 'meta
-        mac-option-modifier nil)
+        mac-option-modifier 'super)
   
   (cond ((file-exists-p "/opt/local/bin/gls")
          (setq insert-directory-program "/opt/local/bin/gls"))

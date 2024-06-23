@@ -49,8 +49,7 @@ If the current frame is a child frame, delete it"
 
   :custom
   (default-frame-alist (append (list
-				'(height     . 1.0)
-				'(width      . 0.5)
+				'(fullscreen . fullboth)
 				'(vertical-scroll-bars . nil)
 				'(internal-border-width . 24)
 				'(left-fringe    . 1)

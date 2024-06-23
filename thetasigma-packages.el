@@ -5,7 +5,11 @@
   (vertico-resize t)
   (vertico-cycle nil)
   (vertico-mode t)
-  )
+  :config
+  (with-eval-after-load 'jinx
+      (add-to-list 'vertico-multiform-categories
+               '(jinx grid (vertico-grid-annotate . 20)))
+  (vertico-multiform-mode 1)))
 
 (use-package marginalia
   :custom
@@ -27,7 +31,7 @@
 
 (use-package orderless
   :custom
-  (completion-styles '(orderless))  
+  (completion-styles '(orderless))
   (completion-category-defaults nil)
   (orderless-matching-styles
    '(orderless-literal

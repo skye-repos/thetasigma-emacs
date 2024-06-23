@@ -24,11 +24,15 @@
 
 ;; Basic Config for packages including org, latex, and (soon) typst
 
-;; Local Variables:
-;; eval: (byte-compile-suppressed-warnings '(not-used))
-;; End:
-
 ;;; Code:
+
+;; Install libenchant
+(use-package jinx
+  :hook (emacs-startup . global-jinx-mode)
+  :bind (("C-$" . jinx-correct)
+         ("s-$" . jinx-correct-all)
+	 ("C-s-$" . jinx-languages)))
+
 (use-package cdlatex)
 
 (use-package latex
@@ -107,3 +111,7 @@
 
 (provide 'thetasigma-writing)
 ;;; thetasigma-writing.el ends here
+
+;; Local Variables:
+;; jinx-local-words: "libenchant"
+;; End:

@@ -45,15 +45,12 @@
   :hook
   (prog-mode . flymake-mode))
 
-(use-package package-lint
+(use-package package-lint-flymake
   :after flymake
-  :config
   :hook
   (elisp-mode . package-lint-flymake-setup))
 
-(use-package magit
-  :init
-  (defvar magit-view-git-manual-method "magit-view-git-manual-method"))
+(use-package magit)
 
 (use-package expreg
   :bind
