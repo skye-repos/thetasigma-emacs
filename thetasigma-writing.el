@@ -79,7 +79,9 @@
   (prog-mode . thetasigma-writing--tempel-setup-capf)
   (text-mode . thetasigma-writing--tempel-setup-capf))
 
-(use-package tempel-collection)
+(eval-after-load 'tempel
+  (use-package tempel-collection))
+
 
 (provide 'thetasigma-writing)
 ;;; thetasigma-writing.el ends here
