@@ -28,9 +28,9 @@ Then load it in through the user =init.el=.
 
   ;; Use-package basics
   (setopt use-package-always-ensure t)
-  (unless (and (string> emacs-version "30")
-               (package-installed-p 'vc-use-package))
-    (package-vc-install "https://github.com/slotThe/vc-use-package"))
+  (unless (string> emacs-version "30")
+    (unless (package-installed-p 'vc-use-package)
+      (package-vc-install "https://github.com/slotThe/vc-use-package")))
 
   (use-package thetasigma
     :load-path "~/.emacs.d/thetasigma-emacs/")
