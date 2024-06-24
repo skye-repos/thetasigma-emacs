@@ -22,7 +22,7 @@ Then load it in through the user =init.el=.
                '("melpa" . "https://melpa.org/packages/") t)
 
   (setq custom-file (concat user-emacs-directory "custom.el"))
-  (unless(file-exists-p custom-file)
+  (unless (file-exists-p custom-file)
     (write-file custom-file) (load-file custom-file))
   (load-file custom-file)
 
