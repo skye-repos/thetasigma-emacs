@@ -1,16 +1,12 @@
 (use-package elisp-mode
   :ensure nil
-  :bind
-  ( :map ctl-z-map
-	("C-e" . eval-defun))
-  )
+  :bind ( :map ctl-z-map
+	  ("C-e" . eval-defun)))
 
 (use-package newcomment
   :ensure nil
-  :bind
-  ( :map ctl-z-map
-	(";" . comment-dwim))
-  )
+  :bind ( :map ctl-z-map
+	  (";" . comment-dwim)))
 
 (use-package elec-pair
   :ensure nil
@@ -22,14 +18,11 @@
 
   (org-mode . (lambda ()
                 (setq-local electric-pair-pairs (append electric-pair-pairs '((?$ . ?$))))))
-  :config
-  (electric-pair-mode t)
-  )
+  :config (electric-pair-mode t))
 
 (use-package electric
   :ensure nil
-  :config
-  (electric-indent-mode t))
+  :config (electric-indent-mode t))
 
 (use-package flymake
   :commands flymake-mode
@@ -41,13 +34,11 @@
   (flymake-start-on-save-buffer t)
   (flymake-proc-compilation-prevents-syntax-check t)
   (flymake-wrap-around nil)
-  :hook
-  (prog-mode . flymake-mode))
+  :hook (prog-mode . flymake-mode))
 
 (use-package package-lint-flymake
   :after flymake
-  :hook
-  (elisp-mode . package-lint-flymake-setup))
+  :hook (elisp-mode . package-lint-flymake-setup))
 
 (use-package expreg
   :bind

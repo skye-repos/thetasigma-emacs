@@ -17,7 +17,7 @@
 (keymap-global-set "C-z" ctl-z-map)
 
 (require 'thetasigma-defaults)
-(require 'thetasigma-frame)
+(require 'thetasigma-system)
 (require 'thetasigma-session)
 
 ;; Load Basic Convenience Packages
