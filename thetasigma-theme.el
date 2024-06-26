@@ -28,7 +28,7 @@
 ;; similar principles.  I categorize faces in Emacs based on the
 ;; kind/degree of interaction required from them.  Some elements like
 ;; keywords are static, some elements are static in feature but
-;; interactive in behaviour - like selections, and of course elements
+;; interactive in behavior - like selections, and of course elements
 ;; that require active interaction like strings and such.
 
 ;; I have tried to use as few colors as possible here.  I also try to
@@ -58,8 +58,7 @@ color palate.")
       (static-2 "#8AECFF")
       (neutral-0 "#D9C0FF")
       (neutral-1 "#D8B1FE")
-      (neutral-2 "#D7A0FE")
-      )
+      (neutral-2 "#D7A0FE"))
 
   (custom-theme-set-faces
    'thetasigma
@@ -88,13 +87,13 @@ color palate.")
    `(font-lock-type-face ((,class :foreground ,static-1 :distant-foreground ,bold-distant :weight semi-bold)))
    `(font-lock-warning-face ((,class :foreground ,standout :distant-foreground ,bold-distant :weight bold)))
 
-   `(outline-1 ((,class :foreground ,static-2 :weight heavy :height 1.2)))
-   `(outline-2 ((,class :foreground ,static-2 :weight bold :height 1.15)))
-   `(outline-3 ((,class :foreground ,static-2 :weight bold :height 1.1)))
-   `(outline-4 ((,class :foreground ,static-2 :weight semi-bold :height 1.05)))
-   `(outline-5 ((,class :foreground ,static-2 :weight semi-bold :height 1.05)))
-   `(outline-6 ((,class :foreground ,static-2 :weight medium :height 1.05)))
-   `(outline-7 ((,class :foreground ,static-2 :weight medium :height 1.05)))
+   `(outline-1 ((,class :foreground ,neutral-0 :weight heavy :height 1.2)))
+   `(outline-2 ((,class :foreground ,neutral-1 :weight bold :height 1.15)))
+   `(outline-3 ((,class :foreground ,neutral-2 :weight bold :height 1.1)))
+   `(outline-4 ((,class :foreground ,static-0 :weight semi-bold :height 1.05)))
+   `(outline-5 ((,class :foreground ,interact-0 :weight semi-bold :height 1.05)))
+   `(outline-6 ((,class :foreground ,static-1 :weight medium :height 1.05)))
+   `(outline-7 ((,class :foreground ,interact-1 :weight medium :height 1.05)))
    `(outline-8 ((,class :foreground ,static-2 :weight medium :height 1.05)))
    
    `(font-latex-doctex-documentation-face ((,class :background ,background-weak)))
