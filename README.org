@@ -1,16 +1,47 @@
 * Θ Σ Emacs
-I've been using nano-emacs for some time now as bones for my own config. When
-delving into it, I realised that most of my interaction with emacs comes from
-packages not considered in nano.
+This started out as a clone of Nano Emacs, but at this point, I'm just using
+this as a way to figure out lisps.
 
-This is my attempt to create the default-user experience I would expect in
-emacs. Hence, Emacs for (Me)macs.
+Some of the goals I have for this exercise include
 
-This is a work-in-progress.
+1) Minimal calls to external package repositories from elpa and melpa and
+   maximize the use of Emacs' builtin packages
+2) Portability between OSs and systems
+3) Improving the UI and interaction schema for Emacs.
+   - Part of this is my custom theme. Rule of thumb here is to minimize
+     definition of custom faces. Only customize a face if it sucks or doesn't
+     know how to inherit from default Emacs faces.
+   - A more modern(? To be defined) way of interacting with the mini-buffer.
+   - Child-frames for completions ala posframe.
+   - Adding context where possible.
+   - Providing easy access to help & documentation.
 
+* Progress
+- [X] Bare-bones setup to build from.
+- [X] Bare-bones recreation of [[https://github.com/skye-repos/TransSide-theme][my old theme]].
+- Replace the use of the follow packages with builtins
+  - [ ] package-lint (possible?).
+  - [ ] expreg (my prototype sucks, expreg is better and uses the builtin
+    treesit.el. Maybe some heavily cut down version?).
+  - [ ] magit (vc-mode seems good. Maybe combine transient with it?).
+  - [ ] vertico-posframe (either tie it in with the logic for the minibuffer or
+    use this for the mini-buffer echo messages).
+  - [ ] org-modern (there has to be an easier way?).
+- Add the following functionality
+  - [ ] Treating the mini-buffer as a transient child frame.
+  - [ ] LSP stuff with eglot.
+- [ ] Simple mode-line (must be from scratch).
 * Installation
 
-For the time being, just git clone into the =user-emacs-directory=
+Make sure you have libenchant installed. [[https://github.com/minad/jinx?tab=readme-ov-file#installation][You can follow the instructions here.]]
+and then just git clone into the =user-emacs-directory=
 #+begin_src shell
   git clone https://github.com/skye-repos/thetasigma-emacs.git ~/.emacs.d/
 #+end_src
+
+You can launch Emacs now (or restart the daemon) and it should work. The first
+start may take a bit to pull in all the packages (will be minimized eventually)
+
+# Local Variables:
+# jinx-local-words: "posframe"
+# End:

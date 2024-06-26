@@ -3,11 +3,17 @@
   '((electric-pair-mode . t))
   :hook
   '((org-mode-hook . (lambda ()
-					   (setq-local electric-pair-inhibit-predicate ?<)))
+					   (setq-local
+						electric-pair-inhibit-predicate
+						`(lambda (c)
+						   (if (char-equal c ?<)
+							   t
+							 (,electric-pair-inhibit-predicate c))))))
 
 	(org-mode-hook . (lambda ()
-					   (setq-local electric-pair-pairs
-								   (append electric-pair-pairs '((?$ . ?$))))))))
+					   (setq-local
+						electric-pair-pairs
+						(append electric-pair-pairs '((?$ . ?$))))))))
 
 (leaf electric
   :custom
