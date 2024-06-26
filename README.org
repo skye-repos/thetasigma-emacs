@@ -12,32 +12,5 @@ This is a work-in-progress.
 
 For the time being, just git clone into the =user-emacs-directory=
 #+begin_src shell
-  git clone https://github.com/skye-repos/thetasigma-emacs.git ~/.emacs.d/thetasigma-emacs
-#+end_src
-
-Then load it in through the user =init.el=.
-#+begin_src emacs-lisp
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/") t)
-
-  (setq custom-file (concat user-emacs-directory "custom.el"))
-  (unless (file-exists-p custom-file)
-    (write-file custom-file) (load-file custom-file))
-  (load-file custom-file)
-
-  ;; Use-package basics
-  (setopt use-package-always-ensure t)
-  (unless (string> emacs-version "30")
-    (unless (package-installed-p 'vc-use-package)
-      (package-vc-install "https://github.com/slotThe/vc-use-package")))
-
-  (use-package thetasigma
-    :load-path "~/.emacs.d/thetasigma-emacs/")
-
-  ;; Not necessary but recommended
-  (set-face-attribute 'default nil
-                      :family "Fira Code"
-                      :height 140)
-
+  git clone https://github.com/skye-repos/thetasigma-emacs.git ~/.emacs.d/
 #+end_src

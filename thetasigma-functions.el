@@ -28,7 +28,8 @@
 ;; help functions and such.
 
 ;;; Code:
-(require 'dash)
+(defvar thetasigma-dir "~/.emacs.d/thetasigma-emacs/"
+  "Directory that Θ Σ - Emacs was cloned into.")
 
 ;; A better way to use C-g that is a little more context sensitive
 (defun thetasigma--keyboard-quit ()
@@ -66,79 +67,6 @@
 	 (--map-when (eq (frame-parameter it 'parent-frame) t)
 		     (delete-frame) (frame-list))))
 
-;; Basic Utility Key binds
-(use-package simple
-  :ensure nil
-  :bind
-  ( :map global-map
-	([remap kill-buffer] . kill-current-buffer)
-	([remap keyboard-quit] . thetasigma--keyboard-quit)
-	:map ctl-z-map
-	("C-<SPC>" . fixup-whitespace)))
-
-(use-package files
-  :ensure nil
-  :bind
-  ("<f5>" . revert-buffer))
-
-;; Rebind help functions sensibly
-(use-package help-fns
-  :ensure nil
-  :bind
-  ( :map help-map
-    ("F" . describe-face)
-    ("s" . describe-symbol)
-    ("S" . describe-syntax)
-    ("p" . describe-package)
-    ("P" . describe-personal-keybinds)
-    ("g" . nil)))
-
-(use-package info
-  :ensure nil
-  :bind
-  ( :map help-map
-    ("C-f" . Info-goto-emacs-command-node)
-    ("C-k" . Info-goto-emacs-key-command-node)
-    ("C-m" . info-display-manual)
-    ("C-r" . info-emacs-manual)
-    ("C-b" . info-emacs-bug)))
-
-(use-package info-look
-  :ensure nil
-  :bind
-  ( :map help-map
-    ("C-S-f" . info-lookup-file)
-    ("C-S-s" . info-lookup-symbol)))
-
-;; Text Editing Changes
-;(cua-mode t)
-(delete-selection-mode t)
-(global-visual-line-mode t)
-(setq x-underline-at-descent-line t)
-
-;; y/n for  answering yes/no questions
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; Tabs
-(customize-set-value 'tab-always-indent 'complete)
-(customize-set-value 'tab-width 4)
-
-;; Buffer encoding
-(prefer-coding-system       'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-language-environment   'utf-8)
-
-;; Unique buffer names
-(use-package uniquify
-  :ensure nil
-  :custom
-  (uniquify-buffer-name-style 'reverse)
-  (uniquify-separator " • ")
-  (uniquify-after-kill-buffer-p t)
-  (uniquify-ignore-buffers-re "^\\*"))
-
 (defun thetasigma--delete-frame-or-kill-emacs ()
   "Delete the selected frame, kill Emacs if only one frame is present.
 
@@ -160,42 +88,6 @@
 	 (quit-window t))
 	((eq (frame-parameter nil 'parent-frame) t)
 	 (delete-frame))))
-
-(use-package frame
-  :ensure nil
-  :bind
-  ([remap save-buffers-kill-terminal] . thetasigma--delete-frame-or-kill-emacs)
-
-  :custom
-  (default-frame-alist (append (list
-				'(fullscreen . fullboth)
-				'(vertical-scroll-bars . nil)
-				'(internal-border-width . 24)
-				'(left-fringe    . 1)
-				'(right-fringe   . 1)
-				'(tool-bar-lines . 0)
-				'(menu-bar-lines . 0)
-				'(right-divider-width . 0))))
-  (frame-title-format nil)
-  (fill-column 80)
-
-  (window-divider-mode nil)
-  :config
-  (if (fboundp 'scroll-bar-mode) (set-scroll-bar-mode nil))
-
-  ;; No toolbar
-  (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-
-  ;; No menu bar
-  (if (display-graphic-p) (menu-bar-mode t) (menu-bar-mode -1)))
-
-(use-package window
-  :ensure nil
-  :bind
-  ([remap quit-window] . thetasigma--quit-window)
-  :custom
-  (window-min-height 1))
-
 
 (provide 'thetasigma-defaults)
 ;;; thetasigma-defaults.el ends here.

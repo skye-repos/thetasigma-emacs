@@ -34,8 +34,8 @@
 
    Files later in the list are given precedence"
   (--map (lambda (a) (unless (file-exists-p a)
-		       (setq var a)))
-	 files))
+					   (setq var a)))
+		 files))
 
 ;; Mac Specific
 (defun thetasigma-system--mac ()
@@ -48,14 +48,13 @@
         mac-command-modifier 'meta
         mac-option-modifier 'super)
   (thetasigma-system--check-and-setq '("/opt/homebrew/bin/gls"
-				       "/opt/local/bin/gls")
-				     insert-directory-program)
+									   "/opt/local/bin/gls")
+									 insert-directory-program)
 
   ;; Fix bug on OSX in term mode & zsh (spurious % after each command)
   (add-hook 'term-mode-hook
-	    (lambda ()
-	      (setq buffer-display-table (make-display-table)))))
-
+			(lambda ()
+			  (setq buffer-display-table (make-display-table)))))
 
 ;; Mac specific
 (when (eq system-type 'darwin)

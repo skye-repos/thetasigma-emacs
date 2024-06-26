@@ -1,13 +1,3 @@
-(use-package elisp-mode
-  :ensure nil
-  :bind ( :map ctl-z-map
-	  ("C-e" . eval-defun)))
-
-(use-package newcomment
-  :ensure nil
-  :bind ( :map ctl-z-map
-	  (";" . comment-dwim)))
-
 (use-package elec-pair
   :ensure nil
   :hook

@@ -1,102 +1,77 @@
+;;; Code
 ;; Minibuffer and goodies
-(use-package vertico
+(leaf vertico
   :custom
-  (vertico-count 8)
-  (vertico-resize t)
-  (vertico-cycle nil)
-  (vertico-mode t)
+  '((vertico-count . 8)
+	(vertico-resize . t)
+	(vertico-cycle . nil)
+	(vertico-mode . t))
   :config
   (with-eval-after-load 'jinx
-      (add-to-list 'vertico-multiform-categories
-               '(jinx grid (vertico-grid-annotate . 20)))
-  (vertico-multiform-mode 1)))
+    (add-to-list 'vertico-multiform-categories
+				 '(jinx grid (vertico-grid-annotate . 20)))
+	(vertico-multiform-mode 1)))
 
-(use-package marginalia
+(leaf marginalia
   :custom
-  (marginalia-max-relative-age 0)
-  (marginalia-align 'right)
-  (marginalia-mode t)
-  )
+  '((marginalia-max-relative-age . 0)
+	(marginalia-align . 'right)
+	(marginalia-mode . t)))
 
-(use-package vertico-posframe
-  :custom (vertico-posframe-mode t))
+(leaf vertico-posframe
+  :custom '(vertico-posframe-mode . t))
 
 ;; Search and search matching
-(use-package consult
+(leaf consult
   :bind
-  (:map global-map
-        ("C-s" . consult-line)
-        ("C-x b" . consult-buffer))
-  )
+  '(("C-s" . consult-line)
+	("C-x b" . consult-buffer)))
 
-(use-package orderless
+(leaf orderless
   :custom
-  (completion-styles '(orderless))
-  (completion-category-defaults nil)
-  (orderless-matching-styles
-   '(orderless-literal
-     orderless-prefixes
-     orderless-initialism
-     orderless-regexp)
-   )
-  )
+  (completion-styles . '(orderless))
+  (completion-category-defaults . nil)
+  (orderless-matching-styles '(orderless-literal
+							   orderless-prefixes
+							   orderless-initialism
+							   orderless-regexp)))
 
 ;; Inline completions
-(use-package corfu
+(leaf corfu
   :custom
-  (corfu-auto t)
-  (corfu-auto-delay 0)
-  (corfu-auto-prefix 2)
-  (corfu-quit-no-match t)
-  (global-corfu-mode t)
-  (corfu-history-mode t)
-  (corfu-popupinfo-mode t)
-  )
-
-;; Dired
-(use-package dired
-  :ensure nil
-  :custom
-  (dired-recursive-copies 'always)
-  (dired-recursive-deletes 'always)
-  (delete-by-moving-to-trash t)
-  (dired-listing-switches "-al --group-directories-first --time-style=iso")
-  (dired-dwim-target t)
-  :hook
-  (dired-mode . dired-hide-details-mode))
+  '((corfu-auto . t)
+	(corfu-auto-delay . 0)
+	(corfu-auto-prefix . 2)
+	(corfu-quit-no-match . t)
+	(global-corfu-mode . t)
+	(corfu-history-mode . t)
+	(corfu-popupinfo-mode . t)))
 
 ;; Which Key
-(use-package which-key
-  :custom (which-key-mode t))
+(leaf which-key
+  :custom '(which-key-mode . t))
 
 ;; Icons
-(use-package nerd-icons
+(leaf nerd-icons
   :init
   (cond ((member system-type '(gnu gnu/linux gnu/kfreebsd))
          (unless (file-exists-p "~/.local/share/fonts/NFM.ttf")
            (nerd-icons-install-fonts)))
         ((eq system-type 'darwin)
          (unless (file-exists-p "~/Library/Fonts/NFM.ttf")
-           (nerd-icons-install-fonts))))
-  )
+           (nerd-icons-install-fonts)))))
 
-(use-package nerd-icons-dired
+(leaf nerd-icons-dired
   :hook
-  (dired-mode . nerd-icons-dired-mode)
-  )
+  '(dired-mode-hook . nerd-icons-dired-mode))
 
-(use-package nerd-icons-corfu
+(leaf nerd-icons-corfu
   :config
-  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
-  )
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
-(use-package nerd-icons-completion
-  :config
-  (nerd-icons-completion-mode)
-  )
+(leaf nerd-icons-completion
+  :custom
+  '(nerd-icons-completion-mode . t))
 
 ;; Rainbow-mode
-(use-package rainbow-mode)
-
-(provide 'thetasigma-packages)
-;;; thetasigma-packages.el ends here.
+(leaf rainbow-mode)
