@@ -1,6 +1,7 @@
 ;;; Code
 ;; Minibuffer and goodies
 (leaf vertico
+  :ensure t
   :custom
   '((vertico-count . 8)
 	(vertico-resize . t)
@@ -13,31 +14,36 @@
 	(vertico-multiform-mode 1)))
 
 (leaf marginalia
+  :ensure t
   :custom
   '((marginalia-max-relative-age . 0)
 	(marginalia-align . 'right)
 	(marginalia-mode . t)))
 
 (leaf vertico-posframe
+  :ensure t
   :custom '(vertico-posframe-mode . t))
 
 ;; Search and search matching
 (leaf consult
+  :ensure t
   :bind
   '(("C-s" . consult-line)
 	("C-x b" . consult-buffer)))
 
 (leaf orderless
+  :ensure t
   :custom
-  (completion-styles . '(orderless))
-  (completion-category-defaults . nil)
-  (orderless-matching-styles '(orderless-literal
-							   orderless-prefixes
-							   orderless-initialism
-							   orderless-regexp)))
+  '((completion-styles . '(basic partial-completion emacs22 orderless))
+	(completion-category-defaults . nil)
+	(orderless-matching-styles . '(orderless-literal
+								   orderless-prefixes
+								   orderless-initialism
+								   orderless-regexp))))
 
 ;; Inline completions
 (leaf corfu
+  :ensure t
   :custom
   '((corfu-auto . t)
 	(corfu-auto-delay . 0)
@@ -49,10 +55,12 @@
 
 ;; Which Key
 (leaf which-key
+  :ensure t
   :custom '(which-key-mode . t))
 
 ;; Icons
 (leaf nerd-icons
+  :ensure t
   :init
   (cond ((member system-type '(gnu gnu/linux gnu/kfreebsd))
          (unless (file-exists-p "~/.local/share/fonts/NFM.ttf")
@@ -62,16 +70,20 @@
            (nerd-icons-install-fonts)))))
 
 (leaf nerd-icons-dired
+  :ensure t
   :hook
   '(dired-mode-hook . nerd-icons-dired-mode))
 
 (leaf nerd-icons-corfu
+  :ensure t
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 (leaf nerd-icons-completion
+  :ensure t
   :custom
   '(nerd-icons-completion-mode . t))
 
 ;; Rainbow-mode
-(leaf rainbow-mode)
+(leaf rainbow-mode
+  :ensure t)

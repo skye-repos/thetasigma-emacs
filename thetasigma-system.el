@@ -28,7 +28,10 @@
 ;;; Code:
 
 ;; Helper Functions
+(unless (package-installed-p 'dash)
+  (package-install 'dash))
 (require 'dash)
+
 (defun thetasigma-system--check-and-setq (files var)
   "Loop over FILES and setq to VAR.
 

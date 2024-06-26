@@ -1,46 +1,42 @@
-(use-package elec-pair
-  :ensure nil
+(leaf elec-pair
+  :custom
+  '((electric-pair-mode . t))
   :hook
-  (org-mode . (lambda ()
-                (setq-local electric-pair-inhibit-predicate
-                            `(lambda (c)
-                               (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
+  '((org-mode-hook . (lambda ()
+					   (setq-local electric-pair-inhibit-predicate ?<)))
 
-  (org-mode . (lambda ()
-                (setq-local electric-pair-pairs (append electric-pair-pairs '((?$ . ?$))))))
-  :config (electric-pair-mode t))
+	(org-mode-hook . (lambda ()
+					   (setq-local electric-pair-pairs
+								   (append electric-pair-pairs '((?$ . ?$))))))))
 
-(use-package electric
-  :ensure nil
-  :config (electric-indent-mode t))
+(leaf electric
+  :custom
+  '((electric-indent-mode . t)))
 
-(use-package flymake
+(leaf flymake
   :commands flymake-mode
   :custom
-  (flymake-fringe-indicator-position 'left-fringe)
-  (flymake-suppress-zero-counters t)
-  (flymake-start-on-flymake-mode t)
-  (flymake-no-changes-timeout nil)
-  (flymake-start-on-save-buffer t)
-  (flymake-proc-compilation-prevents-syntax-check t)
-  (flymake-wrap-around nil)
-  :hook (prog-mode . flymake-mode))
+  '((flymake-fringe-indicator-position . 'left-fringe)
+	(flymake-suppress-zero-counters . t)
+	(flymake-start-on-flymake-mode . t)
+	(flymake-no-changes-timeout . nil)
+	(flymake-start-on-save-buffer . t)
+	(flymake-proc-compilation-prevents-syntax-check . t)
+	(flymake-wrap-around . nil))
+  :hook
+  '((prog-mode-hook . flymake-mode)))
 
-(use-package package-lint-flymake
+(leaf package-lint-flymake
+  :ensure t
   :after flymake
-  :hook (elisp-mode . package-lint-flymake-setup))
+  :hook
+  '((elisp-mode-hook . package-lint-flymake-setup)))
 
-(use-package expreg
+(leaf expreg
+  :ensure t
   :bind
-  ("C-=" . expreg-expand)
-  ("C--" . expreg-contract))
+  '(("C-=" . expreg-expand)
+	("C--" . expreg-contract)))
 
-(use-package magit)
-
-(provide 'thetasigma-prog)
-;;; thetasigma-prog.el ends here
-
-;; Local Variables:
-;; byte-compile-warnings: (not free-vars)
-;; End:
-
+(leaf magit
+  :ensure t)

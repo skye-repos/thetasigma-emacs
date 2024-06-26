@@ -1,70 +1,54 @@
-;; Install libenchant
-(use-package jinx
-  :hook (emacs-startup . global-jinx-mode)
-  :bind (("C-$" . jinx-correct)
-         ("s-$" . jinx-correct-all)
-	 ("C-s-$" . jinx-languages)))
+(leaf jinx
+  :ensure t
+  :hook '((emacs-startup-hook . global-jinx-mode))
+  :bind '(("C-$" . jinx-correct)
+          ("s-$" . jinx-correct-all)
+		  ("C-s-$" . jinx-languages)))
 
-(use-package latex
+(leaf latex
   :ensure auctex)
 
-(use-package org
-  :ensure nil
-  :hook
-  (org-mode . org-indent-mode)
-
+(leaf org
   :bind
-  (:map org-mode-map
-        ("M-<return>" . org-insert-item)
-        :prefix-map ctl-z-map
-        :prefix "C-z"
-        ("C-z a" . org-archive-all-done)
-        ("C-z <TAB>" . org-cycle-list-bullet))
-
+  '(("M-<return>" . org-insert-item)
+	("C-z a" . org-archive-all-done)
+	("C-z <TAB>" . org-cycle-list-bullet))
   :custom
-  (org-directory "~/Documents/Org/")
-  (let ((work (concat org-directory "work.org"))
-		(personal (concat org-directory "personal.org"))
-		(archive (concat org-directory "archive.org")))
-	(org-store-new-agenda-file-list (list work personal))
-	(org-archive-location (concat archive "::* From %s")))
-  
-  (org-highlight-latex-and-related '(native latex script))
-  (org-export-backends '(latex odt org))
+  '((org-indent-mode . t)
+	(org-directory . "~/Documents/Org")
+	(org-highlight-latex-and-related . '(native latex script))
+	(org-export-backends . '(latex odt org))
+	(org-ellipsis . " ▼")
+	(org-pretty-entities . t)
+	(org-hide-emphasis-markers . t)
+	(org-fontify-todo-headline . t)
+	(org-fontify-done-headline . t)
+	(org-src-fontify-natively . t)
+	(org-src-tab-acts-natively . t)
+	(org-src-window-setup . 'split-window-below)
+	(org-todo-keywords . '((sequence "TODO(t!)" "|" "IN-PROGRESS(i!)")
+						   (sequence "WAITING(w)" "|" "POSTPONED(p)")
+						   (sequence "DONE(d!)" "|" "FAILED(f!)")))
+	(org-enforce-todo-dependencies . t)
+	(org-enforce-todo-checkbox-dependencies . t)
+	(org-preview-latex-default-process . 'dvisvgm)
+	(org-tags-column . 80)
+	(org-return-follows-link . t)
+	(org-archive-location . "~/Documents/Org/archive.org::* From %s"))
+  :config
+  (org-store-new-agenda-file-list '("~/Documents/Org/work.org" "~/Documents/Org/personal.org")))
 
-  (org-ellipsis " ▼")
-  (org-pretty-entities t)
-  (org-hide-emphasis-markers t)
-
-  (org-fontify-todo-headline t)
-  (org-fontify-done-headline t)
-
-  (org-src-fontify-natively t)
-  (org-src-tab-acts-natively t)
-  (org-src-window-setup 'split-window-below)
-
-  (org-todo-keywords '((sequence "TODO(t!)" "|" "IN-PROGRESS(i!)")
-					   (sequence "WAITING(w)" "|" "POSTPONED(p)")
-					   (sequence "DONE(d!)" "|" "FAILED(f!)")))
-  
-  (org-enforce-todo-dependencies t)
-  (org-enforce-todo-checkbox-dependencies t)
-
-  (org-preview-latex-default-process 'dvisvgm)
-
-  (org-tags-column 80)
-
-  (org-return-follows-link t))
-
-(use-package org-modern
+(leaf org-modern
+  :ensure t
   :hook
-  (org-mode . org-modern-mode)
-  (org-agenda-finalize . org-modern-agenda))
+  '((org-mode-hook . org-modern-mode)
+	(org-agenda-finalize-hook . org-modern-agenda)))
 
 ;; Configure Tempel
-(use-package tempel
+(leaf tempel
+  :ensure t
   :custom
-  (tempel-trigger-prefix "<")
+  '((tempel-trigger-prefix . "<"))
   :config
   (defun thetasigma-writing--tempel-setup-capf ()
     "Setup templ Capf endpoint."
@@ -72,17 +56,9 @@
 		(cons #'tempel-expand
                       completion-at-point-functions)))
   :hook
-  (conf-mode . thetasigma-writing--tempel-setup-capf)
-  (prog-mode . thetasigma-writing--tempel-setup-capf)
-  (text-mode . thetasigma-writing--tempel-setup-capf))
+  '((conf-mode-hook . thetasigma-writing--tempel-setup-capf)
+	(prog-mode-hook . thetasigma-writing--tempel-setup-capf)
+	(text-mode-hook . thetasigma-writing--tempel-setup-capf)))
 
-(use-package tempel-collection)
-
-
-(provide 'thetasigma-writing)
-;;; thetasigma-writing.el ends here
-
-;; Local Variables:
-;; byte-compile-warnings: (not free-vars)
-;; jinx-local-words: "libenchant"
-;; End:
+(leaf tempel-collection
+  :ensure t)
