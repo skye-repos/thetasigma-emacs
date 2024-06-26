@@ -9,13 +9,14 @@
   :ensure auctex)
 
 (leaf org
+  :hook
+  '((org-mode-hook . org-indent-mode))
   :bind
   '(("M-<return>" . org-insert-item)
 	("C-z a" . org-archive-all-done)
 	("C-z <TAB>" . org-cycle-list-bullet))
   :custom
-  '((org-indent-mode . t)
-	(org-directory . "~/Documents/Org")
+  '((org-directory . "~/Documents/Org")
 	(org-highlight-latex-and-related . '(native latex script))
 	(org-export-backends . '(latex odt org))
 	(org-ellipsis . " ▼")

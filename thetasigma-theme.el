@@ -37,9 +37,7 @@
 ;; colors for use in subtler contexts.
 
 ;;; Code:
-(deftheme thetasigma "The theme used for Θ Σ Emacs - Emacs for Memacs.
-It is built out of the principles from the TransSide theme and uses a similar
-color palate.")
+(deftheme thetasigma "The theme used for Θ Σ Emacs - Emacs for Memacs.")
 
 (let ((class '((class color) (min-colors 89)))
       (foreground "#FFE7FE")
@@ -76,6 +74,8 @@ color palate.")
    `(region ((,class :background ,overlay :foreground ,background :weight bold :extend t)))
    `(highlight ((,class :background ,neutral-2 :foreground ,background :inverse-video nil)))
 
+   `(link ((,class :foreground ,interact-1 :underline t :weight semi-bold)))
+
    `(font-lock-builtin-face ((,class :foreground ,neutral-0 :distant-foreground ,bold-distant)))
    `(font-lock-doc-face ((,class :foreground ,neutral-1 :distant-foreground ,bold-distant :weight medium)))
    `(font-lock-comment-face ((,class :foreground ,neutral-2 :distant-foreground ,bold-distant :weight extra-light)))
@@ -88,7 +88,7 @@ color palate.")
    `(font-lock-warning-face ((,class :foreground ,standout :distant-foreground ,bold-distant :weight bold)))
 
    `(outline-1 ((,class :foreground ,neutral-0 :weight heavy :height 1.2)))
-   `(outline-2 ((,class :foreground ,neutral-1 :weight bold :height 1.15)))
+   `(outline-2 ((,class :foreground ,neutral-1 :weight bold :height 1.1)))
    `(outline-3 ((,class :foreground ,neutral-2 :weight bold :height 1.1)))
    `(outline-4 ((,class :foreground ,static-0 :weight semi-bold :height 1.05)))
    `(outline-5 ((,class :foreground ,interact-0 :weight semi-bold :height 1.05)))
@@ -128,6 +128,6 @@ color palate.")
 ;;; thetasigma-theme.el ends here
 
 ;; Local Variables:
-;; eval: (rainbow-mode) (setq fill-column 70)
+;; eval: (rainbow-mode) (set-fill-column 70)
 ;; End:
 

@@ -19,18 +19,19 @@ Some of the goals I have for this exercise include
 * Progress
 - [X] Bare-bones setup to build from.
 - [X] Bare-bones recreation of [[https://github.com/skye-repos/TransSide-theme][my old theme]].
-- Replace the use of the follow packages with builtins
+- Replace the use of the follow packages with builtin packages
   - [ ] package-lint (possible?).
   - [ ] expreg (my prototype sucks, expreg is better and uses the builtin
     treesit.el. Maybe some heavily cut down version?).
   - [ ] magit (vc-mode seems good. Maybe combine transient with it?).
-  - [ ] vertico-posframe (either tie it in with the logic for the minibuffer or
+  - [ ] vertico-posframe (either tie it in with the logic for the mini-buffer or
     use this for the mini-buffer echo messages).
   - [ ] org-modern (there has to be an easier way?).
 - Add the following functionality
   - [ ] Treating the mini-buffer as a transient child frame.
   - [ ] LSP stuff with eglot.
 - [ ] Simple mode-line (must be from scratch).
+
 * Installation
 
 Make sure you have libenchant installed. [[https://github.com/minad/jinx?tab=readme-ov-file#installation][You can follow the instructions here.]]
