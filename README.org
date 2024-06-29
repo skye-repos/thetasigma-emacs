@@ -1,5 +1,7 @@
-#+ATTR_CENTER: t
+
 [[file:thetasigma-logo.png]]
+
+
 This started out as a clone of Nano Emacs, but at this point, I'm just using
 this as a way to figure out lisps.
 
