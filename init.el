@@ -18,6 +18,7 @@
 (add-to-list 'custom-theme-load-path user-emacs-directory)
 (load-theme 'thetasigma t)
 
+;; (load-file "~/.emacs.d/thetasigma-modeline.el") ;; placeholder
 (load-file "~/.emacs.d/thetasigma-system.el")
 (load-file "~/.emacs.d/thetasigma-functions.el")
 

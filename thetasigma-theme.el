@@ -42,7 +42,8 @@
 (let ((class '((class color) (min-colors 89)))
       (foreground "#FFE7FE")
       (background "#04040C")
-      (background-weak "#1C041C")
+      (bg-dim "#04041C")
+      (bg-overlay "#4C146C")
       (bold "#F9FFF9")
       (bold-distant "#040004")
       (subtle "#BA99CA")
@@ -96,7 +97,7 @@
    `(outline-7 ((,class :foreground ,interact-1 :weight medium :height 1.05)))
    `(outline-8 ((,class :foreground ,static-2 :weight medium :height 1.05)))
    
-   `(font-latex-doctex-documentation-face ((,class :background ,background-weak)))
+   `(font-latex-doctex-documentation-face ((,class :background ,bg-overlay)))
    `(font-latex-bold-face ((,class :inherit 'bold)))
    `(font-latex-italic-face ((,class :inherit 'italic)))
    `(font-latex-underline-face ((,class :underline t)))
@@ -115,8 +116,9 @@
    `(font-latex-sectioning-4-face ((,class :inherit 'outline-5)))
    `(font-latex-sectioning-5-face ((,class :inherit 'outline-6)))
 
-   `(mode-line-active ((,class :background ,overlay :foreground ,background :weight normal)))
-   `(mode-line-inactive ((,class :background ,subtle :foreground ,background :weight light)))
+   `(mode-line ((,class :background ,bg-overlay :foreground ,foreground :box (:line-width 8 :color ,bg-overlay) :overline nil :underline nil)))
+   `(mode-line-active ((,class :inherit 'mode-line)))
+   `(mode-line-inactive ((,class :background ,bg-dim :foreground ,subtle :box (:line-width 8 :color ,bg-dim) :overline nil :underline nil)))
 
    `(org-block ((,class :foreground ,bold :weight semi-bold)))
    )
