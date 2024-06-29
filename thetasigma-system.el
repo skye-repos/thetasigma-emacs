@@ -2,7 +2,7 @@
 
 ;; Author: Skye
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "29.1") (dash "2.19.1"))
+;; Package-Requires: ((emacs "29.1"))
 ;; Homepage: https://github.com/skye-repos/thetasigma-emacs
 ;; Keywords: system, config
 
@@ -27,19 +27,6 @@
 
 ;;; Code:
 
-;; Helper Functions
-(unless (package-installed-p 'dash)
-  (package-install 'dash))
-(require 'dash)
-
-(defun thetasigma-system--check-and-setq (files var)
-  "Loop over FILES and setq to VAR.
-
-   Files later in the list are given precedence"
-  (--map (lambda (a) (unless (file-exists-p a)
-					   (setq var a)))
-		 files))
-
 ;; Mac Specific
 (defun thetasigma-system--mac ()
   "Fixes specific to using NS Builds on OSX or MacOS.
@@ -47,12 +34,21 @@
    These are collected over time and tweaked to my needs.
    Customization of some of these to be added."
   (interactive)
+  ;; Mac special keys to C-M-S language
   (setq ns-use-native-fullscreen t
         mac-command-modifier 'meta
         mac-option-modifier 'super)
-  (thetasigma-system--check-and-setq '("/opt/homebrew/bin/gls"
-									   "/opt/local/bin/gls")
-									 insert-directory-program)
+  ;; Setting some external programs either use Homebrew or
+  ;; Macports. You can also put whatever binary - for instance eza
+  ;; instead of gnu ls.
+        ;; Mac Ports Gls
+  (cond ((and (file-exists-p "/opt/local/bin/gls")
+			  (file-executable-p "/opt/local/bin/gls"))
+		 (setq insert-directory-program "/opt/local/bin/gls"))
+		;; Homebrew Gls
+		((and (file-exists-p "/opt/homebrew/bin/gls")
+			  (file-executable-p "/opt/homebrew/bin/gls"))
+		 (setq insert-directory-program "/opt/homebrew/bin/gls")))
 
   ;; Fix bug on OSX in term mode & zsh (spurious % after each command)
   (add-hook 'term-mode-hook
@@ -67,5 +63,5 @@
 ;;; thetasigma-system.el ends here
 
 ;; Local Variables:
-;; eval: (set-fill-column 70)
+;; eval: (set-fill-column 70) (setq use-hard-newlines t)
 ;; End:

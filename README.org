@@ -1,4 +1,5 @@
-
+#+ATTR_HTML: :style border:2px solid black
+#+ATTR_HTML: :align center
 [[file:thetasigma-logo.png]]
 
 
