@@ -32,41 +32,24 @@
 (defface thetasigma-mode-line-rw-not-mod nil
   "Mode line face for when buffer has not been modified.")
 
-(defface thetasigma-mode-line-bold nil
-  "Mode line face for bold text.")
-
-(defface thetasigma-mode-line-italic nil
-  "Mode line face for italic text.")
-
 (let ((standout "#FFEEB0")
-      (static-2 "#8AECFF")
-	  (fg "#FFE7FE"))
+      (static-2 "#8AECFF"))
 
   (set-face-attribute 'thetasigma-mode-line-rw-mod nil
-					  :family "Nerd Symbols Mono"
 					  :foreground standout
-					  :height 1.3
 					  :weight 'bold)
   (set-face-attribute 'thetasigma-mode-line-rw-not-mod nil
-					  :family "Nerd Symbols Mono"
 					  :foreground static-2
-					  :height 1.3
-					  :weight 'bold)
-  (set-face-attribute 'thetasigma-mode-line-bold nil
-					  :foreground fg
-					  :weight 'bold)
-  (set-face-attribute 'thetasigma-mode-line-italic nil
-					  :foreground fg
-					  :slant 'italic))
+					  :weight 'bold))
 
 (defvar thetasigma-mode-line-rw
   '(:eval (if buffer-read-only
 			  (if (buffer-modified-p)
-				  (propertize "⍥" 'face 'thetasigma-mode-line-rw-mod)
-				(propertize "⍉" 'face 'thetasigma-mode-line-rw-not-mod))
+				  (propertize "" 'face '(:inherit thetasigma-mode-line-rw-mod))
+				(propertize "" 'face '(:inherit thetasigma-mode-line-rw-not-mod)))
 			(if (buffer-modified-p)
-				(propertize "⍥" 'face 'thetasigma-mode-line-rw-mod)
-			  (propertize "⍜" 'face 'thetasigma-mode-line-rw-not-mod)))))
+				(propertize "" 'face '(:inherit thetasigma-mode-line-rw-mod))
+			  (propertize "" 'face '(:inherit thetasigma-mode-line-rw-not-mod))))))
 
 ;; Change the mode-line
 (setq-default mode-line-format
@@ -74,9 +57,12 @@
 			   " "
 			   thetasigma-mode-line-rw
 			   " "
-			   '(:eval (propertize "%b" 'face '(:inherit 'thetasigma-mode-line-bold)))
-			   '(:eval (propertize "  Mode: " 'face '(:inherit 'thetasigma-mode-line-italic)))
-			   '(:eval (propertize (car mode-name) 'face '(:inherit 'thetasigma-mode-line-italic)))))
+			   '(:eval (propertize "%b" 'face '(:weight bold)))
+			   '(:eval (propertize "  Mode: " 'face '(:slant italic)))
+			   '(:eval (propertize (if (car-safe mode-name)
+									   (car mode-name)
+									   mode-name)
+								   'face '(:slant italic)))))
 
 (provide 'thetasigma-mode-line)
 ;;; thetasigma-mode-line.el ends here

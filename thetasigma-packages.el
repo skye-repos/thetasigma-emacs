@@ -5,7 +5,7 @@
   :custom
   '((vertico-count . 8)
 	(vertico-resize . t)
-	(vertico-cycle . nil)
+	(vertico-cycle . t)
 	(vertico-mode . t))
   :config
   (with-eval-after-load 'jinx
@@ -22,7 +22,10 @@
 
 (leaf vertico-posframe
   :ensure t
-  :custom '(vertico-posframe-mode . t))
+  :custom '((vertico-posframe-mode . t)
+			(vertico-posframe-border-width . 1)
+			(vertico-posframe-min-width . 125)
+			(vertico-posframe-min-height . 5)))
 
 ;; Search and search matching
 (leaf consult

@@ -71,6 +71,8 @@
 	(set-scroll-bar-mode . nil)
 	(tool-bar-mode . nil)
 	(menu-bar-mode . nil)
+	;; Windmove
+	(windmove-mode . t)
 	;; Backups, Savehist, Recentf
 	(backup-directory-alist . '(("." . "~/.emacs.d/saves")))
 	(backup-by-copying . t)
@@ -103,6 +105,14 @@
 	([remap save-buffers-kill-terminal]
 	 . thetasigma--delete-frame-or-kill-emacs)
 	([remap quit-window] . thetasigma--quit-window)
+	("s-<up>" . windmove-up)
+	("s-<down>" . windmove-down)
+	("s-<left>" . windmove-left)
+	("s-<right>" . windmove-right)
+	("s-k" . windmove-up)
+	("s-j" . windmove-down)
+	("s-h" . windmove-left)
+	("s-l" . windmove-right)
 	("<f5>" . revert-buffer)
 	("C-h F" . describe-face)
 	("C-h s" . describe-symbol)

@@ -116,11 +116,16 @@
    `(font-latex-sectioning-4-face ((,class :inherit 'outline-5)))
    `(font-latex-sectioning-5-face ((,class :inherit 'outline-6)))
 
-   `(mode-line ((,class :background ,bg-overlay :foreground ,foreground :box (:line-width 8 :color ,bg-overlay) :overline nil :underline nil)))
+   `(mode-line ((,class :background ,bg-overlay :foreground ,foreground :box (:line-width 6 :color ,bg-overlay))))
    `(mode-line-active ((,class :inherit 'mode-line)))
-   `(mode-line-inactive ((,class :background ,bg-dim :foreground ,subtle :box (:line-width 8 :color ,bg-dim) :overline nil :underline nil)))
+   `(mode-line-inactive ((,class :background ,bg-dim :foreground ,subtle :box (:line-width 6 :color ,bg-dim))))
 
    `(org-block ((,class :foreground ,bold :weight semi-bold)))
+
+   `(vertico-posframe-border ((,class :background ,neutral-0 :weight light)))
+   `(vertico-posframe-border-2 ((,class :background ,static-0 :weight light)))
+   `(vertico-posframe-border-3 ((,class :background ,interact-0 :weight light)))
+   `(vertico-posframe-border-4 ((,class :background ,neutral-1 :weight light)))
    )
   )
   
