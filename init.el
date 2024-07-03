@@ -145,5 +145,5 @@
 (load-file "~/.emacs.d/thetasigma-writing.el")
 (load-file "~/.emacs.d/thetasigma-hyperbole.el")
 
-;; Not necessary but recommended
+;; Not necessary but recommended. Pick the font of your choice.
 (set-face-attribute 'default nil :family "DM Mono" :height 150)
