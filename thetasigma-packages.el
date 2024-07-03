@@ -97,5 +97,6 @@
   :ensure t
   :bind
   '(("s-z" . vundo)
-	("C-/" . vundo)
-	("C-x u" . vundo)))
+	("C-x u" . vundo))
+  :custom
+  '((vundo-glyph-alist . vundo-unicode-symbols)))
