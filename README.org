@@ -1,5 +1,9 @@
+#+STARTUP: overview inlineimages
+
 #+ATTR_HTML: :style border:2px solid black
 #+ATTR_HTML: :align center
+#+ATTR_HTML: width="100px"
+#+ATTR_ORG: :width 100px
 [[file:thetasigma-logo.png]]
 
 
@@ -22,19 +26,28 @@ Some of the goals I have for this exercise include
 
 * Progress
 - [X] Bare-bones setup to build from.
-- [X] Bare-bones recreation of [[https://github.com/skye-repos/TransSide-theme][my old theme]].
+- [X] Bare-bones recreation of [[https://github.com/skye-repos/TransSide-theme][my old theme]] =TransSide-Theme=.
+- [X] Simple mode-line (must be from scratch).
 - Replace the use of the follow packages with builtin packages
-  - [ ] package-lint (possible?).
-  - [ ] expreg (my prototype sucks, expreg is better and uses the builtin
-    treesit.el. Maybe some heavily cut down version?).
-  - [ ] magit (vc-mode seems good. Maybe combine transient with it?).
-  - [ ] vertico-posframe (either tie it in with the logic for the mini-buffer or
+  - [ ] =package-lint= (possible?). Prettier or some code formatting in Rust?
+  - [ ] =expreg= (my prototype sucks, this is better and uses the builtin
+    =treesit= Maybe some heavily cut down version?).
+  - [ ] =magit= (=vc-mode= seems good. Maybe combine transient with it?).
+  - [ ] =vertico-posframe= (either tie it in with the logic for the mini-buffer or
     use this for the mini-buffer echo messages).
-  - [ ] org-modern (there has to be an easier way?).
+  - [ ] =org-modern= (there has to be an easier way?). Maybe use =prettify-symbols-mode=
 - Add the following functionality
   - [ ] Treating the mini-buffer as a transient child frame.
-  - [ ] LSP stuff with eglot.
-- [ ] Simple mode-line (must be from scratch).
+  - [ ] LSP stuff with =eglot=.
+  - [ ] Quick help mode
+    - [ ] Emacs in general
+    - [ ] Org-mode specifically
+  - [ ] Dashboard
+  - [-] GNU Hyperbole
+    - [ ] =HyControl= seems to be more powerful than =windmove=, and intuitive.
+    - [ ] =Koutliner=. How does it interact with Org-mode?
+    - [X] Buttons for use in the Dashboard?
+    - [ ] Use the builtin-library to customize and expose only what is needed?
 
 * Installation
 

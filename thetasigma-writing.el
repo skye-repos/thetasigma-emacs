@@ -35,7 +35,8 @@
 	(org-preview-latex-default-process . 'dvisvgm)
 	(org-tags-column . 80)
 	(org-return-follows-link . t)
-	(org-archive-location . "~/Documents/Org/archive.org::* From %s"))
+	(org-archive-location . "~/Documents/Org/archive.org::* From %s")
+	(org-image-actual-width . nil))
   :config
   (org-store-new-agenda-file-list '("~/Documents/Org/work.org" "~/Documents/Org/personal.org")))
 
