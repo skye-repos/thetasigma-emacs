@@ -91,3 +91,11 @@
 ;; Rainbow-mode
 (leaf rainbow-mode
   :ensure t)
+
+;; Simple undo tree
+(leaf vundo
+  :ensure t
+  :bind
+  '(("s-z" . vundo)
+	("C-/" . vundo)
+	("C-x u" . vundo)))

@@ -50,7 +50,9 @@ Some of the goals I have for this exercise include
 * Installation
 
 Make sure you have libenchant installed. [[https://github.com/minad/jinx?tab=readme-ov-file#installation][You can follow the instructions here.]]
-and then just git clone into the =user-emacs-directory=
+Also ensure you have the DM Mono font installed. [[https://fonts.google.com/specimen/DM+Mono][You can find the font here.]]
+
+Then just git clone into the =user-emacs-directory=
 #+begin_src shell
   git clone https://github.com/skye-repos/thetasigma-emacs.git ~/.emacs.d/
 #+end_src
