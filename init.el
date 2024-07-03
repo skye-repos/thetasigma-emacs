@@ -143,6 +143,7 @@
 (load-file "~/.emacs.d/thetasigma-packages.el")
 (load-file "~/.emacs.d/thetasigma-prog.el")
 (load-file "~/.emacs.d/thetasigma-writing.el")
+(load-file "~/.emacs.d/thetasigma-hyperbole.el")
 
 ;; Not necessary but recommended
 (set-face-attribute 'default nil :family "Fira Code" :height 140)

@@ -3,8 +3,8 @@
 (leaf vertico
   :ensure t
   :custom
-  '((vertico-count . 8)
-	(vertico-resize . t)
+  '((vertico-count . 5)
+	(Vertico-resize . t)
 	(vertico-cycle . t)
 	(vertico-mode . t))
   :config
@@ -17,14 +17,15 @@
   :ensure t
   :custom
   '((marginalia-max-relative-age . 0)
-	(marginalia-align . 'right)
+	(marginalia-field-width . 50)
+	(marginalia-align . 'left)
 	(marginalia-mode . t)))
 
 (leaf vertico-posframe
   :ensure t
   :custom '((vertico-posframe-mode . t)
 			(vertico-posframe-border-width . 1)
-			(vertico-posframe-min-width . 125)
+			(vertico-posframe-min-width . 75)
 			(vertico-posframe-min-height . 5)))
 
 ;; Search and search matching
