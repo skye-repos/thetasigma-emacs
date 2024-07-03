@@ -2,8 +2,6 @@
 
 #+ATTR_HTML: :style border:2px solid black
 #+ATTR_HTML: :align center
-#+ATTR_HTML: width="100px"
-#+ATTR_ORG: :width 100px
 [[file:thetasigma-logo.png]]
 
 

@@ -146,4 +146,4 @@
 (load-file "~/.emacs.d/thetasigma-hyperbole.el")
 
 ;; Not necessary but recommended
-(set-face-attribute 'default nil :family "Fira Code" :height 140)
+(set-face-attribute 'default nil :family "DM Mono" :height 150)
