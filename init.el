@@ -147,3 +147,13 @@
 
 ;; Not necessary but recommended. Pick the font of your choice.
 (set-face-attribute 'default nil :family "DM Mono" :height 150)
+
+;; Theme refresh function
+(defun skye/refresh-theme ()
+  "Helper function when working with a theme. Please don't use."
+  (interactive)
+  (load-file "~/.emacs.d/thetasigma-theme.el")
+  (disable-theme 'thetasigma)
+  (enable-theme 'thetasigma)
+  (vertico-posframe-cleanup))
+(keymap-global-set "<f4>" 'skye/refresh-theme)
