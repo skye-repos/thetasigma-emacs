@@ -157,6 +157,3 @@
   (enable-theme 'thetasigma)
   (vertico-posframe-cleanup))
 (keymap-global-set "<f4>" 'skye/refresh-theme)
-
-;; GPG SSH setenv
-(setenv "SSH_AUTH_SOCK" "~/.gnupg/S.gpg-agent.ssh")

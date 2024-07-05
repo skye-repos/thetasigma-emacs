@@ -59,6 +59,10 @@
 (when (eq system-type 'darwin)
   (thetasigma-system--mac))
 
+;; Common Stuff
+;; GPG SSH setenv
+(setenv "SSH_AUTH_SOCK" "~/.gnupg/S.gpg-agent.ssh")
+
 (provide 'thetasigma-system)
 ;;; thetasigma-system.el ends here
 
