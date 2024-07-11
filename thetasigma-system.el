@@ -41,8 +41,9 @@
   ;; Setting some external programs either use Homebrew or
   ;; Macports. You can also put whatever binary - for instance eza
   ;; instead of gnu ls.
-        ;; Mac Ports Gls
-  (cond ((and (file-exists-p "/opt/local/bin/gls")
+  (cond ((file-exists-p "/opt/homebrew/bin/")
+		 (setenv "PATH" "/opt/homebrew/bin/:/opt/homewbrew/sbin:$PATH" t))
+		((and (file-exists-p "/opt/local/bin/gls")
 			  (file-executable-p "/opt/local/bin/gls"))
 		 (setq insert-directory-program "/opt/local/bin/gls"))
 		;; Homebrew Gls
