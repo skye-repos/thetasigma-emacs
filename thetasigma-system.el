@@ -34,22 +34,28 @@
    These are collected over time and tweaked to my needs.
    Customization of some of these to be added."
   (interactive)
+  ;; Stuff specific to the Cocoa build of Emacs.
+  (setq ns-use-native-fullscreen t)
   ;; Mac special keys to C-M-S language
-  (setq ns-use-native-fullscreen t
-        mac-command-modifier 'meta
+  (setq mac-command-modifier 'meta
         mac-option-modifier 'super)
-  ;; Setting some external programs either use Homebrew or
-  ;; Macports. You can also put whatever binary - for instance eza
-  ;; instead of gnu ls.
+
+  ;; Setting PATH specific information is useful. It seems that even
+  ;; the emacs-plus package that injects the PATH variable does so
+  ;; before a .zprofile file does. Hence we need to set the PATH
+  ;; variable to make some external functionality available in Emacs.
   (cond ((file-exists-p "/opt/homebrew/bin/")
-		 (setenv "PATH" "/opt/homebrew/bin/:/opt/homewbrew/sbin:$PATH" t))
-		((and (file-exists-p "/opt/local/bin/gls")
-			  (file-executable-p "/opt/local/bin/gls"))
-		 (setq insert-directory-program "/opt/local/bin/gls"))
-		;; Homebrew Gls
-		((and (file-exists-p "/opt/homebrew/bin/gls")
-			  (file-executable-p "/opt/homebrew/bin/gls"))
-		 (setq insert-directory-program "/opt/homebrew/bin/gls")))
+		 (setenv "PATH" "/opt/homebrew/bin/:/opt/homebrew/sbin:$PATH" t))
+		((file-exists-p "/opt/local/bin/")
+		 (setenv "PATH" "/opt/local/bin/:/opt/local/sbin:$PATH" t)))
+  ;; The macOS coreutils that come when you install Xcode are
+  ;; inconsistent with the GNU/Linux versions. My use case is that I
+  ;; want to be able to list directories first in dired, hence I use
+  ;; gnu-ls (gls) provided by coreutils.
+  (cond ((file-exists-p "/opt/homebrew/bin/gls")
+		 (setq insert-directory-program "/opt/homebrew/bin/gls"))
+		((file-exists-p "/opt/local/bin/gls")
+		 (setq insert-directory-program "/opt/local/bin/gls")))
 
   ;; Fix bug on OSX in term mode & zsh (spurious % after each command)
   (add-hook 'term-mode-hook
