@@ -52,9 +52,6 @@
 	((eq (frame-parameter nil 'parent-frame) t)
 	 (delete-frame))))
 
-(provide 'thetasigma-defaults)
-;;; thetasigma-defaults.el ends here.
-
 ;; Local Variables:
 ;; eval: (set-fill-column 70)
 ;; End:

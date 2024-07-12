@@ -22,8 +22,10 @@
 (load-file "~/.emacs.d/thetasigma-system.el")
 (load-file "~/.emacs.d/thetasigma-functions.el")
 
+(defvar ctl-z-map nil
+  "Global Prefix Map for additional user commands.")
 (define-prefix-command 'ctl-z-map)
-(keymap-global-set "C-Z" ctl-z-map)
+(keymap-global-set "C-z" ctl-z-map)
 
 ;; Default customization
 (leaf cus-start
@@ -150,7 +152,7 @@
 
 ;; Theme refresh function
 (defun skye/refresh-theme ()
-  "Helper function when working with a theme. Please don't use."
+  "Helper function when working with a theme.  Please don't use."
   (interactive)
   (load-file "~/.emacs.d/thetasigma-theme.el")
   (disable-theme 'thetasigma)

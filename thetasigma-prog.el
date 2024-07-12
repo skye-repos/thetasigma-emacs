@@ -32,12 +32,6 @@
   :hook
   '((prog-mode-hook . flymake-mode)))
 
-(leaf package-lint-flymake
-  :ensure t
-  :after flymake
-  :hook
-  '((elisp-mode-hook . package-lint-flymake-setup)))
-
 (leaf expreg
   :ensure t
   :bind

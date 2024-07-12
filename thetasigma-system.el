@@ -37,7 +37,8 @@
   ;; Stuff specific to the Cocoa build of Emacs.
   (setq ns-use-native-fullscreen t)
   ;; Mac special keys to C-M-S language
-  (setq mac-command-modifier 'meta
+  (setq mac-control-modifier 'control
+		mac-command-modifier 'meta
         mac-option-modifier 'super)
 
   ;; Setting PATH specific information is useful. It seems that even
@@ -56,6 +57,13 @@
 		 (setq insert-directory-program "/opt/homebrew/bin/gls"))
 		((file-exists-p "/opt/local/bin/gls")
 		 (setq insert-directory-program "/opt/local/bin/gls")))
+  ;; I've recently taken to authenticating SSH logins with my gpg
+  ;; key. For more information on how to do this and setup your
+  ;; environment you can read
+  ;; https://gist.github.com/mcattarinussi/834fc4b641ff4572018d0c665e5a94d3.
+  ;; Please comment this out if you don't need it.
+  (setenv "SSH_AUTH_SOCK" "~/.gnupg/S.gpg-agent.ssh")
+
 
   ;; Fix bug on OSX in term mode & zsh (spurious % after each command)
   (add-hook 'term-mode-hook
@@ -65,10 +73,6 @@
 ;; Mac specific
 (when (eq system-type 'darwin)
   (thetasigma-system--mac))
-
-;; Common Stuff
-;; GPG SSH setenv
-(setenv "SSH_AUTH_SOCK" "~/.gnupg/S.gpg-agent.ssh")
 
 (provide 'thetasigma-system)
 ;;; thetasigma-system.el ends here

@@ -5,9 +5,6 @@
           ("s-$" . jinx-correct-all)
 		  ("C-s-$" . jinx-languages)))
 
-(leaf latex
-  :ensure auctex)
-
 (leaf org
   :hook
   '((org-mode-hook . org-indent-mode))

@@ -1,5 +1,4 @@
-;;; thetasigma-theme.el --- A colourful contrast rich theme
-;; -*- lexical-binding: t -*-
+;;; thetasigma-theme.el --- Colorful contrast -*- lexical-binding: t -*-
 
 ;; Author: Skye
 ;; Version: 0.1
@@ -37,7 +36,7 @@
 ;; colors for use in subtler contexts.
 
 ;;; Code:
-(deftheme thetasigma "The theme used for Θ Σ Emacs - Emacs for Memacs.")
+(deftheme thetasigma "The theme used for Θ Σ Emacs.")
 
 (let ((class '((class color) (min-colors 89)))
       (foreground "#FFE7FE")

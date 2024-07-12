@@ -1,4 +1,3 @@
-;;; Code
 ;; Minibuffer and goodies
 (leaf vertico
   :ensure t
