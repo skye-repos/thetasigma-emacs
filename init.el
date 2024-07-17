@@ -100,7 +100,9 @@
 	(delete-by-moving-to-trash . t)
 	(dired-listing-switches
 	 . "-al --group-directories-first --time-style=iso")
-	(dired-dwim-target . t))
+	(dired-dwim-target . t)
+	;; GPG
+	(epg-pinentry-mode . 'loopback))
   :bind
   '(([remap kill-buffer] . kill-current-buffer)
 	([remap keyboard-quit] . thetasigma--keyboard-quit)

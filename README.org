@@ -27,7 +27,7 @@ Some of the goals I have for this exercise include
 - [X] Bare-bones recreation of [[https://github.com/skye-repos/TransSide-theme][my old theme]] =TransSide-Theme=.
 - [X] Simple mode-line (must be from scratch).
 - Replace the use of the follow packages with builtin packages
-  - [ ] =package-lint= (possible?). Prettier or some code formatting in Rust?
+  - [ ] Code formatter
   - [ ] =expreg= (my prototype sucks, this is better and uses the builtin
     =treesit= Maybe some heavily cut down version?).
   - [ ] =magit= (=vc-mode= seems good. Maybe combine transient with it?).
@@ -36,16 +36,17 @@ Some of the goals I have for this exercise include
   - [ ] =org-modern= (there has to be an easier way?). Maybe use =prettify-symbols-mode=
 - Add the following functionality
   - [ ] Treating the mini-buffer as a transient child frame.
-  - [ ] LSP stuff with =eglot=.
+  - [ ] LSP configurations
   - [ ] Quick help mode
     - [ ] Emacs in general
     - [ ] Org-mode specifically
   - [ ] Dashboard
-  - [-] GNU Hyperbole
+  - [ ] GNU Hyperbole
     - [ ] =HyControl= seems to be more powerful than =windmove=, and intuitive.
     - [ ] =Koutliner=. How does it interact with Org-mode?
-    - [X] Buttons for use in the Dashboard?
+    - [ ] Buttons for use in the Dashboard?
     - [ ] Use the builtin-library to customize and expose only what is needed?
+  - [ ] Typst
 
 * Installation
 
