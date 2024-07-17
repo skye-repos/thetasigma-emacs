@@ -99,3 +99,11 @@
 	("C-x u" . vundo))
   :custom
   '((vundo-glyph-alist . vundo-unicode-symbols)))
+
+;; Spell check
+(leaf jinx
+  :ensure t
+  :hook '((emacs-startup-hook . global-jinx-mode))
+  :bind '(("C-$" . jinx-correct)
+          ("s-$" . jinx-correct-all)
+		  ("C-s-$" . jinx-languages)))

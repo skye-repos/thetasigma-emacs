@@ -120,6 +120,7 @@
    `(mode-line-inactive ((,class :background ,bg-dim :foreground ,subtle :box (:line-width 6 :color ,bg-dim))))
 
    `(org-block ((,class :foreground ,bold :weight semi-bold)))
+   `(org-ellipsis ((,class :foreground ,subtle)))
 
    `(vertico-posframe-border ((,class :background ,neutral-0 :weight light)))
    `(vertico-posframe-border-2 ((,class :background ,static-0 :weight light)))

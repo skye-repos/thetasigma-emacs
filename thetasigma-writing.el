@@ -1,10 +1,3 @@
-(leaf jinx
-  :ensure t
-  :hook '((emacs-startup-hook . global-jinx-mode))
-  :bind '(("C-$" . jinx-correct)
-          ("s-$" . jinx-correct-all)
-		  ("C-s-$" . jinx-languages)))
-
 (leaf org
   :hook
   '((org-mode-hook . org-indent-mode))
@@ -16,7 +9,7 @@
   '((org-directory . "~/Documents/Org")
 	(org-highlight-latex-and-related . '(native latex script))
 	(org-export-backends . '(latex odt org))
-	(org-ellipsis . " ▼")
+	(org-ellipsis . " …")
 	(org-pretty-entities . t)
 	(org-hide-emphasis-markers . t)
 	(org-fontify-todo-headline . t)
@@ -41,7 +34,9 @@
   :ensure t
   :hook
   '((org-mode-hook . org-modern-mode)
-	(org-agenda-finalize-hook . org-modern-agenda)))
+	(org-agenda-finalize-hook . org-modern-agenda))
+  :custom
+  '((org-modern-star . 'replace)))
 
 ;; Configure Tempel
 (leaf tempel
