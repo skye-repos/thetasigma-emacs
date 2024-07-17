@@ -31,14 +31,12 @@
 (defun thetasigma-system--mac ()
   "Fixes specific to using NS Builds on OSX or MacOS.
 
-   These are collected over time and tweaked to my needs.
-   Customization of some of these to be added."
+   These are collected over time and tweaked to my needs."
   (interactive)
   ;; Stuff specific to the Cocoa build of Emacs.
   (setq ns-use-native-fullscreen t)
   ;; Mac special keys to C-M-S language
-  (setq mac-control-modifier 'control
-		mac-command-modifier 'meta
+  (setq mac-command-modifier 'meta
         mac-option-modifier 'super)
 
   ;; Setting PATH specific information is useful. It seems that even
@@ -62,7 +60,7 @@
   ;; environment you can read
   ;; https://gist.github.com/mcattarinussi/834fc4b641ff4572018d0c665e5a94d3.
   ;; Please comment this out if you don't need it.
-  (setenv "SSH_AUTH_SOCK" "~/.gnupg/S.gpg-agent.ssh")
+  (setenv "SSH_AUTH_SOCK" (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))
 
 
   ;; Fix bug on OSX in term mode & zsh (spurious % after each command)
@@ -70,9 +68,15 @@
 			(lambda ()
 			  (setq buffer-display-table (make-display-table)))))
 
-;; Mac specific
-(when (eq system-type 'darwin)
-  (thetasigma-system--mac))
+(defun thetasigma-system--wsl ()
+  "Fixes/tweaks specific to the wsl/linux."
+  (interactive)
+  (setenv "SSH_AUTH_SOCK" (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
+
+(cond ((eq system-type 'darwin)
+	   (thetasigma-system--mac))
+	  ((member system-type '(gnu gnu/linux))
+	   (thetasigma-system--wsl)))
 
 (provide 'thetasigma-system)
 ;;; thetasigma-system.el ends here
