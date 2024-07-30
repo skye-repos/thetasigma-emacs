@@ -60,13 +60,7 @@
   ;; environment you can read
   ;; https://gist.github.com/mcattarinussi/834fc4b641ff4572018d0c665e5a94d3.
   ;; Please comment this out if you don't need it.
-<<<<<<< HEAD
   (setenv "SSH_AUTH_SOCK" (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))
-
-=======
-  (setenv "SSH_AUTH_SOCK" "~/.gnupg/S.gpg-agent.ssh")
-  ;; (setenv "PKG_CONFIG" "/opt/homebrew/bin/:$PKG_CONFIG" t)
->>>>>>> e679760 (Small mods + date converter)
 
   ;; Fix bug on OSX in term mode & zsh (spurious % after each command)
   (add-hook 'term-mode-hook
