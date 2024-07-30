@@ -36,20 +36,18 @@
       (static-2 "#8AECFF"))
 
   (set-face-attribute 'thetasigma-mode-line-rw-mod nil
-					  :foreground standout
-					  :weight 'bold)
+					  :foreground standout)
   (set-face-attribute 'thetasigma-mode-line-rw-not-mod nil
-					  :foreground static-2
-					  :weight 'bold))
+					  :foreground static-2))
 
 (defvar thetasigma-mode-line-rw
   '(:eval (if buffer-read-only
 			  (if (buffer-modified-p)
-				  (propertize "" 'face '(:inherit thetasigma-mode-line-rw-mod))
-				(propertize "" 'face '(:inherit thetasigma-mode-line-rw-not-mod)))
+				  (propertize "  " 'face '(:inherit thetasigma-mode-line-rw-mod))
+				(propertize "  " 'face '(:inherit thetasigma-mode-line-rw-not-mod)))
 			(if (buffer-modified-p)
-				(propertize "" 'face '(:inherit thetasigma-mode-line-rw-mod))
-			  (propertize "" 'face '(:inherit thetasigma-mode-line-rw-not-mod))))))
+				(propertize "  " 'face '(:inherit thetasigma-mode-line-rw-mod))
+			  (propertize "  " 'face '(:inherit thetasigma-mode-line-rw-not-mod))))))
 
 ;; Change the mode-line
 (setq-default mode-line-format
