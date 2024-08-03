@@ -58,7 +58,7 @@
 	(uniquify-ignore-buffers-re . "^\\*")
 	;; Frame & Window Stuff
 	(default-frame-alist
-	 . '((fullscreen . fullboth)
+	 . '((fullscreen . fullheight)
 		 (vertical-scroll-bars . nil)
 		 (internal-border-width . 24)
 		 (left-fringe    . 1)
