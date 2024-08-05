@@ -86,7 +86,7 @@
    `(font-lock-variable-name-face ((,class :foreground ,interact-1 :distant-foreground ,bold-distant)))
    `(font-lock-type-face ((,class :foreground ,static-1 :distant-foreground ,bold-distant :weight semi-bold)))
    `(font-lock-warning-face ((,class :foreground ,standout :distant-foreground ,bold-distant :weight bold)))
-   `(font-lock-property-use-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant :weight semi-bold)))
+   `(font-lock-property-use-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant :weight normal)))
 
    `(outline-1 ((,class :foreground ,neutral-0 :weight heavy :height 1.2)))
    `(outline-2 ((,class :foreground ,neutral-1 :weight bold :height 1.1)))
