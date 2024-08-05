@@ -1,3 +1,4 @@
+;; Setup leaf for easy package configurations
 (eval-and-compile
   (customize-set-variable
    'package-archives '(("org" . "https://orgmode.org/elpa/")
@@ -14,10 +15,7 @@
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 
-;; Theme
-(add-to-list 'custom-theme-load-path user-emacs-directory)
-(load-theme 'thetasigma t)
-
+;; Load all everything else.
 (defun thetasigma--load-files (dir)
   "Ensure DIR exists, and load all elisp files in DIR."
   (if (file-exists-p dir)
