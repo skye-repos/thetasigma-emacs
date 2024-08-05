@@ -5,8 +5,7 @@
 [[file:thetasigma-logo.png]]
 
 
-This started out as a clone of Nano Emacs, but at this point, I'm just using
-this as a way to figure out lisps.
+This is an exercise in structuring my configuration and learning more elisp.
 
 Some of the goals I have for this exercise include
 
@@ -15,8 +14,8 @@ Some of the goals I have for this exercise include
 2) Portability between OSs and systems
 3) Improving the UI and interaction schema for Emacs.
    - Part of this is my custom theme. Rule of thumb here is to minimize
-     definition of custom faces. Only customize a face if it sucks or doesn't
-     know how to inherit from default Emacs faces.
+     definition of custom faces. Only customize a face if it doesn't adhere to a
+     theme principles or doesn't know how to inherit from default Emacs faces.
    - A more modern(? To be defined) way of interacting with the mini-buffer.
    - Child-frames for completions ala posframe.
    - Adding context where possible.
@@ -25,18 +24,19 @@ Some of the goals I have for this exercise include
 * Progress
 - [X] Bare-bones setup to build from.
 - [X] Bare-bones recreation of [[https://github.com/skye-repos/TransSide-theme][my old theme]] =TransSide-Theme=.
-- [X] Simple mode-line (must be from scratch).
+- [-] Simple mode-line.
+  - [ ] Git version details
+  - [X] Custom RO Indicator
+  - [X] File name and buffer mode indicator
 - Replace the use of the follow packages with builtin packages
-  - [ ] Code formatter
   - [ ] =expreg= (my prototype sucks, this is better and uses the builtin
     =treesit= Maybe some heavily cut down version?).
   - [ ] =magit= (=vc-mode= seems good. Maybe combine transient with it?).
   - [ ] =vertico-posframe= (either tie it in with the logic for the mini-buffer or
     use this for the mini-buffer echo messages).
   - [ ] =org-modern= (there has to be an easier way?). Maybe use =prettify-symbols-mode=
-- Add the following functionality
-  - [ ] Treating the mini-buffer as a transient child frame.
-  - [ ] LSP configurations
+- Consider the following functionality
+  - [ ] Treating the mini-buffer as a ephemeral child frame.
   - [ ] Quick help mode
     - [ ] Emacs in general
     - [ ] Org-mode specifically
@@ -46,12 +46,10 @@ Some of the goals I have for this exercise include
     - [ ] =Koutliner=. How does it interact with Org-mode?
     - [ ] Buttons for use in the Dashboard?
     - [ ] Use the builtin-library to customize and expose only what is needed?
-  - [ ] Typst
 
 * Installation
-
 Make sure you have libenchant installed. [[https://github.com/minad/jinx?tab=readme-ov-file#installation][You can follow the instructions here.]]
-Also ensure you have the DM Mono font installed. [[https://fonts.google.com/specimen/DM+Mono][You can find the font here.]]
+The font I'm using right now is called =0xProto=. You can set your own font in the =thetasigma-user/ui-setup.el=.
 
 Then just git clone into the =user-emacs-directory=
 #+begin_src shell
@@ -60,6 +58,16 @@ Then just git clone into the =user-emacs-directory=
 
 You can launch Emacs now (or restart the daemon) and it should work. The first
 start may take a bit to pull in all the packages (will be minimized eventually)
+
+
+* Usage Notes
+Any emacs-lisp fill you put in one of the following directories will automatically be loaded by Emacs.
+
+1) =thetasigma-preload=
+2) =thetasigma=
+3) =theatsigma-user=
+
+You can place your own configurations in the thetasigma-user directory.
 
 # Local Variables:
 # jinx-local-words: "posframe"
