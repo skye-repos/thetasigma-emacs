@@ -44,12 +44,14 @@
 
   (exec-path-from-shell-initialize)
   (let* ((gnuls (string-trim-right (shell-command-to-string "which gls") "\n"))
-		 (ssh-sock (string-trim-right (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket") "\n")))
+		 ;; (ssh-sock (string-trim-right (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket") "\n"))
+		 )
 	(if gnuls
 		(setq insert-directory-program gnuls)
 	  (error "Install GNU ls"))
-	(if ssh-sock
-		(setenv "SSH_AUTH_SOCK" ssh-sock)))
+	;; (if ssh-sock
+	;; 	(setenv "SSH_AUTH_SOCK" ssh-sock))
+	)
 
   ;; Fix bug on OSX in term mode & zsh (spurious % after each command)
   (add-hook 'term-mode-hook
