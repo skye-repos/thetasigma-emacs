@@ -3,7 +3,7 @@
   :ensure t
   :custom
   '((vertico-count . 5)
-	(Vertico-resize . t)
+	(vertico-resize . t)
 	(vertico-cycle . t)
 	(vertico-mode . t))
   :config

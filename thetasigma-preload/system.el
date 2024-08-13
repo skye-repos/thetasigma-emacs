@@ -41,8 +41,8 @@
 
   (unless (package-installed-p 'exec-path-from-shell)
 	(package-install 'exec-path-from-shell))
-
   (exec-path-from-shell-initialize)
+  
   (let* ((gnuls (string-trim-right (shell-command-to-string "which gls") "\n"))
 		 ;; (ssh-sock (string-trim-right (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket") "\n"))
 		 )

@@ -19,19 +19,6 @@
   :custom
   '((electric-indent-mode . t)))
 
-(leaf flymake
-  :commands flymake-mode
-  :custom
-  '((flymake-fringe-indicator-position . 'left-fringe)
-	(flymake-suppress-zero-counters . t)
-	(flymake-start-on-flymake-mode . t)
-	(flymake-no-changes-timeout . nil)
-	(flymake-start-on-save-buffer . t)
-	(flymake-proc-compilation-prevents-syntax-check . t)
-	(flymake-wrap-around . nil))
-  :hook
-  '((prog-mode-hook . flymake-mode)))
-
 (leaf expreg
   :ensure t
   :bind
