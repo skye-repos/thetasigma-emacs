@@ -39,20 +39,14 @@
   (setq mac-command-modifier 'meta
         mac-option-modifier 'super)
 
-  (unless (package-installed-p 'exec-path-from-shell)
-	(package-install 'exec-path-from-shell))
+  (package-install 'exec-path-from-shell)
   (require 'exec-path-from-shell)
   (exec-path-from-shell-initialize)
   
-  (let* ((gnuls (string-trim-right (shell-command-to-string "which gls") "\n"))
-		 ;; (ssh-sock (string-trim-right (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket") "\n"))
-		 )
+  (let* ((gnuls (string-trim-right (shell-command-to-string "which gls") "\n")))
 	(if gnuls
 		(setq insert-directory-program gnuls)
-	  (error "Install GNU ls"))
-	;; (if ssh-sock
-	;; 	(setenv "SSH_AUTH_SOCK" ssh-sock))
-	)
+	  (error "Install GNU ls")))
 
   ;; Fix bug on OSX in term mode & zsh (spurious % after each command)
   (add-hook 'term-mode-hook
