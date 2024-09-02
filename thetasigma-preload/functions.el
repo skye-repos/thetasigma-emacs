@@ -31,9 +31,7 @@
 	  (t (keyboard-quit)))))
 
 (defun thetasigma--delete-frame-or-kill-emacs ()
-  "Delete the selected frame, kill Emacs if only one frame is present.
-
-   This function is courtesy of user Drew from Emacs StackExchange."
+  "Delete the selected frame, kill Emacs if only one frame is present."
   (interactive)
   (condition-case nil (delete-frame)
     (error (save-buffers-kill-terminal))))
@@ -46,11 +44,11 @@
    current frame is a child frame, delete it"
   (interactive)
   (cond ((> (length (window-list)) 1)
-	 (quit-window t (get-buffer-window (buffer-name))))
-	((eq (length (window-list)) 1)
-	 (quit-window t))
-	((eq (frame-parameter nil 'parent-frame) t)
-	 (delete-frame))))
+		 (delete-window (get-buffer-window (buffer-name))))
+		((eq (length (window-list)) 1)
+		 (quit-window t))
+		((eq (frame-parameter nil 'parent-frame) t)
+		 (delete-frame))))
 
 ;; Local Variables:
 ;; eval: (set-fill-column 70)
