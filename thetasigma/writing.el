@@ -2,9 +2,12 @@
   :hook
   '((org-mode-hook . org-indent-mode))
   :bind
-  '(("M-<return>" . org-insert-item)
+  '(("C-c a" . org-agenda)
+	("C-c c" . org-capture)
+	(:org-mode-map
+	("M-<return>" . org-insert-item)
 	("C-z a" . org-archive-all-done)
-	("C-z <TAB>" . org-cycle-list-bullet))
+	("C-z <TAB>" . org-cycle-list-bullet)))
   :custom
   '((org-directory . "~/Documents/Org")
 	(org-highlight-latex-and-related . '(native latex script))

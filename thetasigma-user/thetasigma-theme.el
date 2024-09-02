@@ -122,6 +122,17 @@
 
    `(org-block ((,class :foreground ,bold :weight semi-bold)))
    `(org-ellipsis ((,class :foreground ,subtle)))
+   `(org-headline-todo ((,class :foreground ,interact-1)))
+   `(org-headline-done ((,class :foreground ,static-1)))
+
+   `(org-level-1 ((,class :inherit outline-1)))
+   `(org-level-2 ((,class :inherit outline-2)))
+   `(org-level-3 ((,class :inherit outline-3)))
+   `(org-level-4 ((,class :inherit outline-4)))
+   `(org-level-5 ((,class :inherit outline-5)))
+   `(org-level-6 ((,class :inherit outline-6)))
+   `(org-level-7 ((,class :inherit outline-7)))
+   `(org-level-8 ((,class :inherit outline-8)))
 
    `(vertico-posframe-border ((,class :background ,neutral-0 :weight light)))
    `(vertico-posframe-border-2 ((,class :background ,static-0 :weight light)))
