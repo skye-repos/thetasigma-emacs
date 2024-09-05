@@ -1,5 +1,5 @@
 ;; Load the Θ Σ Emacs Theme.
-(add-to-list 'custom-theme-load-path "~/.emacs.d/thetasigma-user/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/thetasigma/")
 (load-theme 'thetasigma t)
 
 (leaf spacious-padding
