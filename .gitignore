@@ -1,0 +1,14 @@
+projects
+custom.el
+recentf
+history
+saves/*
+user/*
+elpa/*
+eshell/*
+eln-cache/*
+auto-save-list/*
+transient/*
+tree-sitter/*
+.cache/*
+.lsp-*
