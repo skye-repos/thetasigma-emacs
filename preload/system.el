@@ -33,7 +33,7 @@
 
    These are collected over time and tweaked to my needs."
   (interactive)
-  ;; Stuff specific to the Cocoa build of Emacs.
+  ;; Full Screen Behavior
   (setq ns-use-native-fullscreen t)
   ;; Mac special keys to C-M-S language
   (setq mac-command-modifier 'meta
