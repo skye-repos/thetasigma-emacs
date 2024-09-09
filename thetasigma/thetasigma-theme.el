@@ -40,7 +40,7 @@
 
 (let ((class '((class color) (min-colors 89)))
       (foreground "#FFE7FE")
-      (background "#14041C")
+      (background "#04040C")
       (bg-dim "#04041C")
       (bg-overlay "#4C146C")
       (bold "#F9FFF9")
