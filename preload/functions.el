@@ -24,8 +24,8 @@
 	  (defining-kbd-macro
 	   (message
 	    (substitute-command-keys
-	     "Quit is ignored during macro definition, use \\[kmacro-end-macro]
-		     if you want to stop macro definition"))
+	     "Quit is ignored during macro definition,
+         use \\[kmacro-end-macro] if you want to stop macro definition"))
 	   (cancel-kbd-macro-events))
 	  ;; Default case
 	  (t (keyboard-quit)))))
@@ -37,19 +37,12 @@
     (error (save-buffers-kill-terminal))))
 
 (defun thetasigma--quit-window ()
-  "Intelligent quit window.
-
-   If more than one window is open, close window on quit.  If only one
-   window is open and buffer is read only, kill buffer.  If the
-   current frame is a child frame, delete it"
+  "Making `quit-window' act more like a context aware delete-window."
   (interactive)
-  (cond ((> (length (window-list)) 1)
-		 (delete-window (get-buffer-window (buffer-name))))
-		((eq (length (window-list)) 1)
-		 (quit-window t))
-		((eq (frame-parameter nil 'parent-frame) t)
-		 (delete-frame))))
-
-;; Local Variables:
-;; eval: (set-fill-column 70)
-;; End:
+  (let* ((winlen (length (window-list)))
+		(bufnam (buffer-name))
+		(bufwin (get-buffer-window bufnam)))
+	(cond ((> winlen 1)
+		   (delete-window bufwin))
+		  ((eq winlen 1)
+		   (quit-window t bufwin)))))
