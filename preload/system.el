@@ -56,7 +56,9 @@
 (defun thetasigma-system--wsl ()
   "Fixes/tweaks specific to the wsl/linux."
   (interactive)
-  (setenv "SSH_AUTH_SOCK" (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
+  (package-install 'exec-path-from-shell)
+  (require 'exec-path-from-shell)
+  (exec-path-from-shell-initialize))
 
 (cond ((eq system-type 'darwin)
 	   (thetasigma-system--mac))
