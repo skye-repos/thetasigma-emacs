@@ -12,3 +12,4 @@ transient/*
 tree-sitter/*
 .cache/*
 .lsp-*
+tramp
