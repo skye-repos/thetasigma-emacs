@@ -14,4 +14,5 @@
      (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
      (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")
-	 (hledger "https://github.com/skye-repos/tree-sitter-hledger")))
+	 (hledger "https://github.com/skye-repos/tree-sitter-hledger")
+	 (lua "https://github.com/tjdevries/tree-sitter-lua")))
