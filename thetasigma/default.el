@@ -8,12 +8,12 @@
   :doc "Customization of builtins and defaults"
   :tag "builtin" "internal"
   :init
-  (unless (file-exists-p "~/.emacs.d/saves")
-    (make-directory "~/.emacs.d/saves"))
-  (unless (file-exists-p "~/.emacs.d/custom.el")
-	(write-file "~/.emacs.d/custom.el"))
+  (unless (file-exists-p "~/.config/emacs/saves")
+    (make-directory "~/.config/emacs/saves"))
+  (unless (file-exists-p "~/.config/emacs/custom.el")
+	(write-file "~/.config/emacs/custom.el"))
   :custom
-  '((custom-file . "~/.emacs.d/custom.el")
+  '((custom-file . "~/.config/emacs/custom.el")
 	(inhibit-startup-message . t)
 	(inhibit-startup-screen . t)
 	(inhibit-startup-buffer-menu . t)
@@ -51,7 +51,7 @@
 	;; Windmove
 	(windmove-mode . t)
 	;; Backups, Savehist, Recentf
-	(backup-directory-alist . '(("." . "~/.emacs.d/saves")))
+	(backup-directory-alist . '(("." . "~/.config/emacs/saves")))
 	(backup-by-copying . t)
 	(version-control . t)
 	(delete-old-versions . t)

@@ -26,6 +26,6 @@
 		  (load-file file)))
 	(error "Directory %s does not exist" dir)))
 
-(thetasigma--load-files "~/.emacs.d/preload")
-(thetasigma--load-files "~/.emacs.d/thetasigma")
-(thetasigma--load-files "~/.emacs.d/user")
+(thetasigma--load-files "~/.config/emacs/preload")
+(thetasigma--load-files "~/.config/emacs/thetasigma")
+(thetasigma--load-files "~/.config/emacs/user")
