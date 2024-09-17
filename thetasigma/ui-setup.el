@@ -12,4 +12,4 @@
   (spacious-padding-mode))
 
 ;; Not necessary but recommended. Pick the font of your choice.
-(set-face-attribute 'default nil :family "0xProto" :height 120)
+(set-face-attribute 'default nil :family "0xProto" :height 150)
