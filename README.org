@@ -53,7 +53,7 @@ The font I'm using right now is called =0xProto=. You can set your own font in t
 
 Then just git clone into the =user-emacs-directory=
 #+begin_src shell
-  git clone https://github.com/skye-repos/thetasigma-emacs.git ~/.emacs.d/
+  git clone https://github.com/skye-repos/thetasigma-emacs.git ~/.config/emacs
 #+end_src
 
 You can launch Emacs now (or restart the daemon) and it should work. The first
@@ -63,9 +63,9 @@ start may take a bit to pull in all the packages (will be minimized eventually)
 * Usage Notes
 Any emacs-lisp fill you put in one of the following directories will automatically be loaded by Emacs.
 
-1) =thetasigma-preload=
+1) =preload=
 2) =thetasigma=
-3) =theatsigma-user=
+3) =user=
 
 You can place your own configurations in the thetasigma-user directory.
 
