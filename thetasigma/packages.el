@@ -50,7 +50,7 @@
   :custom
   '((corfu-auto . t)
 	(corfu-auto-delay . 0)
-	(corfu-auto-prefix . 2)
+	(corfu-auto-prefix . 4)
 	(corfu-quit-no-match . t)
 	(global-corfu-mode . t)
 	(corfu-history-mode . t)
