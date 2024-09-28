@@ -12,4 +12,11 @@
   (spacious-padding-mode))
 
 ;; Not necessary but recommended. Pick the font of your choice.
-(set-face-attribute 'default nil :family "0xProto" :height 150)
+(if (daemonp)
+	(add-to-list 'after-make-frame-functions
+				 (lambda (frame)
+				   (with-selected-frame frame)
+				   (when (display-graphic-p frame)
+					 (set-face-font 'default "0xProto-16" frame))))
+  (set-face-font 'default "0xProto-16"))
+
