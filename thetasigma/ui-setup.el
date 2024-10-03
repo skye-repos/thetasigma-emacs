@@ -5,7 +5,7 @@
 (leaf spacious-padding
   :ensure t
   :custom
-  '((spacious-padding-subtle-mode-line . t)
+  '(;; (spacious-padding-subtle-mode-line . t)
 	(spacious-padding-widths . '( :right-divider-width 10
 								  :scroll-bar-width 4)))
   :config

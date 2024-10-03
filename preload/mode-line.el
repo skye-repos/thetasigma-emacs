@@ -26,28 +26,55 @@
 ;; Minor mods to make the mode-line simpler
 
 ;;; Code:
-(defface thetasigma-mode-line-rw-mod nil
-  "Mode line face for when buffer has been modified.")
+(defface thetasigma-mode-line-mod-active nil
+  "Mode line face for when the active buffer has been modified.")
 
-(defface thetasigma-mode-line-rw-not-mod nil
-  "Mode line face for when buffer has not been modified.")
+(defface thetasigma-mode-line-not-mod-active nil
+  "Mode line face for when the active buffer has not been modified.")
 
-(let ((standout "#FFEEB0")
-      (static-2 "#8AECFF"))
+(defface thetasigma-mode-line-mod-inactive nil
+  "Mode line face for when an inactive buffer has been modified.")
 
-  (set-face-attribute 'thetasigma-mode-line-rw-mod nil
-					  :foreground standout)
-  (set-face-attribute 'thetasigma-mode-line-rw-not-mod nil
-					  :foreground static-2))
+(defface thetasigma-mode-line-not-mod-inactive nil
+  "Mode line face for when an inactive buffer has not been modified.")
+
+(let ((static-0 "#84BEFF")
+      (static-1 "#84CEEF")
+      (static-2 "#84DFCF")
+      (neutral-0 "#B9B0FE")
+      (neutral-1 "#C8A1FE")
+      (neutral-2 "#D790FE"))
+
+  (set-face-attribute 'thetasigma-mode-line-mod-active nil
+					  :foreground neutral-2)
+  (set-face-attribute 'thetasigma-mode-line-not-mod-active nil
+					  :foreground static-2)
+  (set-face-attribute 'thetasigma-mode-line-mod-inactive nil
+					  :foreground neutral-0)
+  (set-face-attribute 'thetasigma-mode-line-not-mod-inactive nil
+					  :foreground static-0))
 
 (defvar thetasigma-mode-line-rw
-  '(:eval (if buffer-read-only
-			  (if (buffer-modified-p)
-				  (propertize "  " 'face '(:inherit thetasigma-mode-line-rw-mod))
-				(propertize "  " 'face '(:inherit thetasigma-mode-line-rw-not-mod)))
+  '(:eval
+	(if (mode-line-window-selected-p)
+		;; For the Active Modeline
+		(if buffer-read-only
 			(if (buffer-modified-p)
-				(propertize "  " 'face '(:inherit thetasigma-mode-line-rw-mod))
-			  (propertize "  " 'face '(:inherit thetasigma-mode-line-rw-not-mod))))))
+				(propertize "  " 'face '(:inherit thetasigma-mode-line-mod-active))
+			  (propertize "  " 'face '(:inherit thetasigma-mode-line-not-mod-active)))
+		  (if (buffer-modified-p)
+			  (propertize "  " 'face '(:inherit thetasigma-mode-line-mod-active))
+			(propertize "  " 'face '(:inherit thetasigma-mode-line-not-mod-active))))
+
+	  ;; For the inactive modeline
+	  (if buffer-read-only
+		  (if (buffer-modified-p)
+			  (propertize "  " 'face '(:inherit thetasigma-mode-line-mod-inactive))
+			(propertize "  " 'face '(:inherit thetasigma-mode-line-not-mod-inactive)))
+		(if (buffer-modified-p)
+			(propertize "  " 'face '(:inherit thetasigma-mode-line-mod-inactive))
+		  (propertize "  " 'face '(:inherit thetasigma-mode-line-not-mod-inactive))))
+	  )))
 
 ;; Change the mode-line
 (setq-default mode-line-format
