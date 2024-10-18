@@ -41,7 +41,7 @@ Some of the goals I have for this exercise include
           
 * Installation
 1) Install libenchant. [[https://github.com/minad/jinx?tab=readme-ov-file#installation][You can follow the instructions here.]]
-2) Install the font =0xProto=. You can set your own font in the =preload/ui-setup.el=.
+2) Install the font =0xProto=. You can set your own font through the =thetasigma-font= custom variable.
 3) Install [[https://github.com/blahgeek/emacs-lsp-booster/releases][emacs-lsp-booster]] into =~/.local/bin/=
 
 Then just git clone into the =user-emacs-directory=. I like =~/.config/emacs= though any folder recognized by the XDG config specification should work.
@@ -57,9 +57,9 @@ start may take a bit to pull in all the packages (will be minimized eventually)
 Any emacs-lisp fill you put in one of the following directories will automatically be loaded by Emacs.
 Also note that package.el will not be available in early-init.el or scripts in =preload/=.
 
-1) =preload/= - loaded by early-init.el
-2) =main/= - loaded in init.el
-3) =user/= - loaded after scripts =thetasigma/=
+1) =0-preload/= - loaded by early-init.el
+2) =1-main/= - loaded in init.el
+3) =2-user/= - loaded after scripts =thetasigma/=
 
 You can place your own configurations in the thetasigma-user directory.
 
