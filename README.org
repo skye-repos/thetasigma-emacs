@@ -28,31 +28,24 @@ Some of the goals I have for this exercise include
   - [ ] Git version details
   - [X] Custom RO Indicator
   - [X] File name and buffer mode indicator
-- Replace the use of the follow packages with builtin packages
-  - [ ] =expreg= (my prototype sucks, this is better and uses the builtin
-    =treesit= Maybe some heavily cut down version?).
-  - [ ] =magit= (=vc-mode= seems good. Maybe combine transient with it?).
-  - [ ] =vertico-posframe= (either tie it in with the logic for the mini-buffer or
-    use this for the mini-buffer echo messages).
-  - [ ] =org-modern= (there has to be an easier way?). Maybe use =prettify-symbols-mode=
+- [ ] Remove leaf.el. The added syntactic consistency is great, but use-package
+  is more standard. Alternatively, Can be more explicit with all
+  configurations and avoid macros entirely
+- [ ] A quick script to install fonts and libenchant in a programmatic manner
 - Consider the following functionality
   - [ ] Treating the mini-buffer as a ephemeral child frame.
   - [ ] Quick help mode
     - [ ] Emacs in general
     - [ ] Org-mode specifically
   - [ ] Dashboard
-  - [ ] GNU Hyperbole
-    - [ ] =HyControl= seems to be more powerful than =windmove=, and intuitive.
-    - [ ] =Koutliner=. How does it interact with Org-mode?
-    - [ ] Buttons for use in the Dashboard?
-    - [ ] Use the builtin-library to customize and expose only what is needed?
-
+          
 * Installation
 1) Install libenchant. [[https://github.com/minad/jinx?tab=readme-ov-file#installation][You can follow the instructions here.]]
 2) Install the font =0xProto=. You can set your own font in the =preload/ui-setup.el=.
 3) Install [[https://github.com/blahgeek/emacs-lsp-booster/releases][emacs-lsp-booster]] into =~/.local/bin/=
 
-Then just git clone into the =user-emacs-directory=
+Then just git clone into the =user-emacs-directory=. I like =~/.config/emacs= though any folder recognized by the XDG config specification should work.
+
 #+begin_src shell
   git clone https://github.com/skye-repos/thetasigma-emacs.git ~/.config/emacs
 #+end_src
@@ -62,6 +55,7 @@ start may take a bit to pull in all the packages (will be minimized eventually)
 
 * Usage Notes
 Any emacs-lisp fill you put in one of the following directories will automatically be loaded by Emacs.
+Also note that package.el will not be available in early-init.el or scripts in =preload/=.
 
 1) =preload/= - loaded by early-init.el
 2) =main/= - loaded in init.el
