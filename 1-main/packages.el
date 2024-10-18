@@ -1,3 +1,10 @@
+;; Exec Path From Shell
+(unless (eq system-type 'darwin)
+  (leaf exec-path-from-shell
+	:ensure t
+	:config
+	(exec-path-from-shell-initialize)))
+
 ;; Minibuffer and goodies
 (leaf vertico
   :ensure t
@@ -132,8 +139,7 @@
 ;; Spacious Padding
 (leaf spacious-padding
   :ensure t
-  :custom
-  '((spacious-padding-widths . '( :right-divider-width 10
-								  :scroll-bar-width 4)))
   :config
+  (setq spacious-padding-widths '( :right-divider-width 10
+								   :scroll-bar-width 4))
   (spacious-padding-mode))

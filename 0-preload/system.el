@@ -37,10 +37,6 @@
   (setq ns-use-native-fullscreen t)
   ;; Mac special keys to C-M-S language
   (setq mac-command-modifier 'super)
-
-  (package-install 'exec-path-from-shell)
-  (require 'exec-path-from-shell)
-  (exec-path-from-shell-initialize)
   
   (let* ((gnuls (string-trim-right (shell-command-to-string "which gls") "\n")))
 	(if gnuls

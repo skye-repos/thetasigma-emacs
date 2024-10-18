@@ -3,22 +3,17 @@
 (define-prefix-command 'ctl-z-map)
 (keymap-global-set "C-z" ctl-z-map)
 
+(defvar thetasigma-saves-dir (concat user-emacs-directory "saves"))
+
 ;; Default customization
 (leaf cus-start
   :doc "Customization of builtins and defaults"
   :tag "builtin" "internal"
   :init
-  (unless (file-exists-p "~/.config/emacs/saves")
-    (make-directory "~/.config/emacs/saves"))
-  (unless (file-exists-p "~/.config/emacs/custom.el")
-	(write-file "~/.config/emacs/custom.el"))
+  (unless (file-exists-p thetasigma-saves-dir)
+    (make-directory thetasigma-saves-dir))
   :custom
-  '((custom-file . "~/.config/emacs/custom.el")
-	(inhibit-startup-message . t)
-	(inhibit-startup-screen . t)
-	(inhibit-startup-buffer-menu . t)
-	(inhibit.startup-echo-area-message . t)
-	;; Text editing behavior
+  '(;; Text editing behavior
 	;; (cua-mode . t) ;; if you want normal text editing
 	(delete-selection-mode . t)
 	(global-visual-line-mode . t)
@@ -45,13 +40,10 @@
 	(fill-column . 80)
 	(window-divider-mode . nil)
 	(window-min-height . 1)
-	(set-scroll-bar-mode . nil)
-	(tool-bar-mode . nil)
-	(menu-bar-mode . nil)
 	;; Windmove
 	(windmove-mode . t)
 	;; Backups, Savehist, Recentf
-	(backup-directory-alist . '(("." . "~/.config/emacs/saves")))
+	(backup-directory-alist . '(("." . thetasigma-saves-dir)))
 	(backup-by-copying . t)
 	(version-control . t)
 	(delete-old-versions . t)
@@ -115,5 +107,4 @@
   (put 'command-history            'history-length 10)
   (put 'query-replace-history      'history-length 10)
   (put 'file-name-history          'history-length 30)
-  (put 'minibuffer-history         'history-length 50)
-  (load custom-file))
+  (put 'minibuffer-history         'history-length 50))

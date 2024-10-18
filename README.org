@@ -63,9 +63,9 @@ start may take a bit to pull in all the packages (will be minimized eventually)
 * Usage Notes
 Any emacs-lisp fill you put in one of the following directories will automatically be loaded by Emacs.
 
-1) =preload=
-2) =thetasigma=
-3) =user=
+1) =preload/= - loaded by early-init.el
+2) =main/= - loaded in init.el
+3) =user/= - loaded after scripts =thetasigma/=
 
 You can place your own configurations in the thetasigma-user directory.
 
