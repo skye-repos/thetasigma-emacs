@@ -1,14 +1,17 @@
-;; LSP-mode instead of eglot (needs solving)
-(leaf lsp-mode
-  :ensure t
-  :commands lsp
-  :init
-  (setq lsp-keymap-prefix "C-l")
-  :hook
-  '((lsp-mode-hook . lsp-enable-which-key-integration)))
+;; LSP stuff
+(leaf eglot-booster
+  :vc ( :url "https://github.com/jdtsmith/eglot-booster" )
+  :after eglot
+  :config
+  (eglot-booster-mode))
 
-(leaf lsp-ui
-  :ensure t)
+(leaf eglot
+  :hook
+  '((prog-mode-hook . eglot-ensure))
+  :bind
+  '(("C-c l r" . eglot-rename)
+	("C-c l f" . eglot-format)
+	("C-c l a" . eglot-code-actions)))
 
 ;; Paired parens
 (leaf elec-pair

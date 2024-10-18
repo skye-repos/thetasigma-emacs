@@ -48,8 +48,9 @@ Some of the goals I have for this exercise include
     - [ ] Use the builtin-library to customize and expose only what is needed?
 
 * Installation
-Make sure you have libenchant installed. [[https://github.com/minad/jinx?tab=readme-ov-file#installation][You can follow the instructions here.]]
-The font I'm using right now is called =0xProto=. You can set your own font in the =thetasigma-user/ui-setup.el=.
+1) Install libenchant. [[https://github.com/minad/jinx?tab=readme-ov-file#installation][You can follow the instructions here.]]
+2) Install the font =0xProto=. You can set your own font in the =preload/ui-setup.el=.
+3) Install [[https://github.com/blahgeek/emacs-lsp-booster/releases][emacs-lsp-booster]] into =~/.local/bin/=
 
 Then just git clone into the =user-emacs-directory=
 #+begin_src shell
@@ -58,7 +59,6 @@ Then just git clone into the =user-emacs-directory=
 
 You can launch Emacs now (or restart the daemon) and it should work. The first
 start may take a bit to pull in all the packages (will be minimized eventually)
-
 
 * Usage Notes
 Any emacs-lisp fill you put in one of the following directories will automatically be loaded by Emacs.
