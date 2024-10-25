@@ -25,8 +25,7 @@
 (setq inhibit-compacting-font-caches t)
 
 ;; Startup
-(setq-default inhibit-message t
-			  inhibit-startup-message t
+(setq-default inhibit-startup-message t
 			  inhibit-startup-screen t
 			  inhibit-startup-buffer-menu t
 			  inhibit-startup-echo-area-message t)

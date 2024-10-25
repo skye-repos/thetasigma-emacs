@@ -3,7 +3,6 @@ custom.el
 recentf
 history
 saves/*
-user/*
 elpa/*
 eshell/*
 eln-cache/*
@@ -13,3 +12,4 @@ tree-sitter/*
 .cache/*
 .lsp-*
 tramp
+2-user/*
