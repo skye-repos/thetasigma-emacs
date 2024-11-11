@@ -1,4 +1,4 @@
-;;; thetasigma-theme.el --- Colorful contrast -*- lexical-binding: t -*-
+;;; thetasigma-dark-theme.el --- Colorful contrast -*- lexical-binding: t -*-
 
 ;; Author: Skye
 ;; Version: 0.1
@@ -36,7 +36,10 @@
 ;; colors for use in subtler contexts.
 
 ;;; Code:
-(deftheme thetasigma "The theme used for Θ Σ Emacs.")
+(deftheme thetasigma-dark "The theme used for Θ Σ Emacs."
+		  :family 'thetasigma
+		  :kind 'dark
+		  :background-mode 'dark)
 
 (let ((class '((class color) (min-colors 89)))
       (foreground "#FFD9FF")
@@ -59,7 +62,7 @@
       (neutral-2 "#D790FE"))
 
   (custom-theme-set-faces
-   'thetasigma
+   'thetasigma-dark
    `(default ((,class :background ,background :foreground ,foreground :distant-foreground ,bold-distant)))
    `(bold ((,class :foreground ,bold :weight bold)))
    `(italic ((,class :slant oblique)))
@@ -142,9 +145,9 @@
   )
   
 
-(provide-theme 'thetasigma)
-(provide 'thetasigma-theme)
-;;; thetasigma-theme.el ends here
+(provide-theme 'thetasigma-dark)
+(provide 'thetasigma-dark-theme)
+;;; thetasigma-dark-theme.el ends here
 
 ;; Local Variables:
 ;; eval: (rainbow-mode) (set-fill-column 70)

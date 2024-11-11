@@ -1,10 +1,3 @@
-;; LSP stuff
-(leaf eglot-booster
-  :vc ( :url "https://github.com/jdtsmith/eglot-booster" )
-  :after eglot
-  :config
-  (eglot-booster-mode))
-
 (leaf eglot
   :hook
   '((prog-mode-hook . eglot-ensure))

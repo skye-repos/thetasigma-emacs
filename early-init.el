@@ -43,6 +43,11 @@
 ;; without initializing a frame, I notice inconsistencies with fonts and values
 ;; in custom.el
 
+;; Theme & Font
+;; Load the Θ Σ Emacs Theme.
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
+(load-theme 'thetasigma-dark t)
+
 ;; Load all elisp scripts in a folder
 (defun thetasigma--load-files (dir)
   "Ensure DIR exists, and load all elisp files in DIR."
@@ -52,11 +57,6 @@
 		(dolist (file files value)
 		  (load-file file)))
 	(error "Directory %s does not exist" dir)))
-
-;; Theme & Font
-;; Load the Θ Σ Emacs Theme.
-(add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
-(load-theme 'thetasigma t)
 
 ;; 0xProto is a monospaced font that makes reading prose easier for me. Change
 ;; it by changing the =thetasigma-font-string= variable. Reference the GNU
