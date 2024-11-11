@@ -63,6 +63,8 @@ Also note that package.el will not be available in early-init.el or scripts in =
 
 You can place your own configurations in the thetasigma-user directory.
 
+I'm also working on a light-mode theme which you can try out with =M-x load-theme thetasigma-light=
+
 # Local Variables:
 # jinx-local-words: "posframe"
 # End:
