@@ -1,11 +1,3 @@
-(leaf eglot
-  :hook
-  '((prog-mode-hook . eglot-ensure))
-  :bind
-  '(("C-c l r" . eglot-rename)
-	("C-c l f" . eglot-format)
-	("C-c l a" . eglot-code-actions)))
-
 ;; Paired parens
 (leaf elec-pair
   :custom
@@ -46,4 +38,6 @@
 										   "^\\(Enter \\)?[Pp]assword\\( for '\\(?99:.*\\)'\\)?: ?$"
 										   "^.*'s password: ?$"
 										   "^Yubikey for .*: ?$"
-										   "^Enter PIN for '.*': ?$")))
+										   "^Enter PIN for '.*': ?$"))
+  :config
+  (setq transient-default-level 5))
