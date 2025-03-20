@@ -38,8 +38,8 @@
   ;; Mac special keys to C-M-S language
   (setq mac-command-modifier 'super)
   
-  (let* ((gnuls (string-trim-right (shell-command-to-string "which gls") "\n")))
-	(if gnuls
+  (let* ((gnuls (string-trim-right (shell-command-to-string "which \\ls") "\n")))
+	(if (not (string= gnuls "/usr/bin/ls"))
 		(setq insert-directory-program gnuls)
 	  (error "Install GNU ls")))
 
