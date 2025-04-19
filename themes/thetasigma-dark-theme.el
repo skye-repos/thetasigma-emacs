@@ -79,14 +79,14 @@
 
    `(link ((,class :foreground ,interact-1 :underline t :weight semi-bold)))
 
-   `(font-lock-builtin-face ((,class :foreground ,neutral-0 :distant-foreground ,bold-distant)))
+   `(font-lock-builtin-face ((,class :foreground ,neutral-1 :distant-foreground ,bold-distant)))
    `(font-lock-doc-face ((,class :foreground ,neutral-1 :distant-foreground ,bold-distant :weight medium)))
    `(font-lock-comment-face ((,class :foreground ,subtle :distant-foreground ,bold-distant :weight extra-light)))
    `(font-lock-string-face ((,class :foreground ,interact-1 :distant-foreground ,bold-distant :weight medium)))
    `(font-lock-keyword-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant)))
    `(font-lock-constant-face ((,class :foreground ,static-2 :distant-foreground ,bold-distant)))
-   `(font-lock-function-name-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant)))
-   `(font-lock-variable-name-face ((,class :foreground ,interact-1 :distant-foreground ,bold-distant)))
+   `(font-lock-function-name-face ((,class :foreground ,static-2 :distant-foreground ,bold-distant)))
+   `(font-lock-variable-name-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant)))
    `(font-lock-type-face ((,class :foreground ,static-1 :distant-foreground ,bold-distant :weight semi-bold)))
    `(font-lock-warning-face ((,class :foreground ,standout :distant-foreground ,bold-distant :weight bold)))
    `(font-lock-property-use-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant :weight normal)))
