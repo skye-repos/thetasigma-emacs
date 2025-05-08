@@ -1,7 +1,6 @@
 ;;; Define Key Thetasigma Variables
 (defvar thetasigma-preload-dir (concat user-emacs-directory "0-preload"))
 
-(defvar thetasigma-custom-file (concat user-emacs-directory "custom.el"))
 (defcustom thetasigma-font "0xProto-16" "Font to be used in Θ Σ emacs")
 
 ;;; Minimal-emacs.d
@@ -70,13 +69,6 @@
 				   (when (display-graphic-p frame)
 					 (set-face-font 'default thetasigma-font frame))))
   (set-face-font 'default thetasigma-font))
-
-;; Set folder to dump M-x customize vars. Loading this as late as possible in
-;; early init to give a chance for the user's customizations to overwrite mine.
-(setq custom-file thetasigma-custom-file)
-(unless (file-exists-p custom-file)
-  (make-empty-file custom-file))
-(load custom-file)
 
 ;;; package.el is also loaded only after the early-init.el file. Thus, one can
 ;;; customize package.el variables without loading it. Further customizations
