@@ -79,14 +79,14 @@
 
    `(link ((,class :foreground ,interact-1 :underline t :weight semi-bold)))
 
-   `(font-lock-builtin-face ((,class :foreground ,neutral-0 :distant-foreground ,bold-distant)))
+   `(font-lock-builtin-face ((,class :foreground ,neutral-1 :distant-foreground ,bold-distant)))
    `(font-lock-doc-face ((,class :foreground ,neutral-1 :distant-foreground ,bold-distant :weight medium)))
    `(font-lock-comment-face ((,class :foreground ,subtle :distant-foreground ,bold-distant :weight extra-light)))
    `(font-lock-string-face ((,class :foreground ,interact-1 :distant-foreground ,bold-distant :weight medium)))
    `(font-lock-keyword-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant)))
    `(font-lock-constant-face ((,class :foreground ,static-2 :distant-foreground ,bold-distant)))
-   `(font-lock-function-name-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant)))
-   `(font-lock-variable-name-face ((,class :foreground ,interact-1 :distant-foreground ,bold-distant)))
+   `(font-lock-function-name-face ((,class :foreground ,static-2 :distant-foreground ,bold-distant)))
+   `(font-lock-variable-name-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant)))
    `(font-lock-type-face ((,class :foreground ,static-1 :distant-foreground ,bold-distant :weight semi-bold)))
    `(font-lock-warning-face ((,class :foreground ,standout :distant-foreground ,bold-distant :weight bold)))
    `(font-lock-property-use-face ((,class :foreground ,static-0 :distant-foreground ,bold-distant :weight normal)))
@@ -119,9 +119,9 @@
    `(font-latex-sectioning-4-face ((,class :inherit 'outline-5)))
    `(font-latex-sectioning-5-face ((,class :inherit 'outline-6)))
 
-   `(mode-line ((,class :background ,background :foreground ,bold :overline ,bold)))
+   `(mode-line ((,class :background ,background :foreground ,bold :overline ,bold :box (:line-width 4 :color ,background :style nil))))
    `(mode-line-active ((,class :inherit 'mode-line)))
-   `(mode-line-inactive ((,class :background ,background :foreground ,subtle :overline ,subtle)))
+   `(mode-line-inactive ((,class :background ,background :foreground ,subtle :overline ,subtle  :box (:line-width 4 :color ,background :style nil))))
 
    `(org-block ((,class :foreground ,bold :weight semi-bold)))
    `(org-ellipsis ((,class :foreground ,subtle)))

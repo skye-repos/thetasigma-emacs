@@ -119,9 +119,9 @@
    `(font-latex-sectioning-4-face ((,class :inherit 'outline-5)))
    `(font-latex-sectioning-5-face ((,class :inherit 'outline-6)))
 
-   `(mode-line ((,class :background ,background :foreground ,bold :overline ,bold)))
+   `(mode-line ((,class :background ,background :foreground ,bold :overline ,bold :box (:line-width 4 :color ,background :style nil))))
    `(mode-line-active ((,class :inherit 'mode-line)))
-   `(mode-line-inactive ((,class :background ,background :foreground ,subtle :overline ,subtle)))
+   `(mode-line-inactive ((,class :background ,background :foreground ,subtle :overline ,subtle  :box (:line-width 4 :color ,background :style nil))))
 
    `(org-block ((,class :foreground ,bold :weight semi-bold)))
    `(org-ellipsis ((,class :foreground ,subtle)))

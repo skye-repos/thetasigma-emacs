@@ -1,7 +1,13 @@
 ;;; Define Key Thetasigma Variables
+;; Directory of files to be loaded before init.el
 (defvar thetasigma-preload-dir (concat user-emacs-directory "0-preload"))
 
-(defcustom thetasigma-font "0xProto-16" "Font to be used in Θ Σ emacs")
+;; 0xProto is a monospaced font that makes reading prose easier for me. Change
+;; it by changing the =thetasigma-font= variable. Reference the GNU manual on
+;; how to set fonts in Emacs:
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fonts.html
+(defcustom thetasigma-font "0xProto-16" "Font to be used in Θ Σ emacs"
+  :group 'thetasigma)
 
 ;;; Minimal-emacs.d
 ;; Some of these have been adapted/stolen from minimal-emacs.d. Check out
@@ -45,7 +51,21 @@
 ;; Theme & Font
 ;; Load the Θ Σ Emacs Theme.
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
-(load-theme 'thetasigma-dark t)
+(defcustom thetasigma-theme 'thetasigma-dark
+  "Theme variant to be chosen"
+  :type '(symbol)
+  :options '('thetasigma-dark 'thetasigma-light)
+  :group 'thetasigma)
+
+(if (daemonp)
+	(add-to-list 'after-make-frame-functions
+				 (lambda (frame)
+				   (with-selected-frame frame)
+				   (when (display-graphic-p frame)
+					 (set-face-font 'default thetasigma-font frame)
+					 )))
+  (set-face-font 'default thetasigma-font))
+
 
 ;; Load all elisp scripts in a folder
 (defun thetasigma--load-files (dir)
@@ -57,18 +77,6 @@
 		  (load-file file)))
 	(error "Directory %s does not exist" dir)))
 
-;; 0xProto is a monospaced font that makes reading prose easier for me. Change
-;; it by changing the =thetasigma-font-string= variable. Reference the GNU
-;; manual on how to set fonts in Emacs:
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fonts.html
-
-(if (daemonp)
-	(add-to-list 'after-make-frame-functions
-				 (lambda (frame)
-				   (with-selected-frame frame)
-				   (when (display-graphic-p frame)
-					 (set-face-font 'default thetasigma-font frame))))
-  (set-face-font 'default thetasigma-font))
 
 ;;; package.el is also loaded only after the early-init.el file. Thus, one can
 ;;; customize package.el variables without loading it. Further customizations
@@ -78,8 +86,8 @@
 (setq package-quickstart nil)
 
 (customize-set-variable
-   'package-archives '(("melpa" . "https://melpa.org/packages/")
-                       ("gnu" . "https://elpa.gnu.org/packages/")
-					   ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+ 'package-archives '(("melpa" . "https://melpa.org/packages/")
+                     ("gnu" . "https://elpa.gnu.org/packages/")
+					 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
 (thetasigma--load-files thetasigma-preload-dir)

@@ -139,7 +139,8 @@
 ;; Spacious Padding
 (leaf spacious-padding
   :ensure t
+  :custom
+  '((spacious-padding-widths . '( :right-divider-width 10
+								  :scroll-bar-width 4)))
   :config
-  (setq spacious-padding-widths '( :right-divider-width 10
-								   :scroll-bar-width 4))
-  (spacious-padding-mode))
+  (spacious-padding-mode t))
