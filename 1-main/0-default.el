@@ -36,7 +36,7 @@
 		 (tool-bar-lines . 0)
 		 (menu-bar-lines . 0)
 		 (right-divider-width . 0)))
-	(frame-title-format . nil)
+	(frame-title-format . "%b%*")
 	(fill-column . 80)
 	(window-divider-mode . nil)
 	(window-min-height . 1)
