@@ -42,7 +42,6 @@ Some of the goals I have for this exercise include
 * Installation
 1) Install libenchant. [[https://github.com/minad/jinx?tab=readme-ov-file#installation][You can follow the instructions here.]]
 2) Install the font =0xProto=. You can set your own font through the =thetasigma-font= custom variable.
-3) Install [[https://github.com/blahgeek/emacs-lsp-booster/releases][emacs-lsp-booster]] into =~/.local/bin/=
 
 Then just git clone into the =user-emacs-directory=. I like =~/.config/emacs= though any folder recognized by the XDG config specification should work.
 

@@ -31,13 +31,11 @@
 ;; Git
 (leaf magit
   :ensure t
-  :custom
-  (magit-process-password-prompt-regexps .
-										 '("^\\(Enter \\)?[Pp]assphrase\\( for \\(RSA \\)?key '.*'\\)?: ?$"
-										   ;; match-group 99 is used to identify a host
-										   "^\\(Enter \\)?[Pp]assword\\( for '\\(?99:.*\\)'\\)?: ?$"
-										   "^.*'s password: ?$"
-										   "^Yubikey for .*: ?$"
-										   "^Enter PIN for '.*': ?$"))
   :config
   (setq transient-default-level 5))
+
+(leaf magit-delta
+  :ensure t
+  :hook
+  '((magit-mode-hook .
+					 (lambda () (magit-delta-mode t)))))
