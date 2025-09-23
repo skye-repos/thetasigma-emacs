@@ -71,19 +71,16 @@
 	;; GPG
 	(epg-pinentry-mode . 'loopback))
   :bind
-  '(([remap kill-buffer] . kill-current-buffer)
+  '(([remap kill-buffer] . thetasigma--kill-current-buffer-and-window)
 	([remap keyboard-quit] . thetasigma--keyboard-quit)
 	([remap save-buffers-kill-terminal]
 	 . thetasigma--delete-frame-or-kill-emacs)
-	([remap quit-window] . thetasigma--quit-window)
+	([remap quit-window] . thetasigma--kill-current-buffer-and-window)
 	("s-<up>" . windmove-up)
 	("s-<down>" . windmove-down)
 	("s-<left>" . windmove-left)
 	("s-<right>" . windmove-right)
-	("s-k" . windmove-up)
-	("s-j" . windmove-down)
-	("s-h" . windmove-left)
-	("s-l" . windmove-right)
+	("C-x w w" . thetasigma--split-window-dwim)
 	("<f5>" . revert-buffer)
 	("C-h F" . describe-face)
 	("C-h s" . describe-symbol)

@@ -36,13 +36,42 @@
   (condition-case nil (delete-frame)
     (error (save-buffers-kill-terminal))))
 
-(defun thetasigma--quit-window ()
-  "Making `quit-window' act more like a context aware delete-window."
+;; (defun thetasigma--quit-window ()
+;;   "Making `quit-window' act more like a context aware delete-window."
+;;   (interactive)
+;;   (let* ((winlen (length (window-list)))
+;; 		 (bufwin (get-buffer-window)))
+;; 	(cond ((> winlen 1)
+;; 		   (delete-window bufwin))
+;; 		  ((eq winlen 1)
+;; 		   (quit-window t bufwin)))))
+
+(defun thetasigma--kill-current-buffer-and-window ()
+  "Kill a buffer's window if there is more than one window open in the current frame.
+   If the same buffer is open in more than one window, just kill the window."
   (interactive)
   (let* ((winlen (length (window-list)))
-		(bufnam (buffer-name))
-		(bufwin (get-buffer-window bufnam)))
-	(cond ((> winlen 1)
-		   (delete-window bufwin))
-		  ((eq winlen 1)
-		   (quit-window t bufwin)))))
+		 (bufwin (get-buffer-window-list))
+		 (bufwin-cur (car bufwin))
+		 (bufwin-len (length bufwin)))
+	(cond ((and (> winlen 1) (> bufwin-len 1))
+		   (delete-window bufwin-cur))
+		  ((and (> winlen 1) (= bufwin-len 1))
+		   (progn
+			 (kill-current-buffer)
+			 (delete-window bufwin-cur)))
+		  ((= winlen 1)
+		   (kill-current-buffer)))))
+
+(defun thetasigma--split-window-dwim ()
+  "Split the current window vertically or horizontally based on window's pixel height and width."
+  (interactive)
+  (let* ((h (float (window-pixel-height)))
+		 (w (float (window-pixel-width)))
+		 (r (/ h w)))
+	(cond ((> r 1)
+		   (split-window-vertically))
+		  ((> 1 r)
+		   (split-window-horizontally))
+		  ((= 1 r)
+		   (split-window-sensibly)))))
