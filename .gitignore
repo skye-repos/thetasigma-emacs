@@ -13,3 +13,5 @@ tree-sitter/*
 .lsp-*
 tramp
 2-user/*
+.mbsync*
+mbsync*
