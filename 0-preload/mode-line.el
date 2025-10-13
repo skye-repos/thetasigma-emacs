@@ -83,11 +83,20 @@
 			   thetasigma-mode-line-rw
 			   " "
 			   '(:eval (propertize "%b" 'face '(:weight bold)))
-			   '(:eval (propertize "  Mode: " 'face '(:slant italic)))
+			   " | "
+			   '(:eval (propertize "Mode: " 'face '(:slant italic)))
 			   '(:eval (propertize (if (car-safe mode-name)
 									   (car mode-name)
 									   mode-name)
-								   'face '(:slant italic)))))
-
+								   'face '(:slant italic)))
+			   " | "
+			   ;; `(vc-mode vc-mode)
+			   '(:eval (propertize (concat "Branch: "
+										   (if (equal (car (vc-git-branches)) nil)
+											   "None"
+											 (car (vc-git-branches))))
+								   'face '(:slant italic)))
+			   ))
+(vc-state (buffer-file-name (current-buffer)))
 (provide 'thetasigma-mode-line)
 ;;; thetasigma-mode-line.el ends here

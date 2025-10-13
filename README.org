@@ -22,18 +22,13 @@ Some of the goals I have for this exercise include
    - Providing easy access to help & documentation.
 
 * Progress
-- [X] Bare-bones setup to build from.
-- [X] Bare-bones recreation of [[https://github.com/skye-repos/TransSide-theme][my old theme]] =TransSide-Theme=.
-- [-] Simple mode-line.
-  - [ ] Git version details
-  - [X] Custom RO Indicator
-  - [X] File name and buffer mode indicator
 - [ ] Remove leaf.el. The added syntactic consistency is great, but use-package
   is more standard. Alternatively, Can be more explicit with all
   configurations and avoid macros entirely
 - [ ] A quick script to install fonts and libenchant in a programmatic manner
 - Consider the following functionality
   - [ ] Treating the mini-buffer as a ephemeral child frame.
+    - nova-frame? needs to be adapted
   - [ ] Quick help mode
     - [ ] Emacs in general
     - [ ] Org-mode specifically
