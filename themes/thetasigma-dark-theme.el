@@ -141,6 +141,19 @@
    `(vertico-posframe-border-2 ((,class :background ,static-0 :weight light)))
    `(vertico-posframe-border-3 ((,class :background ,interact-0 :weight light)))
    `(vertico-posframe-border-4 ((,class :background ,neutral-1 :weight light)))
+
+   `(ansi-color-black ((,class :foreground ,bg-dim)))
+   `(ansi-color-white ((,class :foreground ,foreground)))
+   `(ansi-color-red ((,class :foreground ,interact-0)))
+   `(ansi-color-magenta ((,class :foreground ,interact-2)))
+   `(ansi-color-blue ((,class :foreground ,static-0)))
+   `(ansi-color-cyan ((,class :foreground ,static-1)))
+   `(ansi-color-green ((,class :foreground ,static-2)))
+   `(ansi-color-yellow ((,class :foreground ,standout)))
+
+   `(ansi-color-bold ((,class :foreground ,bold :weight bold)))
+   `(ansi-color-faint ((,class :foreground ,subtle)))
+   `(ansi-color-inverse ((,class :foreground ,bg-dim :background ,standout)))   
    )
   )
   
