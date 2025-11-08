@@ -45,7 +45,7 @@
       (foreground "#FFD9FF")
       (background "#04040C")
       (bg-dim "#04041C")
-      (bg-overlay "#4C146C")
+      (bg-overlay "#14142C")
       (bold "#F9FFF9")
       (bold-distant "#040004")
       (subtle "#8A87AA")
@@ -137,6 +137,10 @@
    `(org-level-7 ((,class :inherit outline-7)))
    `(org-level-8 ((,class :inherit outline-8)))
 
+   `(consult-file ((,class :foreground ,overlay)))
+   `(consult-bookmark ((,class :foreground ,overlay)))
+   
+   `(vertico-posframe ((,class :background ,bg-overlay)))
    `(vertico-posframe-border ((,class :background ,neutral-0 :weight light)))
    `(vertico-posframe-border-2 ((,class :background ,static-0 :weight light)))
    `(vertico-posframe-border-3 ((,class :background ,interact-0 :weight light)))

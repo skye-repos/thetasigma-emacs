@@ -1,4 +1,4 @@
-;;; thetasigma-light-theme.el --- Colorful contrast -*- lexical-binding: t -*-
+;;; thetasigma-dark-low-contrast-theme.el --- Muted contrast  -*- lexical-binding: t -*-
 
 ;; Author: Skye
 ;; Version: 0.1
@@ -7,7 +7,7 @@
 ;; Keywords: Emacs, color-theme, TransSide-theme
 
 ;; This file is not part of GNU Emacs
-
+3
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
@@ -23,12 +23,12 @@
 
 ;;; Commentary:
 
-;; This light mode theme is built from the bones of my old theme - TransSide,
-;; using similar principles.  I categorize faces in Emacs based on the
-;; kind/degree of interaction required from them.  Some elements like keywords
-;; are static, some elements are static in feature but interactive in behavior -
-;; like selections, and of course elements that require active interaction like
-;; strings and such.
+;; This theme is built from the bones of my old theme - TransSide, using
+;; similar principles.  I categorize faces in Emacs based on the
+;; kind/degree of interaction required from them.  Some elements like
+;; keywords are static, some elements are static in feature but
+;; interactive in behavior - like selections, and of course elements
+;; that require active interaction like strings and such.
 
 ;; I have tried to use as few colors as possible here.  I also try to
 ;; enforce the WCAG contrast guidelines as much as possible.  The bulk of
@@ -36,33 +36,33 @@
 ;; colors for use in subtler contexts.
 
 ;;; Code:
-(deftheme thetasigma-light "The light-theme used for Θ Σ Emacs."
+(deftheme thetasigma-dark-low-contrast "Lower-contrast theme used for Θ Σ Emacs."
 		  :family 'thetasigma
-		  :kind 'light
-		  'background-mode 'light)
+		  :kind 'dark
+		  :background-mode 'dark)
 
 (let ((class '((class color) (min-colors 89)))
-	  (foreground "#04040C")
-      (background "#FFF9FE")
-      (bg-dim "#F9CFFE")
-      (bg-overlay "#FCE4FC")
-	  (bold "#44346C")
-      (bold-distant "#F9FFF9")
-      (subtle "#4A476A")
-      (standout "#3C7E60")
-      (overlay "#40307A")
-      (interact-0 "#6E103F")
-      (interact-1 "#7E203F")
-      (interact-2 "#8E203F")
-      (static-0 "#242EBF")
-      (static-1 "#243EAF")
-      (static-2 "#244E7F")
-      (neutral-0 "#49308E")
-      (neutral-1 "#58307E")
-      (neutral-2 "#67206E"))
+      (foreground "#EED9EE")
+      (background "#14121C")
+      (bg-dim "#14142C")
+      (bg-overlay "#24142C")
+      (bold "#F9FFF9")
+      (bold-distant "#141414")
+      (subtle "#8A87AA")
+      (standout "#CCEEB0")
+      (overlay "#B0A0EA")
+      (interact-0 "#FEA0DF")
+      (interact-1 "#FE90DF")
+      (interact-2 "#FE90EF")
+      (static-0 "#84BEFF")
+      (static-1 "#84CEEF")
+      (static-2 "#84DFCF")
+      (neutral-0 "#B9B0FE")
+      (neutral-1 "#C8A1FE")
+      (neutral-2 "#D790FE"))
 
   (custom-theme-set-faces
-   'thetasigma-light
+   'thetasigma-dark-low-contrast
    `(default ((,class :background ,background :foreground ,foreground :distant-foreground ,bold-distant)))
    `(bold ((,class :foreground ,bold :weight bold)))
    `(italic ((,class :slant oblique)))
@@ -157,14 +157,14 @@
 
    `(ansi-color-bold ((,class :foreground ,bold :weight bold)))
    `(ansi-color-faint ((,class :foreground ,subtle)))
-   `(ansi-color-inverse ((,class :foreground ,bg-dim :background ,standout)))
+   `(ansi-color-inverse ((,class :foreground ,bg-dim :background ,standout)))   
    )
   )
   
 
-(provide-theme 'thetasigma-light)
-(provide 'thetasigma-light-theme)
-;;; thetasigma-light-theme.el ends here
+(provide-theme 'thetasigma-dark-low-contrast)
+(provide 'thetasigma-dark-low-contrast-theme)
+;;; thetasigma-dark-theme.el ends here
 
 ;; Local Variables:
 ;; eval: (rainbow-mode) (set-fill-column 70)
