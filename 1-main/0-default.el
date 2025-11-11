@@ -38,6 +38,8 @@
 		 (right-divider-width . 0)))
 	(frame-title-format . "%b")
 	(fill-column . 80)
+	(split-height-threshold . 60)
+	(split-width-threshold . 80)
 	(window-divider-mode . nil)
 	(window-min-height . 1)
 	;; Windmove

@@ -44,7 +44,6 @@
 (let ((class '((class color) (min-colors 89)))
       (foreground "#FFD9FF")
       (background "#04040C")
-      (bg-dim "#04041C")
       (bg-overlay "#14142C")
       (bold "#F9FFF9")
       (bold-distant "#040004")
@@ -146,7 +145,7 @@
    `(vertico-posframe-border-3 ((,class :background ,interact-0 :weight light)))
    `(vertico-posframe-border-4 ((,class :background ,neutral-1 :weight light)))
 
-   `(ansi-color-black ((,class :foreground ,bg-dim)))
+   `(ansi-color-black ((,class :foreground ,bg-overlay)))
    `(ansi-color-white ((,class :foreground ,foreground)))
    `(ansi-color-red ((,class :foreground ,interact-0)))
    `(ansi-color-magenta ((,class :foreground ,interact-2)))
@@ -157,7 +156,7 @@
 
    `(ansi-color-bold ((,class :foreground ,bold :weight bold)))
    `(ansi-color-faint ((,class :foreground ,subtle)))
-   `(ansi-color-inverse ((,class :foreground ,bg-dim :background ,standout)))   
+   `(ansi-color-inverse ((,class :foreground ,bg-overlay :background ,standout)))
    )
   )
   
