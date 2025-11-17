@@ -97,6 +97,6 @@
 											 (car (vc-git-branches))))
 								   'face '(:slant italic)))
 			   ))
-(vc-state (buffer-file-name (current-buffer)))
+
 (provide 'thetasigma-mode-line)
 ;;; thetasigma-mode-line.el ends here
