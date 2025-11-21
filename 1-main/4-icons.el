@@ -16,10 +16,14 @@
 
 (leaf nerd-icons-corfu
   :ensure t
+  :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 (leaf nerd-icons-completion
   :ensure t
-  :custom
-  '(nerd-icons-completion-mode . t))
+  :after vertico
+  :hook
+  '((marginalia-mode-hook . nerd-icons-completion-marginalia-setup))
+  :config
+  (nerd-icons-completion-mode t))

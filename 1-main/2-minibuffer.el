@@ -1,6 +1,7 @@
 ;; Minibuffer and goodies
 (leaf vertico
   :ensure t
+  :require vertico-multiform
   :custom
   '((vertico-count . 7)
 	(vertico-resize . t)

@@ -45,7 +45,7 @@
 	;; Windmove
 	(windmove-mode . t)
 	;; Backups, Savehist, Recentf
-	(backup-directory-alist . '(("." . thetasigma-saves-dir)))
+	(backup-directory-alist . '(("." . 'thetasigma-saves-dir)))
 	(backup-by-copying . t)
 	(version-control . t)
 	(delete-old-versions . t)
