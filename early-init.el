@@ -51,10 +51,13 @@
 ;; Theme & Font
 ;; Load the Θ Σ Emacs Theme.
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
-(defcustom thetasigma-theme 'thetasigma-dark-low-contrast
-  "Theme variant to be chosen"
+
+(defcustom thetasigma-theme-style 'thetasigma-dark-low-contrast
+  "Chosen theme variant."
   :type '(symbol)
-  :options '('thetasigma-dark 'thetasigma-light 'thetasigma-dark-low-contrast)
+  :options '('thetasigma-dark-low-contrast
+			 'thetasigma-dark-high-contrast
+			 'thetasigma-light)
   :group 'thetasigma)
 
 (if (daemonp)
