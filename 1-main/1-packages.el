@@ -17,14 +17,20 @@
 (leaf rainbow-mode
   :ensure t)
 
-;; Simple undo tree
-(leaf vundo
+;; ;; Simple undo tree
+;; (leaf vundo
+;;   :ensure t
+;;   :bind
+;;   '(("s-z" . vundo)
+;; 	("C-x u" . vundo))
+;;   :custom
+;;   '((vundo-glyph-alist . vundo-unicode-symbols)))
+
+;; Persistent undo history
+(leaf undo-fu-session
   :ensure t
-  :bind
-  '(("s-z" . vundo)
-	("C-x u" . vundo))
-  :custom
-  '((vundo-glyph-alist . vundo-unicode-symbols)))
+  :config
+  (undo-fu-session-global-mode t))
 
 ;; Shell stuff
 (leaf eat

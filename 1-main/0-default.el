@@ -19,6 +19,7 @@
 	(global-visual-line-mode . t)
 	;; Tabs
 	(tab-always-indent . 'complete)
+	(tab-first-completion . 'word)
 	(tab-width . 4)
 	;; y/n for answering yes/no questions
 	(use-short-answers . t)
@@ -28,6 +29,7 @@
 	(uniquify-after-kill-buffer-p . t)
 	(uniquify-ignore-buffers-re . "^\\*")
 	;; Frame & Window Stuff
+	(frame-resize-pixelwise . t)
 	(default-frame-alist
 	 . '((vertical-scroll-bars . nil)
 		 (internal-border-width . 24)
