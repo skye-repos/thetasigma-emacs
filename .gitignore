@@ -13,5 +13,8 @@ tree-sitter/*
 .lsp-*
 tramp
 2-user/*
-.mbsync*
-mbsync*
+*.db
+url/*
+bookmarks
+.org-id-locations
+undo-fu-session
