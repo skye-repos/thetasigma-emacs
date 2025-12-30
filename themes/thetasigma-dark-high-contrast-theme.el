@@ -1,1 +1,1 @@
-/Users/skye/Documents/3d - Projects/emacs/thetasigma-themes/thetasigma-dark-high-contrast-theme.el
+/Users/skye/Documents/3d - Projects/emacs/thetasigma-theme/thetasigma-dark-high-contrast-theme.el
