@@ -1,0 +1,14 @@
+julia-mode
+
+(fn "function " p "(" p ")"n> r n "end")
+(for "for " p " ∈ " p n> r> n "end")
+(if "if " p n> r n "end")
+(elif "elseif " > p n> r)
+(ifelif p " ? " p " : ")
+(vec "Vector{"p"}""()")
+(arr p"[]")
+
+;; Local Variables:
+;; mode: lisp-data
+;; outline-regexp: "[a-z]"
+;; End:

@@ -18,6 +18,7 @@
 	(delete-selection-mode . t)
 	(global-visual-line-mode . t)
 	;; Tabs
+	(indent-tabs-mode . t)
 	(tab-always-indent . 'complete)
 	(tab-first-completion . 'word)
 	(tab-width . 4)
@@ -73,7 +74,13 @@
 	 . "-al --group-directories-first --time-style=iso")
 	(dired-dwim-target . t)
 	;; GPG
-	(epg-pinentry-mode . 'loopback))
+	(epg-pinentry-mode . 'loopback)
+	;; TRAMP
+	(remote-file-name-inhibit-locks . t)
+	(tramp-use-scp-direct-remote-copying . t)
+	(remote-file-name-inhibit-auto-save-visited . t)
+	(tramp-copy-size-limit . 1048576) ;; 1MB
+	(tramp-verbose . 2))
   :bind
   '(([remap kill-buffer] . thetasigma--kill-current-buffer-and-window)
 	([remap keyboard-quit] . thetasigma--keyboard-quit)
@@ -109,4 +116,19 @@
   (put 'command-history            'history-length 10)
   (put 'query-replace-history      'history-length 10)
   (put 'file-name-history          'history-length 30)
-  (put 'minibuffer-history         'history-length 50))
+  (put 'minibuffer-history         'history-length 50)
+
+  ;; More TRAMP stuff
+  (connection-local-set-profile-variables
+   'remote-direct-async-process
+   '((tramp-direct-async-process . t)))
+
+  (connection-local-set-profiles
+   '(:application tramp :protocol "scp")
+   'remote-direct-async-process)
+
+  (setq magit-tramp-pipe-stty-settings 'pty)
+
+  (with-eval-after-load 'tramp
+	(with-eval-after-load 'compile
+      (remove-hook 'compilation-mode-hook #'tramp-compile-disable-ssh-controlmaster-options))))
