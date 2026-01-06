@@ -20,7 +20,7 @@
   :custom
   '((corfu-auto . t)
 	(corfu-auto-delay . 0)
-	(corfu-auto-prefix . 4)
+	(corfu-auto-prefix . 2)
 	(corfu-quit-no-match . t)
 	(global-corfu-mode . t)
 	(corfu-history-mode . t)
@@ -30,8 +30,9 @@
 (leaf tempel
   :ensure t
   :bind
-  '(("C-<tab>" . tempel-next)
-	("M-<tab>" . tempel-previous))
+  '(("C-c i" . tempel-complete)
+	("C-<tab>" . tempel-next)
+	("S-<tab>" . tempel-previous))
   :custom
   '((tempel-trigger-prefix . "<"))
   :config

@@ -52,7 +52,7 @@
 ;; Load the Θ Σ Emacs Theme.
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
 
-(defcustom thetasigma-theme-style 'thetasigma-dark-low-contrast
+(defcustom thetasigma-theme-style 'thetasigma-dark-high-contrast
   "Chosen theme variant."
   :type '(symbol)
   :options '('thetasigma-dark-low-contrast
