@@ -6,7 +6,7 @@
 ;; it by changing the =thetasigma-font= variable. Reference the GNU manual on
 ;; how to set fonts in Emacs:
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fonts.html
-(defcustom thetasigma-font "0xProto-16.0" "Font to be used in Θ Σ emacs"
+(defcustom thetasigma-font "0xProto-18.0" "Font to be used in Θ Σ emacs"
   :group 'thetasigma)
 
 ;;; Minimal-emacs.d
