@@ -14,6 +14,11 @@
   :hook
   '(dired-mode-hook . nerd-icons-dired-mode))
 
+(leaf nerd-icons-ibuffer
+  :ensure t
+  :hook
+  '((ibuffer-mode-hook . nerd-icons-ibuffer-mode)))
+
 (leaf nerd-icons-corfu
   :ensure t
   :after corfu

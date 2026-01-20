@@ -87,6 +87,7 @@
 	([remap save-buffers-kill-terminal]
 	 . thetasigma--delete-frame-or-kill-emacs)
 	([remap quit-window] . thetasigma--kill-current-buffer-and-window)
+	([remap list-buffers] . ibuffer)
 	("C-x w w" . thetasigma--split-window-dwim)
 	("C-x w q" . thetasigma--kill-current-buffer-and-window)
 	("C-x w h" . windmove-left)

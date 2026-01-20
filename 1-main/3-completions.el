@@ -49,12 +49,16 @@
 ;; (leaf tempel-collection
 ;;   :ensure t)
 
+;; Yasnippet
 (leaf yasnippet
   :ensure t
-  :config
-  (yas-minor-mode t))
+  :hook
+  '((prog-mode-hook . yas-minor-mode)))
 
 (leaf yasnippet-snippets
+  :ensure t)
+
+(leaf yasnippet-capf
   :ensure t)
 
 ;; Which Key

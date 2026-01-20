@@ -23,7 +23,7 @@
 ;; Set folder to dump M-x customize vars. Loading this as late as possible in
 ;; early init to give a chance for the user's customizations to overwrite mine.
 (defvar thetasigma-custom-file (concat user-emacs-directory "custom.el"))
-(setq custom-file thetasigma-custom-file)
+(customize-save-variable 'custom-file thetasigma-custom-file)
 
 (unless (file-exists-p custom-file)
   (make-empty-file custom-file))
