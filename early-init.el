@@ -69,7 +69,6 @@
 					 )))
   (set-face-font 'default thetasigma-font))
 
-
 ;; Load all elisp scripts in a folder
 (defun thetasigma--load-files (dir)
   "Ensure DIR exists, and load all elisp files in DIR."
@@ -80,6 +79,10 @@
 		  (load-file file)))
 	(error "Directory %s does not exist" dir)))
 
+;; Set folder to dump M-x customize vars. Loading this as late as possible in
+;; early init to give a chance for the user's customizations to overwrite mine.
+(defvar thetasigma-custom-file (concat user-emacs-directory "custom.el"))
+(customize-save-variable 'custom-file thetasigma-custom-file)
 
 ;;; package.el is also loaded only after the early-init.el file. Thus, one can
 ;;; customize package.el variables without loading it. Further customizations
