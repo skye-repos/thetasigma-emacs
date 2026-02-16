@@ -18,3 +18,4 @@ url/*
 bookmarks
 .org-id-locations
 undo-fu-session
+.DS_Store

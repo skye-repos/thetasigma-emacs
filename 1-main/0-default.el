@@ -113,7 +113,10 @@
 	("C-h C-S-s" . info-lookup-symbol)
 	("C-z ;" . comment-dwim)
 	("C-z C-e" . eval-defun)
-	("C-z C-<SPC>" . fixup-whitespace))
+	("C-z C-<SPC>" . fixup-whitespace)
+	(:dired-mode-map
+	 ("<left>" . dired-up-directory)
+	 ("<right>" . dired-find-file)))
   :hook
   '((dired-mode-hook . dired-hide-details-mode))
   :config
