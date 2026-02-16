@@ -53,15 +53,26 @@
   (let* ((winlen (length (window-list)))
 		 (bufwin (get-buffer-window-list))
 		 (bufwin-cur (car bufwin))
-		 (bufwin-len (length bufwin)))
-	(cond ((and (> winlen 1) (> bufwin-len 1))
-		   (delete-window bufwin-cur))
-		  ((and (> winlen 1) (= bufwin-len 1))
-		   (progn
-			 (kill-current-buffer)
-			 (delete-window bufwin-cur)))
-		  ((= winlen 1)
-		   (kill-current-buffer)))))
+		 (bufwin-len (length bufwin))
+		 (ignore-p (derived-mode-p
+					'(dired-mode
+					  image-mode
+					  doc-view-mode
+					  pdf-view-mode))))
+	(cond
+	 ;; More than one window active for the same buffer
+	 ((and (> winlen 1) (> bufwin-len 1))
+	  (delete-window bufwin-cur))
+	 ;; More than one window, but no duplicates of the current buffer
+	 ((and (> winlen 1) (= bufwin-len 1))
+	  (if ignore-p
+		  (kill-current-buffer) ;; If its an image or pdf, only kill the buffer
+		(progn
+		  (kill-current-buffer)
+		  (delete-window bufwin-cur))))
+	 ;; Only one window
+	 ((= winlen 1)
+	  (kill-current-buffer)))))
 
 (defun thetasigma--split-window-dwim ()
   "Split the current window vertically or horizontally based on window's pixel height and width."

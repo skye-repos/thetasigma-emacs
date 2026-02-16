@@ -26,6 +26,13 @@
 	(corfu-history-mode . t)
 	(corfu-popupinfo-mode . t)))
 
+(leaf cape
+  :ensure t
+  :config
+   (add-hook 'completion-at-point-functions #'cape-dabbrev)
+   (add-hook 'completion-at-point-functions #'cape-file)
+   (add-hook 'completion-at-point-functions #'cape-tex))
+
 ;; ;; Tempel
 ;; (leaf tempel
 ;;   :ensure t
@@ -53,7 +60,9 @@
 (leaf yasnippet
   :ensure t
   :hook
-  '((prog-mode-hook . yas-minor-mode)))
+  '((prog-mode-hook . yas-minor-mode)
+	(LaTeX-mode-hook . yas-minor-mode)
+	(latex-mode-hook . yas-minor-mode)))
 
 (leaf yasnippet-snippets
   :ensure t)

@@ -29,6 +29,9 @@
 	(uniquify-separator . " • ")
 	(uniquify-after-kill-buffer-p . t)
 	(uniquify-ignore-buffers-re . "^\\*")
+	;; Eldoc
+	(eldoc-echo-area-use-multiline-p . 8)
+	(eldoc-echo-area-display-truncation-message . nil)
 	;; Frame & Window Stuff
 	(frame-resize-pixelwise . t)
 	(default-frame-alist
