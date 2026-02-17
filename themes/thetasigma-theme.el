@@ -77,7 +77,7 @@ Argument THEME-ALIST alist of colors to be used in the macro."
 
 	 `(link ((,class :foreground ,interact-1 :underline t :weight semi-bold)))
 
-	 `(font-lock-builtin-face ((,class :foreground ,neutral-1 :distant-foreground ,bold-distant)))
+	 `(font-lock-builtin-face ((,class :foreground ,neutral-0 :distant-foreground ,bold-distant)))
 	 `(font-lock-doc-face ((,class :foreground ,neutral-1 :distant-foreground ,bold-distant :weight medium)))
 	 `(font-lock-comment-face ((,class :foreground ,subtle :distant-foreground ,bold-distant :weight extra-light)))
 	 `(font-lock-string-face ((,class :foreground ,interact-1 :distant-foreground ,bold-distant :weight medium)))

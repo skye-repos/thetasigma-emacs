@@ -38,12 +38,24 @@
 (defface thetasigma-mode-line-not-mod-inactive nil
   "Mode line face for when an inactive buffer has not been modified.")
 
-(let ((static-0 "#84BEFF")
-      (static-1 "#84CEEF")
-      (static-2 "#84DFCF")
-      (neutral-0 "#B9B0FE")
-      (neutral-1 "#C8A1FE")
-      (neutral-2 "#D790FE"))
+;; (let ((static-0 "#84BEFF")
+;;       (static-1 "#84CEEF")
+;;       (static-2 "#84DFCF")
+;;       (neutral-0 "#B9B0FE")
+;;       (neutral-1 "#C8A1FE")
+;;       (neutral-2 "#D790FE"))
+
+(let* ((static-0 (face-foreground
+				  'font-lock-keyword-face))
+	   (static-1 (face-foreground
+				  'font-lock-type-face))
+	   (static-2 (face-foreground
+				  'font-lock-constant-face))
+	   (neutral-0 (face-foreground
+				   'font-lock-builtin-face))
+	   (neutral-1 (face-foreground
+				   'font-lock-doc-face))
+	   (neutral-2 (face-foreground 'highlight)))
 
   (set-face-attribute 'thetasigma-mode-line-mod-active nil
 					  :foreground neutral-2)

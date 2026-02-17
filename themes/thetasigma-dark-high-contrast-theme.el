@@ -1,4 +1,4 @@
-;;; thetasigma-dark-high-contrast-theme.el --- Dark & High Contrast theme variant
+;;; thetasigma-dark-high-contrast-theme.el --- High Contrast Dark theme
 
 ;;; Commentary:
 ;; 

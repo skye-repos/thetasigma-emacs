@@ -1,3 +1,10 @@
+;;; thetasigma-light-theme.el --- High Contrast light theme
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
 (require-theme 'thetasigma-theme)
 
 (deftheme thetasigma-light "Contrast rich & WCAG compliant light theme"

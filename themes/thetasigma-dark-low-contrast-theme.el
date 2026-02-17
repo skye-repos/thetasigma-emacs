@@ -1,3 +1,10 @@
+;;; thetasigma-dark-low-contrast-theme.el --- Contrast rich dark theme 
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
 (require-theme 'thetasigma-theme)
 
 (deftheme thetasigma-dark-low-contrast "Contrast rich & WCAG compliant dark theme"
