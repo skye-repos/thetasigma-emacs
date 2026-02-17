@@ -20,8 +20,15 @@
 	(thetasigma--load-files thetasigma-user-dir)
   (make-directory thetasigma-user-dir))
 
-
 ;; Load the custom file set in early init
 (unless (file-exists-p custom-file)
   (make-empty-file custom-file))
 (load custom-file)
+
+;; Modeline reloading of colors
+(if (daemonp)
+	(add-hook 'after-make-frame-functions
+				 (lambda (frame)
+				   (when (display-graphic-p frame)
+					 (thetasigma-mode-line--refresh-faces))))
+  (thetasigma-mode-line--refresh-faces))

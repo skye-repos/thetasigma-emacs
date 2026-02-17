@@ -2,13 +2,6 @@
 ;; Directory of files to be loaded before init.el
 (defvar thetasigma-preload-dir (concat user-emacs-directory "0-preload"))
 
-;; 0xProto is a monospaced font that makes reading prose easier for me. Change
-;; it by changing the =thetasigma-font= variable. Reference the GNU manual on
-;; how to set fonts in Emacs:
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fonts.html
-(defcustom thetasigma-font "0xProto-18.0" "Font to be used in Θ Σ emacs"
-  :group 'thetasigma)
-
 ;;; Minimal-emacs.d
 ;; Some of these have been adapted/stolen from minimal-emacs.d. Check out
 ;; https://github.com/jamescherti/minimal-emacs.d for more information and neat
