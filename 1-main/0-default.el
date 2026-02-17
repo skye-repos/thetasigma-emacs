@@ -115,6 +115,7 @@
 	("C-z C-e" . eval-defun)
 	("C-z C-<SPC>" . fixup-whitespace)
 	(:dired-mode-map
+	 :package dired
 	 ("<left>" . dired-up-directory)
 	 ("<right>" . dired-find-file)))
   :hook
@@ -131,7 +132,7 @@
    '((tramp-direct-async-process . t)))
 
   (connection-local-set-profiles
-   '(:application tramp :protocol "scp")
+   '(:application tramp :protocol "rsync")
    'remote-direct-async-process)
 
   (setq magit-tramp-pipe-stty-settings 'pty)
