@@ -24,5 +24,3 @@
 (unless (file-exists-p custom-file)
   (make-empty-file custom-file))
 (load custom-file)
-
-(load-theme thetasigma-theme-style t)
