@@ -60,8 +60,6 @@
 			 'thetasigma-light)
   :group 'thetasigma)
 
-(load-theme thetasigma-theme-style t)
-
 (if (daemonp)
 	(add-to-list 'after-make-frame-functions
 				 (lambda (frame)

@@ -38,33 +38,20 @@
 (defface thetasigma-mode-line-not-mod-inactive nil
   "Mode line face for when an inactive buffer has not been modified.")
 
-;; (let ((static-0 "#84BEFF")
-;;       (static-1 "#84CEEF")
-;;       (static-2 "#84DFCF")
-;;       (neutral-0 "#B9B0FE")
-;;       (neutral-1 "#C8A1FE")
-;;       (neutral-2 "#D790FE"))
+(defun thetasigma-mode-line--refresh-faces ()
+  "Face refreshing function to be called after theme is loaded."
+  
+  (let* ((static-0 (face-foreground 'font-lock-keyword-face))
+		 (static-1 (face-foreground 'font-lock-type-face))
+		 (static-2 (face-foreground 'font-lock-constant-face))
+		 (neutral-0 (face-foreground 'font-lock-builtin-face))
+		 (neutral-1 (face-foreground 'font-lock-doc-face))
+		 (neutral-2 (face-foreground 'highlight)))
 
-(let* ((static-0 (face-foreground
-				  'font-lock-keyword-face))
-	   (static-1 (face-foreground
-				  'font-lock-type-face))
-	   (static-2 (face-foreground
-				  'font-lock-constant-face))
-	   (neutral-0 (face-foreground
-				   'font-lock-builtin-face))
-	   (neutral-1 (face-foreground
-				   'font-lock-doc-face))
-	   (neutral-2 (face-foreground 'highlight)))
-
-  (set-face-attribute 'thetasigma-mode-line-mod-active nil
-					  :foreground neutral-2)
-  (set-face-attribute 'thetasigma-mode-line-not-mod-active nil
-					  :foreground static-2)
-  (set-face-attribute 'thetasigma-mode-line-mod-inactive nil
-					  :foreground neutral-0)
-  (set-face-attribute 'thetasigma-mode-line-not-mod-inactive nil
-					  :foreground static-0))
+	(set-face-foreground 'thetasigma-mode-line-mod-active neutral-2)
+	(set-face-foreground 'thetasigma-mode-line-not-mod-active static-2)
+	(set-face-foreground 'thetasigma-mode-line-mod-inactive neutral-0)
+	(set-face-foreground 'thetasigma-mode-line-not-mod-inactive static-0)))
 
 (defvar thetasigma-mode-line-rw
   '(:eval
@@ -99,15 +86,15 @@
 			   '(:eval (propertize "Mode: " 'face '(:slant italic)))
 			   '(:eval (propertize (if (car-safe mode-name)
 									   (car mode-name)
-									   mode-name)
+									 mode-name)
 								   'face '(:slant italic)))
 			   " | "
-			   ;; `(vc-mode vc-mode)
-			   '(:eval (propertize (concat "Branch: "
-										   (if (equal (car (vc-git-branches)) nil)
-											   "None"
-											 (car (vc-git-branches))))
-								   'face '(:slant italic)))
+			   '(:eval (when vc-mode
+						 (let ((backend (vc-backend buffer-file-name)))
+						   (when (eq backend 'Git)
+							 (let ((branch (substring vc-mode (+ (length (symbol-name backend)) 2))))
+							   (propertize (concat "Branch: " branch) 
+										   'face '(:slant italic)))))))
 			   ))
 
 (provide 'thetasigma-mode-line)

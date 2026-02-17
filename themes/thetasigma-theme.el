@@ -34,6 +34,15 @@
 ;; Currently, three styles are offered - 2 dark themes and one light.  These values can be changed by the user in the =M-x customize= menus
 
 ;;; Code:
+(defgroup thetasigma nil
+  "Customization group for the ΘΣ theme."
+  :group 'faces)
+
+(defcustom thetasigma-theme-after-load-hook nil
+  "Hook run after a ΘΣ theme variant is loaded."
+  :type 'hook
+  :group 'thetasigma)
+
 (defmacro thetasigma-theme-define (theme-name theme-alist)
   "A macro to define a theme-variant.
 Argument THEME-NAME name of theme.
@@ -158,7 +167,4 @@ Argument THEME-ALIST alist of colors to be used in the macro."
 	 `(ansi-color-inverse ((,class :foreground ,bg-overlay :background ,standout))))))
 
 (provide 'thetasigma-theme)
-
-(provide 'thetasigma-theme)
-
 ;;; thetasigma-theme.el ends here
