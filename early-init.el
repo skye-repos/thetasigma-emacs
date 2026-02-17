@@ -60,14 +60,15 @@
 			 'thetasigma-light)
   :group 'thetasigma)
 
+(load-theme thetasigma-theme-style t)
+
 (if (daemonp)
-	(add-to-list 'after-make-frame-functions
+	(add-hook 'after-make-frame-functions
 				 (lambda (frame)
-				   (with-selected-frame frame)
 				   (when (display-graphic-p frame)
-					 (set-face-font 'default thetasigma-font frame)
+					 (set-face-attribute 'default frame :font thetasigma-font)
 					 )))
-  (set-face-font 'default thetasigma-font))
+  (set-face-attribute 'default nil :font thetasigma-font))
 
 ;; Load all elisp scripts in a folder
 (defun thetasigma--load-files (dir)

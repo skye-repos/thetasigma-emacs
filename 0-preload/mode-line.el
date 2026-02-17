@@ -42,10 +42,8 @@
   "Face refreshing function to be called after theme is loaded."
   
   (let* ((static-0 (face-foreground 'font-lock-keyword-face))
-		 (static-1 (face-foreground 'font-lock-type-face))
 		 (static-2 (face-foreground 'font-lock-constant-face))
 		 (neutral-0 (face-foreground 'font-lock-builtin-face))
-		 (neutral-1 (face-foreground 'font-lock-doc-face))
 		 (neutral-2 (face-foreground 'highlight)))
 
 	(set-face-foreground 'thetasigma-mode-line-mod-active neutral-2)
