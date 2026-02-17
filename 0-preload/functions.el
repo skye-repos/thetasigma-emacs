@@ -84,3 +84,36 @@ height and width."
 		   (split-window-horizontally))
 		  ((= 1 r)
 		   (split-window-sensibly)))))
+
+(defun thetasigma--install-font ()
+  "Downloads and installs the 0xProto font for macOS or Linux."
+  (interactive)
+  (let* ((font-url "https://github.com/0xType/0xProto/releases/latest/download/0xProto-Regular.ttf")
+         (font-name "0xProto-Regular.ttf")
+         ;; Determine the correct font directory based on the OS
+         (dest-dir (cond
+                    ((eq system-type 'darwin) 
+                     (expand-file-name "~/Library/Fonts/"))
+                    ((eq system-type 'gnu/linux) 
+                     (expand-file-name "~/.local/share/fonts/"))
+                    (t (error "Unsupported OS for this script"))))
+         (dest-path (concat dest-dir font-name)))
+
+    ;; 1. Create directory if it doesn't exist
+    (unless (file-directory-p dest-dir)
+      (make-directory dest-dir t)
+      (message "Created directory: %s" dest-dir))
+
+    ;; 2. Download the file
+    (if (file-exists-p dest-path)
+        (message "Font already exists at %s" dest-path)
+      (progn
+        (message "Downloading 0xProto to %s..." dest-path)
+        (url-copy-file font-url dest-path t)
+        
+        ;; 3. Refresh font cache (Linux only)
+        (when (eq system-type 'gnu/linux)
+          (message "Updating Linux font cache...")
+          (shell-command "fc-cache -f"))
+        
+        (message "Font installed successfully! You may need to restart Emacs.")))))

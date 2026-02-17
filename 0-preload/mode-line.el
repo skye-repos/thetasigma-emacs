@@ -40,11 +40,11 @@
 
 (defun thetasigma-mode-line--refresh-faces ()
   "Face refreshing function to be called after theme is loaded."
-  
+  (interactive)
   (let* ((static-0 (face-foreground 'font-lock-keyword-face))
 		 (static-2 (face-foreground 'font-lock-constant-face))
 		 (neutral-0 (face-foreground 'font-lock-builtin-face))
-		 (neutral-2 (face-foreground 'highlight)))
+		 (neutral-2 (face-foreground 'font-lock-operator-face)))
 
 	(set-face-foreground 'thetasigma-mode-line-mod-active neutral-2)
 	(set-face-foreground 'thetasigma-mode-line-not-mod-active static-2)
@@ -92,8 +92,9 @@
 						   (when (eq backend 'Git)
 							 (let ((branch (substring vc-mode (+ (length (symbol-name backend)) 2))))
 							   (propertize (concat "Branch: " branch) 
-										   'face '(:slant italic)))))))
-			   ))
+										   'face '(:slant italic)))))))))
+
+(add-hook 'thetasigma-theme-after-load-hook #'thetasigma-mode-line--refresh-faces)
 
 (provide 'thetasigma-mode-line)
 ;;; thetasigma-mode-line.el ends here

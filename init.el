@@ -20,6 +20,7 @@
 	(thetasigma--load-files thetasigma-user-dir)
   (make-directory thetasigma-user-dir))
 
+
 ;; Load the custom file set in early init
 (unless (file-exists-p custom-file)
   (make-empty-file custom-file))
