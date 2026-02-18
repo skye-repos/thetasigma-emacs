@@ -26,9 +26,5 @@
 (load custom-file)
 
 ;; Modeline reloading of colors
-(if (daemonp)
-	(add-hook 'after-make-frame-functions
-				 (lambda (frame)
-				   (when (display-graphic-p frame)
-					 (thetasigma-mode-line--refresh-faces))))
-  (thetasigma-mode-line--refresh-faces))
+(add-hook 'after-make-frame-functions #'thetasigma-mode-line--refresh-faces)
+(add-hook 'server-after-make-frame-hook #'thetasigma-mode-line--refresh-faces)
