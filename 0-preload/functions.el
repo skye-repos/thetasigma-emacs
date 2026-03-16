@@ -51,7 +51,7 @@ window. If it's the last window, just kill the buffer."
   (interactive)
   (let* ((win-list (window-list))
          (buf-wins (get-buffer-window-list (current-buffer)))
-         (specialp (derived-mode-p 'image-mode 'doc-view-mode 'pdf-view-mode)))
+         (specialp (derived-mode-p 'image-mode 'doc-view-mode 'pdf-view-mode 'csv-mode)))
     
     (cond
      ;; Case 1: Only one window exists - just kill the buffer.

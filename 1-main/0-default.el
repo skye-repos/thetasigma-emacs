@@ -37,7 +37,7 @@
 	(default-frame-alist
 	 . '((vertical-scroll-bars . nil)
 		 (internal-border-width . 24)
-		 (undecorated-round . t)
+		 ;; (undecorated . t)
 		 (left-fringe    . 1)
 		 (right-fringe   . 1)
 		 (tool-bar-lines . 0)
