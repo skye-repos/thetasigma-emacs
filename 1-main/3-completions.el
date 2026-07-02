@@ -1,22 +1,22 @@
-;; (leaf completion-preview-mode
-;;   :ensure nil
-;;   :hook
-;;   '((prog-mode-hook . completion-preview-mode)
-;; 	(text-mode-hook . completion-preview-mode)
-;; 	(eshell-mode-hook . completion-preview-mode))
-;;   :bind
-;;   '(:completion-preview-active-mode-map
-;; 	("<tab>" . completion-preview-insert))
-;;   :custom
-;;   '((completion-preview-minimum-symbol-length . 2)))
-
 ;; Inline completions
+(leaf completion-preview-mode
+  :ensure nil
+  :hook
+  '((prog-mode-hook . completion-preview-mode)
+	(text-mode-hook . completion-preview-mode)
+	(eshell-mode-hook . completion-preview-mode))
+  :bind
+  '(:completion-preview-active-mode-map
+	("<tab>" . completion-preview-insert))
+  :custom
+  '((completion-preview-minimum-symbol-length . 2)))
+
 (leaf corfu
   :ensure t
   :custom
   '((corfu-auto . t)
 	(corfu-auto-delay . 0)
-	(corfu-auto-prefix . 2)
+	(corfu-auto-prefix . 3)
 	(corfu-quit-no-match . t)
 	(global-corfu-mode . t)
 	(corfu-history-mode . t)

@@ -7,13 +7,11 @@
   '((icomplete-vertical-mode . t)
 	(icomplete-show-matches-on-no-input . t)
 	(icomplete-hide-common-prefix . nil)
-	(icomplete-delay-completions-threshold . 0)
-	(icomplete-compute-delay . 0)
 	(icomplete-prospects-height . 5)
 	(icomplete-with-completion-tables . t)
-	(icomplete-in-buffer . t)
-	(icomplete-max-delay-chars . 0)
+	(icomplete-in-buffer . nil)
 	(icomplete-scroll . t)))
+
 
 (leaf marginalia
   :ensure t

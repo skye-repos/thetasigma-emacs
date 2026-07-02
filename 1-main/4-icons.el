@@ -27,8 +27,10 @@
 
 (leaf nerd-icons-completion
   :ensure t
-  :after vertico
   :hook
-  '((marginalia-mode-hook . nerd-icons-completion-marginalia-setup))
-  :config
-  (nerd-icons-completion-mode t))
+  '((marginalia-mode-hook . nerd-icons-completion-marginalia-setup)
+	(icomplete-mode-hook . (lambda ()
+							 (nerd-icons-completion-mode t))))
+  ;; :config
+  ;; (nerd-icons-completion-mode t)
+  )
