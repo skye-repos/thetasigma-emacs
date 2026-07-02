@@ -17,6 +17,8 @@
 	;; (cua-mode . t) ;; if you want normal text editing
 	(delete-selection-mode . t)
 	(global-visual-line-mode . t)
+	;; Text completion behavior
+	(completion-styles . '(flex basic partial-completion))
 	;; Tabs
 	(indent-tabs-mode . t)
 	(tab-always-indent . 'complete)
