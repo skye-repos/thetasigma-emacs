@@ -145,14 +145,14 @@ Argument THEME-ALIST alist of colors to be used in the macro."
 	 `(org-level-7 ((,class :inherit outline-7)))
 	 `(org-level-8 ((,class :inherit outline-8)))
 
-	 `(consult-file ((,class :foreground ,overlay)))
-	 `(consult-bookmark ((,class :foreground ,overlay)))
+	 ;; `(consult-file ((,class :foreground ,overlay)))
+	 ;; `(consult-bookmark ((,class :foreground ,overlay)))
 	 
-	 `(vertico-posframe ((,class :background ,bg-overlay)))
-	 `(vertico-posframe-border ((,class :background ,neutral-0 :weight light)))
-	 `(vertico-posframe-border-2 ((,class :background ,static-0 :weight light)))
-	 `(vertico-posframe-border-3 ((,class :background ,interact-0 :weight light)))
-	 `(vertico-posframe-border-4 ((,class :background ,neutral-1 :weight light)))
+	 ;; `(vertico-posframe ((,class :background ,bg-overlay)))
+	 ;; `(vertico-posframe-border ((,class :background ,neutral-0 :weight light)))
+	 ;; `(vertico-posframe-border-2 ((,class :background ,static-0 :weight light)))
+	 ;; `(vertico-posframe-border-3 ((,class :background ,interact-0 :weight light)))
+	 ;; `(vertico-posframe-border-4 ((,class :background ,neutral-1 :weight light)))
 
 	 `(ansi-color-black ((,class :foreground ,bg-overlay)))
 	 `(ansi-color-white ((,class :foreground ,foreground)))
