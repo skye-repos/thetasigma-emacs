@@ -20,3 +20,5 @@ bookmarks
 undo-fu-session
 .DS_Store
 *~
+games/*
+elisp-autofmt-cache/*
