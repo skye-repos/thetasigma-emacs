@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; Icons
 (leaf nerd-icons
   :ensure t

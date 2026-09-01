@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;;; Define Key Thetasigma Variables
 ;; Directory of files to be loaded before init.el
 (defvar thetasigma-preload-dir (concat user-emacs-directory "0-preload"))

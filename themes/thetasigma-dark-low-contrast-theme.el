@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;;; thetasigma-dark-low-contrast-theme.el --- Contrast rich dark theme 
 
 ;;; Commentary:

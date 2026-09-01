@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; Inline completions
 (leaf completion-preview-mode
   :ensure nil

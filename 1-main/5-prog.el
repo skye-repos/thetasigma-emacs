@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; Paired parens
 (leaf elec-pair
   :custom

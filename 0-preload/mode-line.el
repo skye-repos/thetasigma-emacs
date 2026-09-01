@@ -1,4 +1,5 @@
-;;; thetasigma-mode-line.el --- minimal mode-line -*- lexical-binding: t -*-
+;; -*- lexical-binding: t; -*-
+;;; thetasigma-mode-line.el --- minimal mode-line
 
 ;; Author: Skye
 ;; Version: 0.0.1
@@ -57,20 +58,28 @@
 		;; For the Active Modeline
 		(if buffer-read-only
 			(if (buffer-modified-p)
-				(propertize "  " 'face '(:inherit thetasigma-mode-line-mod-active))
-			  (propertize "  " 'face '(:inherit thetasigma-mode-line-not-mod-active)))
+				(propertize "  " 'face
+							'(:inherit thetasigma-mode-line-mod-active))
+			  (propertize "  " 'face
+						  '(:inherit thetasigma-mode-line-not-mod-active)))
 		  (if (buffer-modified-p)
-			  (propertize "  " 'face '(:inherit thetasigma-mode-line-mod-active))
-			(propertize "  " 'face '(:inherit thetasigma-mode-line-not-mod-active))))
+			  (propertize "  " 'face
+						  '(:inherit thetasigma-mode-line-mod-active))
+			(propertize "  " 'face
+						'(:inherit thetasigma-mode-line-not-mod-active))))
 
 	  ;; For the inactive modeline
 	  (if buffer-read-only
 		  (if (buffer-modified-p)
-			  (propertize "  " 'face '(:inherit thetasigma-mode-line-mod-inactive))
-			(propertize "  " 'face '(:inherit thetasigma-mode-line-not-mod-inactive)))
+			  (propertize "  " 'face
+						  '(:inherit thetasigma-mode-line-mod-inactive))
+			(propertize "  " 'face
+						'(:inherit thetasigma-mode-line-not-mod-inactive)))
 		(if (buffer-modified-p)
-			(propertize "  " 'face '(:inherit thetasigma-mode-line-mod-inactive))
-		  (propertize "  " 'face '(:inherit thetasigma-mode-line-not-mod-inactive))))
+			(propertize "  " 'face
+						'(:inherit thetasigma-mode-line-mod-inactive))
+		  (propertize "  " 'face
+					  '(:inherit thetasigma-mode-line-not-mod-inactive))))
 	  )))
 
 ;; Change the mode-line
@@ -90,11 +99,16 @@
 			   '(:eval (when vc-mode
 						 (let ((backend (vc-backend buffer-file-name)))
 						   (when (eq backend 'Git)
-							 (let ((branch (substring vc-mode (+ (length (symbol-name backend)) 2))))
+							 (let
+								 ((branch
+								   (substring vc-mode
+											  (+ (length (symbol-name backend))
+												 2))))
 							   (propertize (concat "Branch: " branch) 
 										   'face '(:slant italic)))))))))
 
-(add-hook 'thetasigma-theme-after-load-hook #'thetasigma-mode-line--refresh-faces)
+(add-hook 'thetasigma-theme-after-load-hook
+		  #'thetasigma-mode-line--refresh-faces)
 
 (provide 'thetasigma-mode-line)
 ;;; thetasigma-mode-line.el ends here

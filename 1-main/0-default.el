@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (defvar ctl-z-map nil
   "Global Prefix Map for additional user commands.")
 (define-prefix-command 'ctl-z-map)

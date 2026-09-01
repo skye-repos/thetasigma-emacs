@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; A better way to use C-g that is a little more context sensitive
 (defun thetasigma--keyboard-quit ()
   "Quit current context.
@@ -51,22 +52,19 @@ window. If it's the last window, just kill the buffer."
   (interactive)
   (let* ((win-list (window-list))
          (buf-wins (get-buffer-window-list (current-buffer)))
-         (specialp (derived-mode-p 'image-mode 'doc-view-mode 'pdf-view-mode 'csv-mode)))
+         (specialp
+		  (derived-mode-p 'image-mode 'doc-view-mode 'pdf-view-mode 'csv-mode)))
     
     (cond
-     ;; Case 1: Only one window exists - just kill the buffer.
      ((= (length win-list) 1)
       (kill-current-buffer))
-     ;; Case 2: Special modes (Images/PDFs) - don't delete window, just "pivot"
      (specialp
       (let ((fallback (if default-directory 
                           (dired-noselect default-directory)
                         (get-buffer-create "*scratch*"))))
         (set-window-buffer (selected-window) fallback)))
-     ;; Case 3: Multiple windows, buffer is shown in more than one
      ((> (length buf-wins) 1)
       (delete-window))
-     ;; Case 4: Multiple windows, this is the only window showing this buffer
      (t
       (kill-current-buffer)
       (delete-window)))))

@@ -1,5 +1,5 @@
-;;; thetasigma-theme.el  --- Contrast rich WCAG compliant themes
 ;; -*- lexical-binding:t -*-
+;;; thetasigma-theme.el  --- Contrast rich WCAG compliant themes
 
 ;; Author: Skye
 ;; Version: 0.1

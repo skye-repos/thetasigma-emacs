@@ -1,9 +1,15 @@
+;; -*- lexical-binding: t; -*-
 ;; Exec Path From Shell
-(unless (eq system-type 'darwin)
-  (leaf exec-path-from-shell
-	:ensure t
-	:config
-	(exec-path-from-shell-initialize)))
+(leaf exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
+;; Elisp-Autofmt
+(leaf elisp-autofmt
+  :ensure t
+  :config
+  (elisp-autofmt-mode t))
 
 ;; Spell check
 (leaf jinx

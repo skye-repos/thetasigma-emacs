@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (leaf icomplete-mode
   :ensure nil
   :hook
@@ -11,7 +12,6 @@
 	(icomplete-with-completion-tables . t)
 	(icomplete-in-buffer . nil)
 	(icomplete-scroll . t)))
-
 
 (leaf marginalia
   :ensure t

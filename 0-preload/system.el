@@ -1,4 +1,5 @@
-;;; thetasigma-system.el --- OS specific configs -*- lexical-binding: t -*-
+;; -*- lexical-binding: t; -*-
+;;; thetasigma-system.el --- OS specific configs
 
 ;; Author: Skye
 ;; Version: 0.0.1

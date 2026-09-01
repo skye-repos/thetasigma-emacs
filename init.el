@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; Setup leaf for easy package configurations
 (eval-and-compile
   (package-initialize)
